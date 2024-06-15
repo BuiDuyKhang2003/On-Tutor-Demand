@@ -1,0 +1,16 @@
+C:\Users\ACER\Desktop\On-Tutor-Demand\DataAccessLayer\bin\Debug\net7.0\DataAccessLayer.deps.json
+C:\Users\ACER\Desktop\On-Tutor-Demand\DataAccessLayer\bin\Debug\net7.0\DataAccessLayer.dll
+C:\Users\ACER\Desktop\On-Tutor-Demand\DataAccessLayer\bin\Debug\net7.0\DataAccessLayer.pdb
+C:\Users\ACER\Desktop\On-Tutor-Demand\DataAccessLayer\bin\Debug\net7.0\BusinessObject.dll
+C:\Users\ACER\Desktop\On-Tutor-Demand\DataAccessLayer\bin\Debug\net7.0\BusinessObject.pdb
+C:\Users\ACER\Desktop\On-Tutor-Demand\DataAccessLayer\obj\Debug\net7.0\DataAccessLayer.csproj.AssemblyReference.cache
+C:\Users\ACER\Desktop\On-Tutor-Demand\DataAccessLayer\obj\Debug\net7.0\DataAccessLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ACER\Desktop\On-Tutor-Demand\DataAccessLayer\obj\Debug\net7.0\DataAccessLayer.AssemblyInfoInputs.cache
+C:\Users\ACER\Desktop\On-Tutor-Demand\DataAccessLayer\obj\Debug\net7.0\DataAccessLayer.AssemblyInfo.cs
+C:\Users\ACER\Desktop\On-Tutor-Demand\DataAccessLayer\obj\Debug\net7.0\DataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Users\ACER\Desktop\On-Tutor-Demand\DataAccessLayer\obj\Debug\net7.0\DataAccessLayer.sourcelink.json
+C:\Users\ACER\Desktop\On-Tutor-Demand\DataAccessLayer\obj\Debug\net7.0\DataAcce.E67BD773.Up2Date
+C:\Users\ACER\Desktop\On-Tutor-Demand\DataAccessLayer\obj\Debug\net7.0\DataAccessLayer.dll
+C:\Users\ACER\Desktop\On-Tutor-Demand\DataAccessLayer\obj\Debug\net7.0\refint\DataAccessLayer.dll
+C:\Users\ACER\Desktop\On-Tutor-Demand\DataAccessLayer\obj\Debug\net7.0\DataAccessLayer.pdb
+C:\Users\ACER\Desktop\On-Tutor-Demand\DataAccessLayer\obj\Debug\net7.0\ref\DataAccessLayer.dll

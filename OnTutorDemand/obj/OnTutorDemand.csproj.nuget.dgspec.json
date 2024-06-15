@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\OnTutorDemand\\OnTutorDemand.csproj": {}
+    "C:\\Users\\ACER\\Desktop\\On-Tutor-Demand\\OnTutorDemand\\OnTutorDemand.csproj": {}
   },
   "projects": {
-    "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\BusinessObject\\BusinessObject.csproj": {
+    "C:\\Users\\ACER\\Desktop\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\BusinessObject\\BusinessObject.csproj",
+        "projectUniqueName": "C:\\Users\\ACER\\Desktop\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj",
         "projectName": "BusinessObject",
-        "projectPath": "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\BusinessObject\\BusinessObject.csproj",
-        "packagesPath": "C:\\Users\\huvo2\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\BusinessObject\\obj\\",
+        "projectPath": "C:\\Users\\ACER\\Desktop\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj",
+        "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ACER\\Desktop\\On-Tutor-Demand\\BusinessObject\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\huvo2\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +22,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -82,6 +77,20 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[7.0.18, 7.0.18]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[7.0.18, 7.0.18]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[7.0.18, 7.0.18]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
@@ -91,21 +100,17 @@
         }
       }
     },
-    "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\DataAccessLayer\\DataAccessLayer.csproj": {
+    "C:\\Users\\ACER\\Desktop\\On-Tutor-Demand\\DataAccessLayer\\DataAccessLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\DataAccessLayer\\DataAccessLayer.csproj",
+        "projectUniqueName": "C:\\Users\\ACER\\Desktop\\On-Tutor-Demand\\DataAccessLayer\\DataAccessLayer.csproj",
         "projectName": "DataAccessLayer",
-        "projectPath": "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\DataAccessLayer\\DataAccessLayer.csproj",
-        "packagesPath": "C:\\Users\\huvo2\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\DataAccessLayer\\obj\\",
+        "projectPath": "C:\\Users\\ACER\\Desktop\\On-Tutor-Demand\\DataAccessLayer\\DataAccessLayer.csproj",
+        "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ACER\\Desktop\\On-Tutor-Demand\\DataAccessLayer\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\huvo2\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -113,15 +118,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\BusinessObject\\BusinessObject.csproj": {
-                "projectPath": "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\BusinessObject\\BusinessObject.csproj"
+              "C:\\Users\\ACER\\Desktop\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj": {
+                "projectPath": "C:\\Users\\ACER\\Desktop\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj"
               }
             }
           }
@@ -151,6 +155,20 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[7.0.18, 7.0.18]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[7.0.18, 7.0.18]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[7.0.18, 7.0.18]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
@@ -160,21 +178,17 @@
         }
       }
     },
-    "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\OnTutorDemand\\OnTutorDemand.csproj": {
+    "C:\\Users\\ACER\\Desktop\\On-Tutor-Demand\\OnTutorDemand\\OnTutorDemand.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\OnTutorDemand\\OnTutorDemand.csproj",
+        "projectUniqueName": "C:\\Users\\ACER\\Desktop\\On-Tutor-Demand\\OnTutorDemand\\OnTutorDemand.csproj",
         "projectName": "OnTutorDemand",
-        "projectPath": "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\OnTutorDemand\\OnTutorDemand.csproj",
-        "packagesPath": "C:\\Users\\huvo2\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\OnTutorDemand\\obj\\",
+        "projectPath": "C:\\Users\\ACER\\Desktop\\On-Tutor-Demand\\OnTutorDemand\\OnTutorDemand.csproj",
+        "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ACER\\Desktop\\On-Tutor-Demand\\OnTutorDemand\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\huvo2\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -182,18 +196,17 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\BusinessObject\\BusinessObject.csproj": {
-                "projectPath": "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\BusinessObject\\BusinessObject.csproj"
+              "C:\\Users\\ACER\\Desktop\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj": {
+                "projectPath": "C:\\Users\\ACER\\Desktop\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj"
               },
-              "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\Repository\\Repository.csproj": {
-                "projectPath": "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\Repository\\Repository.csproj"
+              "C:\\Users\\ACER\\Desktop\\On-Tutor-Demand\\Repository\\Repository.csproj": {
+                "projectPath": "C:\\Users\\ACER\\Desktop\\On-Tutor-Demand\\Repository\\Repository.csproj"
               }
             }
           }
@@ -235,6 +248,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[7.0.18, 7.0.18]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[7.0.18, 7.0.18]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[7.0.18, 7.0.18]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[7.0.18, 7.0.18]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -247,21 +278,17 @@
         }
       }
     },
-    "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\Repository\\Repository.csproj": {
+    "C:\\Users\\ACER\\Desktop\\On-Tutor-Demand\\Repository\\Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\Repository\\Repository.csproj",
+        "projectUniqueName": "C:\\Users\\ACER\\Desktop\\On-Tutor-Demand\\Repository\\Repository.csproj",
         "projectName": "Repository",
-        "projectPath": "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\Repository\\Repository.csproj",
-        "packagesPath": "C:\\Users\\huvo2\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\Repository\\obj\\",
+        "projectPath": "C:\\Users\\ACER\\Desktop\\On-Tutor-Demand\\Repository\\Repository.csproj",
+        "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ACER\\Desktop\\On-Tutor-Demand\\Repository\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\huvo2\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -269,18 +296,17 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\BusinessObject\\BusinessObject.csproj": {
-                "projectPath": "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\BusinessObject\\BusinessObject.csproj"
+              "C:\\Users\\ACER\\Desktop\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj": {
+                "projectPath": "C:\\Users\\ACER\\Desktop\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj"
               },
-              "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\DataAccessLayer\\DataAccessLayer.csproj": {
-                "projectPath": "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\DataAccessLayer\\DataAccessLayer.csproj"
+              "C:\\Users\\ACER\\Desktop\\On-Tutor-Demand\\DataAccessLayer\\DataAccessLayer.csproj": {
+                "projectPath": "C:\\Users\\ACER\\Desktop\\On-Tutor-Demand\\DataAccessLayer\\DataAccessLayer.csproj"
               }
             }
           }
@@ -310,6 +336,20 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[7.0.18, 7.0.18]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[7.0.18, 7.0.18]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[7.0.18, 7.0.18]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
