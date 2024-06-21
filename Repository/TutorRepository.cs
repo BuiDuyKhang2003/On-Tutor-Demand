@@ -17,8 +17,10 @@ namespace Repository
 
         public Tutor GetTutorById(int tutorId) => TutorDAO.GetTutorById(tutorId);
 
-        public IEnumerable<Tutor> GetAllTutors() => TutorDAO.GetAllTutors();
+        public IEnumerable<Tutor> GetAllTutors(int pageNumber, int pageSize) => TutorDAO.GetAllTutors(pageNumber, pageSize);
 
         public void UpdateTutor(Tutor tutor) => TutorDAO.UpdateTutor(tutor);
+
+        public int GetTotalTutorsCount() => TutorDAO.GetTotalTutorsCount();
     }
 }

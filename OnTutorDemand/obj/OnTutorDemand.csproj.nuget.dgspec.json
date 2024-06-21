@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\On-Tutor-Demand\\OnTutorDemand\\OnTutorDemand.csproj": {}
+    "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\OnTutorDemand\\OnTutorDemand.csproj": {}
   },
   "projects": {
-    "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj": {
+    "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\BusinessObject\\BusinessObject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj",
+        "projectUniqueName": "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\BusinessObject\\BusinessObject.csproj",
         "projectName": "BusinessObject",
-        "projectPath": "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj",
-        "packagesPath": "C:\\Users\\TinDinh\\.nuget\\packages\\",
-        "outputPath": "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\On-Tutor-Demand\\BusinessObject\\obj\\",
+        "projectPath": "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\BusinessObject\\BusinessObject.csproj",
+        "packagesPath": "C:\\Users\\huvo2\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\BusinessObject\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\TinDinh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\huvo2\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -83,21 +87,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\On-Tutor-Demand\\DataAccessLayer\\DataAccessLayer.csproj": {
+    "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\DataAccessLayer\\DataAccessLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\On-Tutor-Demand\\DataAccessLayer\\DataAccessLayer.csproj",
+        "projectUniqueName": "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\DataAccessLayer\\DataAccessLayer.csproj",
         "projectName": "DataAccessLayer",
-        "projectPath": "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\On-Tutor-Demand\\DataAccessLayer\\DataAccessLayer.csproj",
-        "packagesPath": "C:\\Users\\TinDinh\\.nuget\\packages\\",
-        "outputPath": "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\On-Tutor-Demand\\DataAccessLayer\\obj\\",
+        "projectPath": "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\DataAccessLayer\\DataAccessLayer.csproj",
+        "packagesPath": "C:\\Users\\huvo2\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\DataAccessLayer\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\TinDinh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\huvo2\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -112,8 +120,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj": {
-                "projectPath": "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj"
+              "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\BusinessObject\\BusinessObject.csproj": {
+                "projectPath": "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\BusinessObject\\BusinessObject.csproj"
               }
             }
           }
@@ -148,25 +156,29 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\On-Tutor-Demand\\OnTutorDemand\\OnTutorDemand.csproj": {
+    "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\OnTutorDemand\\OnTutorDemand.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\On-Tutor-Demand\\OnTutorDemand\\OnTutorDemand.csproj",
+        "projectUniqueName": "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\OnTutorDemand\\OnTutorDemand.csproj",
         "projectName": "OnTutorDemand",
-        "projectPath": "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\On-Tutor-Demand\\OnTutorDemand\\OnTutorDemand.csproj",
-        "packagesPath": "C:\\Users\\TinDinh\\.nuget\\packages\\",
-        "outputPath": "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\On-Tutor-Demand\\OnTutorDemand\\obj\\",
+        "projectPath": "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\OnTutorDemand\\OnTutorDemand.csproj",
+        "packagesPath": "C:\\Users\\huvo2\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\OnTutorDemand\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\TinDinh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\huvo2\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net8.0"
+          "net7.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -174,14 +186,14 @@
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net8.0": {
-            "targetAlias": "net8.0",
+          "net7.0": {
+            "targetAlias": "net7.0",
             "projectReferences": {
-              "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj": {
-                "projectPath": "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj"
+              "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\BusinessObject\\BusinessObject.csproj": {
+                "projectPath": "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\BusinessObject\\BusinessObject.csproj"
               },
-              "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\On-Tutor-Demand\\Repository\\Repository.csproj": {
-                "projectPath": "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\On-Tutor-Demand\\Repository\\Repository.csproj"
+              "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\Repository\\Repository.csproj": {
+                "projectPath": "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\Repository\\Repository.csproj"
               }
             }
           }
@@ -198,8 +210,8 @@
         }
       },
       "frameworks": {
-        "net8.0": {
-          "targetAlias": "net8.0",
+        "net7.0": {
+          "targetAlias": "net7.0",
           "dependencies": {
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
@@ -210,6 +222,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[7.0.19, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[7.0.12, )"
             }
           },
           "imports": [
@@ -231,21 +247,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\On-Tutor-Demand\\Repository\\Repository.csproj": {
+    "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\Repository\\Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\On-Tutor-Demand\\Repository\\Repository.csproj",
+        "projectUniqueName": "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\Repository\\Repository.csproj",
         "projectName": "Repository",
-        "projectPath": "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\On-Tutor-Demand\\Repository\\Repository.csproj",
-        "packagesPath": "C:\\Users\\TinDinh\\.nuget\\packages\\",
-        "outputPath": "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\On-Tutor-Demand\\Repository\\obj\\",
+        "projectPath": "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\Repository\\Repository.csproj",
+        "packagesPath": "C:\\Users\\huvo2\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\Repository\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\TinDinh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\huvo2\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -260,11 +280,11 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj": {
-                "projectPath": "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj"
+              "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\BusinessObject\\BusinessObject.csproj": {
+                "projectPath": "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\BusinessObject\\BusinessObject.csproj"
               },
-              "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\On-Tutor-Demand\\DataAccessLayer\\DataAccessLayer.csproj": {
-                "projectPath": "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\On-Tutor-Demand\\DataAccessLayer\\DataAccessLayer.csproj"
+              "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\DataAccessLayer\\DataAccessLayer.csproj": {
+                "projectPath": "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\DataAccessLayer\\DataAccessLayer.csproj"
               }
             }
           }
@@ -299,7 +319,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
         }
       }
     }

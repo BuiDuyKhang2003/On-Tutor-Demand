@@ -28,3 +28,18 @@ D:\FPT\Chuyên Ngành 7\PRN221\ProjectTeam\On-Tutor-Demand\BusinessObject\obj\De
 D:\FPT\Chuyên Ngành 7\PRN221\ProjectTeam\On-Tutor-Demand\BusinessObject\obj\Debug\net7.0\BusinessObject.pdb
 D:\FPT\Chuyên Ngành 7\PRN221\ProjectTeam\On-Tutor-Demand\BusinessObject\obj\Debug\net7.0\BusinessObject.genruntimeconfig.cache
 D:\FPT\Chuyên Ngành 7\PRN221\ProjectTeam\On-Tutor-Demand\BusinessObject\obj\Debug\net7.0\ref\BusinessObject.dll
+C:\Users\huvo2\source\repos\OnTutorDemandWebApp\BusinessObject\bin\Debug\net7.0\BusinessObject.deps.json
+C:\Users\huvo2\source\repos\OnTutorDemandWebApp\BusinessObject\bin\Debug\net7.0\BusinessObject.runtimeconfig.json
+C:\Users\huvo2\source\repos\OnTutorDemandWebApp\BusinessObject\bin\Debug\net7.0\BusinessObject.dll
+C:\Users\huvo2\source\repos\OnTutorDemandWebApp\BusinessObject\bin\Debug\net7.0\BusinessObject.pdb
+C:\Users\huvo2\source\repos\OnTutorDemandWebApp\BusinessObject\obj\Debug\net7.0\BusinessObject.csproj.AssemblyReference.cache
+C:\Users\huvo2\source\repos\OnTutorDemandWebApp\BusinessObject\obj\Debug\net7.0\BusinessObject.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\huvo2\source\repos\OnTutorDemandWebApp\BusinessObject\obj\Debug\net7.0\BusinessObject.AssemblyInfoInputs.cache
+C:\Users\huvo2\source\repos\OnTutorDemandWebApp\BusinessObject\obj\Debug\net7.0\BusinessObject.AssemblyInfo.cs
+C:\Users\huvo2\source\repos\OnTutorDemandWebApp\BusinessObject\obj\Debug\net7.0\BusinessObject.csproj.CoreCompileInputs.cache
+C:\Users\huvo2\source\repos\OnTutorDemandWebApp\BusinessObject\obj\Debug\net7.0\BusinessObject.sourcelink.json
+C:\Users\huvo2\source\repos\OnTutorDemandWebApp\BusinessObject\obj\Debug\net7.0\BusinessObject.dll
+C:\Users\huvo2\source\repos\OnTutorDemandWebApp\BusinessObject\obj\Debug\net7.0\refint\BusinessObject.dll
+C:\Users\huvo2\source\repos\OnTutorDemandWebApp\BusinessObject\obj\Debug\net7.0\BusinessObject.pdb
+C:\Users\huvo2\source\repos\OnTutorDemandWebApp\BusinessObject\obj\Debug\net7.0\BusinessObject.genruntimeconfig.cache
+C:\Users\huvo2\source\repos\OnTutorDemandWebApp\BusinessObject\obj\Debug\net7.0\ref\BusinessObject.dll

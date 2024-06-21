@@ -23,9 +23,9 @@ public partial class AppDbContext : DbContext
     public DbSet<TutorSubject> TutorSubjects { get; set; }
     public DbSet<Video> Videos { get; set; }
 
-    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
-
     public AppDbContext() { }
+
+    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     => optionsBuilder.UseSqlServer(GetConnectionString());

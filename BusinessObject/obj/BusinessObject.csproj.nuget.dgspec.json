@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj": {}
+    "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\BusinessObject\\BusinessObject.csproj": {}
   },
   "projects": {
-    "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj": {
+    "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\BusinessObject\\BusinessObject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj",
+        "projectUniqueName": "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\BusinessObject\\BusinessObject.csproj",
         "projectName": "BusinessObject",
-        "projectPath": "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj",
-        "packagesPath": "C:\\Users\\TinDinh\\.nuget\\packages\\",
-        "outputPath": "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\On-Tutor-Demand\\BusinessObject\\obj\\",
+        "projectPath": "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\BusinessObject\\BusinessObject.csproj",
+        "packagesPath": "C:\\Users\\huvo2\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\BusinessObject\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\TinDinh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\huvo2\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -83,7 +87,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
         }
       }
     }

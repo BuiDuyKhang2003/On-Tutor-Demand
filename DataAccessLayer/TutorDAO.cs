@@ -12,9 +12,12 @@ namespace DataAccessLayer
     {
         private static AppDbContext db = new();
 
-        public static List<Tutor> GetAllTutors()
+        public static List<Tutor> GetAllTutors(int pageNumber, int pageSize)
         {
-            return db.Tutors.ToList();
+            return db.Tutors
+                     .Skip((pageNumber - 1) * pageSize)
+                     .Take(pageSize)
+                     .ToList();
         }
 
         public static Tutor GetTutorById(int tutorId)
@@ -42,6 +45,11 @@ namespace DataAccessLayer
                 db.Tutors.Remove(tutor);
                 db.SaveChanges();
             }
+        }
+
+        public static int GetTotalTutorsCount()
+        {
+            return db.Tutors.Count();
         }
     }
 }

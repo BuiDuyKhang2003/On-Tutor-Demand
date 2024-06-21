@@ -17,9 +17,9 @@ namespace BusinessObject
         [ForeignKey("Account")]
         public int AccountId { get; set; }
 
-        public string experience { get; set; }
-        public string education { get; set; }
-        public string description { get; set; }
+        public string Experience { get; set; }
+        public string Education { get; set; }
+        public string Description { get; set; }
 
         public virtual Account Account { get; set; }
         public virtual ICollection<Video> Videos { get; set; } = new List<Video>();
@@ -27,5 +27,28 @@ namespace BusinessObject
         public virtual ICollection<TutorGrade> TutorGrades { get; set; } = new List<TutorGrade>();
         public virtual ICollection<TutorArea> TutorAreas { get; set; } = new List<TutorArea>();
         public virtual ICollection<RentalService> RentalServices { get; set; } = new List<RentalService>();
+
+        public string GetGrade() {
+            string gradeList = "";
+            foreach (var item in TutorGrades)
+            {
+                gradeList = gradeList + item.Grade.GradeName + ", ";
+            }
+            return gradeList; 
+        }
+        public string GetDistrict()
+        {
+            string districtList = "";
+            foreach (var item in TutorAreas)
+            {
+                districtList = districtList + item.District.DistrictName + ", ";
+            }
+            return districtList;
+        }
+
+        public string GetFullName()
+        {
+            return Account.FullName;
+        }
     }
 }
