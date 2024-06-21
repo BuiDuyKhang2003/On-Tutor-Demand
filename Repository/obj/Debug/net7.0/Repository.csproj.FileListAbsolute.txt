@@ -16,3 +16,21 @@ C:\Users\ACER\Desktop\On-Tutor-Demand\Repository\obj\Debug\net7.0\Repository.dll
 C:\Users\ACER\Desktop\On-Tutor-Demand\Repository\obj\Debug\net7.0\refint\Repository.dll
 C:\Users\ACER\Desktop\On-Tutor-Demand\Repository\obj\Debug\net7.0\Repository.pdb
 C:\Users\ACER\Desktop\On-Tutor-Demand\Repository\obj\Debug\net7.0\ref\Repository.dll
+D:\FPT\Chuyên Ngành 7\PRN221\ProjectTeam\On-Tutor-Demand\Repository\bin\Debug\net7.0\Repository.deps.json
+D:\FPT\Chuyên Ngành 7\PRN221\ProjectTeam\On-Tutor-Demand\Repository\bin\Debug\net7.0\Repository.dll
+D:\FPT\Chuyên Ngành 7\PRN221\ProjectTeam\On-Tutor-Demand\Repository\bin\Debug\net7.0\Repository.pdb
+D:\FPT\Chuyên Ngành 7\PRN221\ProjectTeam\On-Tutor-Demand\Repository\bin\Debug\net7.0\BusinessObject.dll
+D:\FPT\Chuyên Ngành 7\PRN221\ProjectTeam\On-Tutor-Demand\Repository\bin\Debug\net7.0\DataAccessLayer.dll
+D:\FPT\Chuyên Ngành 7\PRN221\ProjectTeam\On-Tutor-Demand\Repository\bin\Debug\net7.0\BusinessObject.pdb
+D:\FPT\Chuyên Ngành 7\PRN221\ProjectTeam\On-Tutor-Demand\Repository\bin\Debug\net7.0\DataAccessLayer.pdb
+D:\FPT\Chuyên Ngành 7\PRN221\ProjectTeam\On-Tutor-Demand\Repository\obj\Debug\net7.0\Repository.csproj.AssemblyReference.cache
+D:\FPT\Chuyên Ngành 7\PRN221\ProjectTeam\On-Tutor-Demand\Repository\obj\Debug\net7.0\Repository.GeneratedMSBuildEditorConfig.editorconfig
+D:\FPT\Chuyên Ngành 7\PRN221\ProjectTeam\On-Tutor-Demand\Repository\obj\Debug\net7.0\Repository.AssemblyInfoInputs.cache
+D:\FPT\Chuyên Ngành 7\PRN221\ProjectTeam\On-Tutor-Demand\Repository\obj\Debug\net7.0\Repository.AssemblyInfo.cs
+D:\FPT\Chuyên Ngành 7\PRN221\ProjectTeam\On-Tutor-Demand\Repository\obj\Debug\net7.0\Repository.csproj.CoreCompileInputs.cache
+D:\FPT\Chuyên Ngành 7\PRN221\ProjectTeam\On-Tutor-Demand\Repository\obj\Debug\net7.0\Repository.sourcelink.json
+D:\FPT\Chuyên Ngành 7\PRN221\ProjectTeam\On-Tutor-Demand\Repository\obj\Debug\net7.0\Repository.csproj.Up2Date
+D:\FPT\Chuyên Ngành 7\PRN221\ProjectTeam\On-Tutor-Demand\Repository\obj\Debug\net7.0\Repository.dll
+D:\FPT\Chuyên Ngành 7\PRN221\ProjectTeam\On-Tutor-Demand\Repository\obj\Debug\net7.0\refint\Repository.dll
+D:\FPT\Chuyên Ngành 7\PRN221\ProjectTeam\On-Tutor-Demand\Repository\obj\Debug\net7.0\Repository.pdb
+D:\FPT\Chuyên Ngành 7\PRN221\ProjectTeam\On-Tutor-Demand\Repository\obj\Debug\net7.0\ref\Repository.dll

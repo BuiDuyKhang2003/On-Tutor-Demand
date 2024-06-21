@@ -1,0 +1,131 @@
+﻿@page
+@model OnTutorDemand.Pages.AuthenticateModel
+@{
+    ViewData["Title"] = "Login/Register";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Andev web - Validar formulario</title>
+    <link rel="stylesheet" href="~/css/AunthenticateStyle.css" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="container" id="container">
+        <div class="form-container register-container">
+            <form>
+                <h1>Đăng ký tại đây</h1>
+                <div class="form-control">
+                    <input type="text" id="username" placeholder="Tên" />
+                    <small id="username-error"></small>
+                    <span></span>
+                </div>
+                <div class="form-control">
+                    <input type="email" id="email" placeholder="E-mail" />
+                    <small id="email-error"></small>
+                    <span></span>
+                </div>
+                <div class="form-control">
+                    <input type="password" id="password" placeholder="Mật khẩu" />
+                    <small id="password-error"></small>
+                    <span></span>
+                </div>
+                <div class="form-control select-container">
+                    <select id="role" name="role">
+                        <option value="student">Học sinh</option>
+                        <option value="teacher">Giảng viên</option>
+                    </select>
+                    <small id="role-error"></small>
+                    <span></span>
+                </div>
+                <button type="submit" value="submit">Đăng ký</button>
+                <span>hoặc sử dụng tài khoản của bạn</span>
+                <div class="social-container">
+                    <a href="#" class="social">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social"><i class="fa-brands fa-google"></i></a>
+                    <a href="#" class="social"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </form>
+        </div>
+
+        <div class="form-container login-container">
+            <form class="form-lg">
+                <h1>Đăng nhập tại đây</h1>
+                <div class="form-control2">
+                    <input type="email" class="email-2" placeholder="E-mail" />
+                    <small class="email-error-2"></small>
+                    <span></span>
+                </div>
+                <div class="form-control2">
+                    <input type="password" class="password-2" placeholder="Mật khẩu" />
+                    <small class="password-error-2"></small>
+                    <span></span>
+                </div>
+
+                <div class="content">
+                    <div class="checkbox">
+                        <input type="checkbox" name="checkbox" id="checkbox" />
+                        <label for="">Lưu mật khẩu</label>
+                    </div>
+                    <div class="pass-link">
+                        <a href="#">Quên mật khẩu?</a>
+                    </div>
+                </div>
+                <button type="submit" value="submit">Đăng Nhập </button>
+                <span>Hoặc sử dụng tài khoản của bạn</span>
+                <div class="social-container">
+                    <a href="#" class="social">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class "social"><i class="fa-brands fa-google"></i></a>
+                    <a href="#" class="social"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </form>
+        </div>
+
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1 class="title">
+                        xin chào <br />
+                        các bạn
+                    </h1>
+                    <p>Nếu bạn có tài khoản, hãy đăng nhập vào đây để tìm khóa học nào</p>
+                    <button class="ghost" id="login">
+                        Đăng nhập
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                </div>
+
+                <div class="overlay-panel overlay-right">
+                    <h1 class="title">
+                        Bắt đầu
+                        cuộc hành <br />
+                        trình của bạn bây giờ
+                    </h1>
+                    <p>
+                        Nếu bạn chưa có tài khoản, hãy tham gia cùng chúng tôi và bắt đầu hành trình của bạn
+                    </p>
+                    <button class="ghost" id="register">
+                        Đăng ký tại đây
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="~/js/AuthenticateJS.js"></script>
+</html>
+
+
