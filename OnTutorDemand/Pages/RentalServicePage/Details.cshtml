@@ -1,0 +1,43 @@
+﻿@page
+@model OnTutorDemand.Pages.RentalServicePage.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>RentalService</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.RentalService.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.RentalService.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.RentalService.TotalOfHour)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.RentalService.TotalOfHour)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.RentalService.NumberOfCourse)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.RentalService.NumberOfCourse)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.RentalService.Tutor)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.RentalService.Tutor.Description)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.RentalService?.Id">Edit</a> |
+    <a asp-page="./RentalServiceHomePage">Back to List</a>
+</div>

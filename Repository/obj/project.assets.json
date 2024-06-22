@@ -3080,24 +3080,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\huvo2\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\LENOVO\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\Repository\\Repository.csproj",
+      "projectUniqueName": "C:\\Users\\LENOVO\\Desktop\\On-Tutor-Demand\\Repository\\Repository.csproj",
       "projectName": "Repository",
-      "projectPath": "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\Repository\\Repository.csproj",
-      "packagesPath": "C:\\Users\\huvo2\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\Repository\\obj\\",
+      "projectPath": "C:\\Users\\LENOVO\\Desktop\\On-Tutor-Demand\\Repository\\Repository.csproj",
+      "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\LENOVO\\Desktop\\On-Tutor-Demand\\Repository\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\huvo2\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\LENOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3105,18 +3100,17 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\BusinessObject\\BusinessObject.csproj": {
-              "projectPath": "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\BusinessObject\\BusinessObject.csproj"
+            "C:\\Users\\LENOVO\\Desktop\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj": {
+              "projectPath": "C:\\Users\\LENOVO\\Desktop\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj"
             },
-            "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\DataAccessLayer\\DataAccessLayer.csproj": {
-              "projectPath": "C:\\Users\\huvo2\\source\\repos\\OnTutorDemandWebApp\\DataAccessLayer\\DataAccessLayer.csproj"
+            "C:\\Users\\LENOVO\\Desktop\\On-Tutor-Demand\\DataAccessLayer\\DataAccessLayer.csproj": {
+              "projectPath": "C:\\Users\\LENOVO\\Desktop\\On-Tutor-Demand\\DataAccessLayer\\DataAccessLayer.csproj"
             }
           }
         }
@@ -3125,11 +3119,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -3151,7 +3140,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

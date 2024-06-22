@@ -13,9 +13,9 @@ namespace Repository
     {
         public void AddRentalService(RentalService rentalService) => RentalServiceDAO.AddRentalService(rentalService);
 
-        public void DeleteRentalService(int rentalServiceId) => RentalServiceDAO.DeleteRentalService(rentalServiceId);
+        public void DeleteRentalService(int? rentalServiceId) => RentalServiceDAO.DeleteRentalService(rentalServiceId);
 
-        public RentalService GetRentalServiceById(int rentalServiceId) => RentalServiceDAO.GetRentalServiceById(rentalServiceId);
+        public RentalService GetRentalServiceById(int? rentalServiceId) => RentalServiceDAO.GetRentalServiceById(rentalServiceId);
 
         public IEnumerable<RentalService> GetAllRentalServices() => RentalServiceDAO.GetAllRentalServices();
 
