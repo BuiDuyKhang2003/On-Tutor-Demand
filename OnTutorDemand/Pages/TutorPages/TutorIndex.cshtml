@@ -42,7 +42,7 @@
                     @Html.DisplayFor(modelItem => item.Id)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.GetFullName())
+                    @Html.DisplayFor(modelItem => item.FullName)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Education)
@@ -51,10 +51,10 @@
                     @Html.DisplayFor(modelItem => item.Experience)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.GetGrade())
+                    @Html.DisplayFor(modelItem => item.Grades)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.GetDistrict())
+                    @Html.DisplayFor(modelItem => item.Districts)
                 </td>
                 <td>
                     <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |

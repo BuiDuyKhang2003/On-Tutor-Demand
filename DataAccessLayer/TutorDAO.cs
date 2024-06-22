@@ -14,10 +14,14 @@ namespace DataAccessLayer
 
         public static List<Tutor> GetAllTutors(int pageNumber, int pageSize)
         {
-            return db.Tutors
-                     .Skip((pageNumber - 1) * pageSize)
-                     .Take(pageSize)
-                     .ToList();
+            return db.Tutors.Include(t => t.Account)
+                            .Include(t => t.TutorGrades)
+                            .ThenInclude(tg => tg.Grade)
+                            .Include(t => t.TutorAreas)
+                            .ThenInclude(ta => ta.District)
+                            .Skip((pageNumber - 1) * pageSize)
+                            .Take(pageSize)
+                            .ToList();
         }
 
         public static Tutor GetTutorById(int tutorId)
