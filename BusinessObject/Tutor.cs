@@ -28,27 +28,13 @@ namespace BusinessObject
         public virtual ICollection<TutorArea> TutorAreas { get; set; } = new List<TutorArea>();
         public virtual ICollection<RentalService> RentalServices { get; set; } = new List<RentalService>();
 
-        public string GetGrade() {
-            string gradeList = "";
-            foreach (var item in TutorGrades)
-            {
-                gradeList = gradeList + item.Grade.GradeName + ", ";
-            }
-            return gradeList; 
-        }
-        public string GetDistrict()
-        {
-            string districtList = "";
-            foreach (var item in TutorAreas)
-            {
-                districtList = districtList + item.District.DistrictName + ", ";
-            }
-            return districtList;
-        }
+        [NotMapped]
+        public string FullName => Account?.FullName;
 
-        public string GetFullName()
-        {
-            return Account.FullName;
-        }
+        [NotMapped]
+        public string Grades => string.Join(", ", TutorGrades.Select(tg => tg.Grade.GradeName));
+
+        [NotMapped]
+        public string Districts => string.Join(", ", TutorAreas.Select(ta => ta.District.DistrictName));
     }
 }
