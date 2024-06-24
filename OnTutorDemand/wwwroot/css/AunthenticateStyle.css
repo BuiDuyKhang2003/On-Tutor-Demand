@@ -7,7 +7,7 @@
 }
 
 body {
-    background-color: #686c78;
+    background-color: #F3F4FF;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -54,7 +54,7 @@ a {
 }
 
     a:hover {
-        color: #4bb6b7;
+        color: #4D44B5;
     }
 
 .content {
@@ -86,8 +86,8 @@ a {
 button {
     position: relative;
     border-radius: 20px;
-    border: 1px solid #686c78;
-    background-color: #686c78;
+    border: 1px solid #4D44B5;
+    background-color: #4D44B5;
     color: #fff;
     font-size: 15px;
     font-weight: 700;
@@ -507,10 +507,41 @@ select {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #888; /* Color of the scrollbar thumb */
+    background:#C1BBEB; /* Color of the scrollbar thumb */
     border-radius: 6px; /* Round the corners of the scrollbar thumb */
 }
 
     ::-webkit-scrollbar-thumb:hover {
-        background: #555; /* Color of the scrollbar thumb on hover */
+        background: #4D44B5; /* Color of the scrollbar thumb on hover */
     }
+
+.password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #adadad;
+    transition: color 0.3s;
+}
+
+    .password-toggle:hover {
+        color: #4D44B5;
+    }
+
+.form-control {
+    position: relative;
+}
+
+.form-control2 {
+    position: relative;
+}
+
+/* Adjust input padding to prevent overlap with icon */
+.form-control input {
+    padding-right: 40px;
+}
+
+.form-control2 input {
+    padding-right: 40px;
+}

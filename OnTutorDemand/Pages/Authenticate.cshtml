@@ -35,11 +35,12 @@
                 </div>
                 <div class="form-control">
                     <input type="password" id="password" placeholder="Mật khẩu" />
+                    <i class="fa fa-eye password-toggle" id="togglePassword"></i>
                     <small id="password-error"></small>
                     <span></span>
                 </div>
                 <div class="form-control">
-                    <input type="date" id="birthdate" placeholder="Ngày sinh" />
+                    <input type="text" id="birthdate" placeholder="Ngày sinh" onfocus="(this.type='date')" onblur="(this.type='text')" />
                     <small id="birthdate-error"></small>
                     <span></span>
                 </div>
@@ -119,6 +120,7 @@
                 </div>
                 <div class="form-control2">
                     <input type="password" class="password-2" placeholder="Mật khẩu" />
+                    <i class="fa fa-eye password-toggle" id="togglePassword2"></i>
                     <small class="password-error-2"></small>
                     <span></span>
                 </div>

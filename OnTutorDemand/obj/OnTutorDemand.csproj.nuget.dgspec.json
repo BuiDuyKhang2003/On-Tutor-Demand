@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\LENOVO\\Desktop\\On-Tutor-Demand\\OnTutorDemand\\OnTutorDemand.csproj": {}
+    "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\01\\On-Tutor-Demand\\OnTutorDemand\\OnTutorDemand.csproj": {}
   },
   "projects": {
-    "C:\\Users\\LENOVO\\Desktop\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj": {
+    "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\01\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\LENOVO\\Desktop\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj",
+        "projectUniqueName": "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\01\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj",
         "projectName": "BusinessObject",
-        "projectPath": "C:\\Users\\LENOVO\\Desktop\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj",
-        "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\LENOVO\\Desktop\\On-Tutor-Demand\\BusinessObject\\obj\\",
+        "projectPath": "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\01\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj",
+        "packagesPath": "C:\\Users\\TinDinh\\.nuget\\packages\\",
+        "outputPath": "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\01\\On-Tutor-Demand\\BusinessObject\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\LENOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\TinDinh\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -34,6 +35,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -77,21 +83,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\LENOVO\\Desktop\\On-Tutor-Demand\\DataAccessLayer\\DataAccessLayer.csproj": {
+    "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\01\\On-Tutor-Demand\\DataAccessLayer\\DataAccessLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\LENOVO\\Desktop\\On-Tutor-Demand\\DataAccessLayer\\DataAccessLayer.csproj",
+        "projectUniqueName": "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\01\\On-Tutor-Demand\\DataAccessLayer\\DataAccessLayer.csproj",
         "projectName": "DataAccessLayer",
-        "projectPath": "C:\\Users\\LENOVO\\Desktop\\On-Tutor-Demand\\DataAccessLayer\\DataAccessLayer.csproj",
-        "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\LENOVO\\Desktop\\On-Tutor-Demand\\DataAccessLayer\\obj\\",
+        "projectPath": "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\01\\On-Tutor-Demand\\DataAccessLayer\\DataAccessLayer.csproj",
+        "packagesPath": "C:\\Users\\TinDinh\\.nuget\\packages\\",
+        "outputPath": "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\01\\On-Tutor-Demand\\DataAccessLayer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\LENOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\TinDinh\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -99,14 +105,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\LENOVO\\Desktop\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj": {
-                "projectPath": "C:\\Users\\LENOVO\\Desktop\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj"
+              "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\01\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj": {
+                "projectPath": "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\01\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj"
               }
             }
           }
@@ -115,6 +122,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -136,21 +148,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\LENOVO\\Desktop\\On-Tutor-Demand\\OnTutorDemand\\OnTutorDemand.csproj": {
+    "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\01\\On-Tutor-Demand\\OnTutorDemand\\OnTutorDemand.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\LENOVO\\Desktop\\On-Tutor-Demand\\OnTutorDemand\\OnTutorDemand.csproj",
+        "projectUniqueName": "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\01\\On-Tutor-Demand\\OnTutorDemand\\OnTutorDemand.csproj",
         "projectName": "OnTutorDemand",
-        "projectPath": "C:\\Users\\LENOVO\\Desktop\\On-Tutor-Demand\\OnTutorDemand\\OnTutorDemand.csproj",
-        "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\LENOVO\\Desktop\\On-Tutor-Demand\\OnTutorDemand\\obj\\",
+        "projectPath": "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\01\\On-Tutor-Demand\\OnTutorDemand\\OnTutorDemand.csproj",
+        "packagesPath": "C:\\Users\\TinDinh\\.nuget\\packages\\",
+        "outputPath": "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\01\\On-Tutor-Demand\\OnTutorDemand\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\LENOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\TinDinh\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -158,17 +170,18 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\LENOVO\\Desktop\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj": {
-                "projectPath": "C:\\Users\\LENOVO\\Desktop\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj"
+              "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\01\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj": {
+                "projectPath": "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\01\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj"
               },
-              "C:\\Users\\LENOVO\\Desktop\\On-Tutor-Demand\\Repository\\Repository.csproj": {
-                "projectPath": "C:\\Users\\LENOVO\\Desktop\\On-Tutor-Demand\\Repository\\Repository.csproj"
+              "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\01\\On-Tutor-Demand\\Repository\\Repository.csproj": {
+                "projectPath": "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\01\\On-Tutor-Demand\\Repository\\Repository.csproj"
               }
             }
           }
@@ -177,6 +190,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -217,21 +235,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\LENOVO\\Desktop\\On-Tutor-Demand\\Repository\\Repository.csproj": {
+    "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\01\\On-Tutor-Demand\\Repository\\Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\LENOVO\\Desktop\\On-Tutor-Demand\\Repository\\Repository.csproj",
+        "projectUniqueName": "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\01\\On-Tutor-Demand\\Repository\\Repository.csproj",
         "projectName": "Repository",
-        "projectPath": "C:\\Users\\LENOVO\\Desktop\\On-Tutor-Demand\\Repository\\Repository.csproj",
-        "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\LENOVO\\Desktop\\On-Tutor-Demand\\Repository\\obj\\",
+        "projectPath": "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\01\\On-Tutor-Demand\\Repository\\Repository.csproj",
+        "packagesPath": "C:\\Users\\TinDinh\\.nuget\\packages\\",
+        "outputPath": "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\01\\On-Tutor-Demand\\Repository\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\LENOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\TinDinh\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -239,17 +257,18 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\LENOVO\\Desktop\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj": {
-                "projectPath": "C:\\Users\\LENOVO\\Desktop\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj"
+              "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\01\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj": {
+                "projectPath": "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\01\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj"
               },
-              "C:\\Users\\LENOVO\\Desktop\\On-Tutor-Demand\\DataAccessLayer\\DataAccessLayer.csproj": {
-                "projectPath": "C:\\Users\\LENOVO\\Desktop\\On-Tutor-Demand\\DataAccessLayer\\DataAccessLayer.csproj"
+              "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\01\\On-Tutor-Demand\\DataAccessLayer\\DataAccessLayer.csproj": {
+                "projectPath": "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\01\\On-Tutor-Demand\\DataAccessLayer\\DataAccessLayer.csproj"
               }
             }
           }
@@ -258,6 +277,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -279,7 +303,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }

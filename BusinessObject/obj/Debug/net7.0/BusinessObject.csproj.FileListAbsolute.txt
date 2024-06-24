@@ -58,3 +58,18 @@ C:\Users\LENOVO\Desktop\On-Tutor-Demand\BusinessObject\obj\Debug\net7.0\refint\B
 C:\Users\LENOVO\Desktop\On-Tutor-Demand\BusinessObject\obj\Debug\net7.0\BusinessObject.pdb
 C:\Users\LENOVO\Desktop\On-Tutor-Demand\BusinessObject\obj\Debug\net7.0\BusinessObject.genruntimeconfig.cache
 C:\Users\LENOVO\Desktop\On-Tutor-Demand\BusinessObject\obj\Debug\net7.0\ref\BusinessObject.dll
+D:\FPT\Chuyên Ngành 7\PRN221\ProjectTeam\01\On-Tutor-Demand\BusinessObject\bin\Debug\net7.0\BusinessObject.deps.json
+D:\FPT\Chuyên Ngành 7\PRN221\ProjectTeam\01\On-Tutor-Demand\BusinessObject\bin\Debug\net7.0\BusinessObject.runtimeconfig.json
+D:\FPT\Chuyên Ngành 7\PRN221\ProjectTeam\01\On-Tutor-Demand\BusinessObject\bin\Debug\net7.0\BusinessObject.dll
+D:\FPT\Chuyên Ngành 7\PRN221\ProjectTeam\01\On-Tutor-Demand\BusinessObject\bin\Debug\net7.0\BusinessObject.pdb
+D:\FPT\Chuyên Ngành 7\PRN221\ProjectTeam\01\On-Tutor-Demand\BusinessObject\obj\Debug\net7.0\BusinessObject.csproj.AssemblyReference.cache
+D:\FPT\Chuyên Ngành 7\PRN221\ProjectTeam\01\On-Tutor-Demand\BusinessObject\obj\Debug\net7.0\BusinessObject.GeneratedMSBuildEditorConfig.editorconfig
+D:\FPT\Chuyên Ngành 7\PRN221\ProjectTeam\01\On-Tutor-Demand\BusinessObject\obj\Debug\net7.0\BusinessObject.AssemblyInfoInputs.cache
+D:\FPT\Chuyên Ngành 7\PRN221\ProjectTeam\01\On-Tutor-Demand\BusinessObject\obj\Debug\net7.0\BusinessObject.AssemblyInfo.cs
+D:\FPT\Chuyên Ngành 7\PRN221\ProjectTeam\01\On-Tutor-Demand\BusinessObject\obj\Debug\net7.0\BusinessObject.csproj.CoreCompileInputs.cache
+D:\FPT\Chuyên Ngành 7\PRN221\ProjectTeam\01\On-Tutor-Demand\BusinessObject\obj\Debug\net7.0\BusinessObject.sourcelink.json
+D:\FPT\Chuyên Ngành 7\PRN221\ProjectTeam\01\On-Tutor-Demand\BusinessObject\obj\Debug\net7.0\BusinessObject.dll
+D:\FPT\Chuyên Ngành 7\PRN221\ProjectTeam\01\On-Tutor-Demand\BusinessObject\obj\Debug\net7.0\refint\BusinessObject.dll
+D:\FPT\Chuyên Ngành 7\PRN221\ProjectTeam\01\On-Tutor-Demand\BusinessObject\obj\Debug\net7.0\BusinessObject.pdb
+D:\FPT\Chuyên Ngành 7\PRN221\ProjectTeam\01\On-Tutor-Demand\BusinessObject\obj\Debug\net7.0\BusinessObject.genruntimeconfig.cache
+D:\FPT\Chuyên Ngành 7\PRN221\ProjectTeam\01\On-Tutor-Demand\BusinessObject\obj\Debug\net7.0\ref\BusinessObject.dll
