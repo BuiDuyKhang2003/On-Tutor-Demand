@@ -7,7 +7,7 @@
 }
 
 body {
-    background-color: #686c78;
+    background-color: #F3F4FF;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -54,7 +54,7 @@ a {
 }
 
     a:hover {
-        color: #4bb6b7;
+        color: #4D44B5;
     }
 
 .content {
@@ -86,8 +86,8 @@ a {
 button {
     position: relative;
     border-radius: 20px;
-    border: 1px solid #686c78;
-    background-color: #686c78;
+    border: 1px solid #4D44B5;
+    background-color: #4D44B5;
     color: #fff;
     font-size: 15px;
     font-weight: 700;
@@ -262,7 +262,10 @@ input {
     left: 0;
     width: 50%;
     opacity: 0;
-    z-index: 1;
+    z-index: 2;
+    overflow-y: auto;
+    padding-top: 300px;
+    background-color: white;
 }
 
 .container.right-panel-active .register-container {
@@ -443,3 +446,102 @@ select {
         width: 0%;
         transition: all 0.3s ease;
     }
+#additional-fields,
+#experience,
+#education,
+#description {
+    width: 100%;
+    position: relative;
+}
+
+    #additional-fields input,
+    #experience input,
+    #education input,
+    #description input {
+        background-color: #fff;
+        outline: none;
+        border: none;
+        border-bottom: 2px solid #adadad;
+        padding: 12px 0px;
+        margin: 8px 0;
+        width: 100%;
+    }
+
+    #additional-fields small,
+    #experience-error,
+    #education-error,
+    #description-error {
+        color: red;
+        position: absolute;
+        top: 50px;
+        left: 0;
+        font-size: 12px;
+        z-index: 100;
+    }
+
+    #additional-fields span,
+    #experience span,
+    #education span,
+    #description span {
+        position: absolute;
+        border-bottom: 3px solid #2691d9;
+        left: 0;
+        bottom: 8px;
+        width: 0%;
+        transition: all 0.3s ease;
+    }
+
+    #additional-fields input:focus ~ span,
+    #experience input:focus ~ span,
+    #education input:focus ~ span,
+    #description input:focus ~ span {
+        width: 100%;
+    }
+
+::-webkit-scrollbar {
+    width: 12px; /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Background of the scrollbar track */
+}
+
+::-webkit-scrollbar-thumb {
+    background:#C1BBEB; /* Color of the scrollbar thumb */
+    border-radius: 6px; /* Round the corners of the scrollbar thumb */
+}
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #4D44B5; /* Color of the scrollbar thumb on hover */
+    }
+
+.password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #adadad;
+    transition: color 0.3s;
+}
+
+    .password-toggle:hover {
+        color: #4D44B5;
+    }
+
+.form-control {
+    position: relative;
+}
+
+.form-control2 {
+    position: relative;
+}
+
+/* Adjust input padding to prevent overlap with icon */
+.form-control input {
+    padding-right: 40px;
+}
+
+.form-control2 input {
+    padding-right: 40px;
+}
