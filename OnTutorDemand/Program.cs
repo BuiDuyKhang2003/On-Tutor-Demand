@@ -48,7 +48,7 @@ app.MapRazorPages();
 
 app.MapGet("/", context =>
 {
-    context.Response.Redirect("/Authenticate");
+    context.Response.Redirect("LoginRegisterPage/Authenticate");
     return Task.CompletedTask;
 });
 
