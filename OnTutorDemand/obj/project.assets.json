@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    "net7.0": {
+    "net8.0": {
       "Azure.Core/1.35.0": {
         "type": "package",
         "dependencies": {
@@ -11627,7 +11627,7 @@
     }
   },
   "projectFileDependencyGroups": {
-    "net7.0": [
+    "net8.0": [
       "BusinessObject >= 1.0.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.19",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.19",
@@ -11636,38 +11636,37 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\TinDinh\\.nuget\\packages\\": {}
+    "C:\\Users\\ACER\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\01\\On-Tutor-Demand\\OnTutorDemand\\OnTutorDemand.csproj",
+      "projectUniqueName": "C:\\Users\\ACER\\Desktop\\On-Tutor-Demand\\OnTutorDemand\\OnTutorDemand.csproj",
       "projectName": "OnTutorDemand",
-      "projectPath": "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\01\\On-Tutor-Demand\\OnTutorDemand\\OnTutorDemand.csproj",
-      "packagesPath": "C:\\Users\\TinDinh\\.nuget\\packages\\",
-      "outputPath": "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\01\\On-Tutor-Demand\\OnTutorDemand\\obj\\",
+      "projectPath": "C:\\Users\\ACER\\Desktop\\On-Tutor-Demand\\OnTutorDemand\\OnTutorDemand.csproj",
+      "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ACER\\Desktop\\On-Tutor-Demand\\OnTutorDemand\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\TinDinh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net7.0"
+        "net8.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net7.0": {
-          "targetAlias": "net7.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\01\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj": {
-              "projectPath": "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\01\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj"
+            "C:\\Users\\ACER\\Desktop\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj": {
+              "projectPath": "C:\\Users\\ACER\\Desktop\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj"
             },
-            "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\01\\On-Tutor-Demand\\Repository\\Repository.csproj": {
-              "projectPath": "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\01\\On-Tutor-Demand\\Repository\\Repository.csproj"
+            "C:\\Users\\ACER\\Desktop\\On-Tutor-Demand\\Repository\\Repository.csproj": {
+              "projectPath": "C:\\Users\\ACER\\Desktop\\On-Tutor-Demand\\Repository\\Repository.csproj"
             }
           }
         }
@@ -11684,8 +11683,8 @@
       }
     },
     "frameworks": {
-      "net7.0": {
-        "targetAlias": "net7.0",
+      "net8.0": {
+        "targetAlias": "net8.0",
         "dependencies": {
           "Microsoft.EntityFrameworkCore.SqlServer": {
             "target": "Package",
@@ -11721,7 +11720,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
