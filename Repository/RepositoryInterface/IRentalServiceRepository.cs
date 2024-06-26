@@ -10,9 +10,9 @@ namespace Repository.RepositoryInterface
     public interface IRentalServiceRepository
     {
         IEnumerable<RentalService> GetAllRentalServices();
-        RentalService GetRentalServiceById(int rentalServiceId);
+        RentalService GetRentalServiceById(int? rentalServiceId);
         void AddRentalService(RentalService rentalService);
         void UpdateRentalService(RentalService rentalService);
-        void DeleteRentalService(int rentalServiceId);
+        void DeleteRentalService(int? rentalServiceId);
     }
 }

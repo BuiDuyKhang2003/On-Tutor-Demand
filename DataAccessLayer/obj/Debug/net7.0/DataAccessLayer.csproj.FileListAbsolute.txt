@@ -30,6 +30,22 @@ D:\FPT\Chuyên Ngành 7\PRN221\ProjectTeam\On-Tutor-Demand\DataAccessLayer\obj\D
 D:\FPT\Chuyên Ngành 7\PRN221\ProjectTeam\On-Tutor-Demand\DataAccessLayer\obj\Debug\net7.0\refint\DataAccessLayer.dll
 D:\FPT\Chuyên Ngành 7\PRN221\ProjectTeam\On-Tutor-Demand\DataAccessLayer\obj\Debug\net7.0\DataAccessLayer.pdb
 D:\FPT\Chuyên Ngành 7\PRN221\ProjectTeam\On-Tutor-Demand\DataAccessLayer\obj\Debug\net7.0\ref\DataAccessLayer.dll
+C:\Users\LENOVO\Desktop\On-Tutor-Demand\DataAccessLayer\bin\Debug\net7.0\DataAccessLayer.deps.json
+C:\Users\LENOVO\Desktop\On-Tutor-Demand\DataAccessLayer\bin\Debug\net7.0\DataAccessLayer.dll
+C:\Users\LENOVO\Desktop\On-Tutor-Demand\DataAccessLayer\bin\Debug\net7.0\DataAccessLayer.pdb
+C:\Users\LENOVO\Desktop\On-Tutor-Demand\DataAccessLayer\bin\Debug\net7.0\BusinessObject.dll
+C:\Users\LENOVO\Desktop\On-Tutor-Demand\DataAccessLayer\bin\Debug\net7.0\BusinessObject.pdb
+C:\Users\LENOVO\Desktop\On-Tutor-Demand\DataAccessLayer\obj\Debug\net7.0\DataAccessLayer.csproj.AssemblyReference.cache
+C:\Users\LENOVO\Desktop\On-Tutor-Demand\DataAccessLayer\obj\Debug\net7.0\DataAccessLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\LENOVO\Desktop\On-Tutor-Demand\DataAccessLayer\obj\Debug\net7.0\DataAccessLayer.AssemblyInfoInputs.cache
+C:\Users\LENOVO\Desktop\On-Tutor-Demand\DataAccessLayer\obj\Debug\net7.0\DataAccessLayer.AssemblyInfo.cs
+C:\Users\LENOVO\Desktop\On-Tutor-Demand\DataAccessLayer\obj\Debug\net7.0\DataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Users\LENOVO\Desktop\On-Tutor-Demand\DataAccessLayer\obj\Debug\net7.0\DataAccessLayer.sourcelink.json
+C:\Users\LENOVO\Desktop\On-Tutor-Demand\DataAccessLayer\obj\Debug\net7.0\DataAccessLayer.csproj.CopyComplete
+C:\Users\LENOVO\Desktop\On-Tutor-Demand\DataAccessLayer\obj\Debug\net7.0\DataAccessLayer.dll
+C:\Users\LENOVO\Desktop\On-Tutor-Demand\DataAccessLayer\obj\Debug\net7.0\refint\DataAccessLayer.dll
+C:\Users\LENOVO\Desktop\On-Tutor-Demand\DataAccessLayer\obj\Debug\net7.0\DataAccessLayer.pdb
+C:\Users\LENOVO\Desktop\On-Tutor-Demand\DataAccessLayer\obj\Debug\net7.0\ref\DataAccessLayer.dll
 C:\Users\huvo2\source\repos\OnTutorDemandWebApp\DataAccessLayer\bin\Debug\net7.0\DataAccessLayer.deps.json
 C:\Users\huvo2\source\repos\OnTutorDemandWebApp\DataAccessLayer\bin\Debug\net7.0\DataAccessLayer.dll
 C:\Users\huvo2\source\repos\OnTutorDemandWebApp\DataAccessLayer\bin\Debug\net7.0\DataAccessLayer.pdb

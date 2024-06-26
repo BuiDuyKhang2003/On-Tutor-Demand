@@ -17,7 +17,7 @@ namespace DataAccessLayer
             return db.RentalServices.ToList();
         }
 
-        public static RentalService GetRentalServiceById(int rentalServiceId)
+        public static RentalService GetRentalServiceById(int? rentalServiceId)
         {
             return db.RentalServices.Find(rentalServiceId) ?? new RentalService();
         }
@@ -30,11 +30,12 @@ namespace DataAccessLayer
 
         public static void UpdateRentalService(RentalService rentalService)
         {
+            db = new();
             db.Entry(rentalService).State = EntityState.Modified;
             db.SaveChanges();
         }
 
-        public static void DeleteRentalService(int rentalServiceId)
+        public static void DeleteRentalService(int? rentalServiceId)
         {
             var rentalService = db.RentalServices.Find(rentalServiceId);
             if (rentalService != null)

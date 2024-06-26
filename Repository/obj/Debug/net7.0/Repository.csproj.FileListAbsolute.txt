@@ -34,6 +34,24 @@ D:\FPT\Chuyên Ngành 7\PRN221\ProjectTeam\On-Tutor-Demand\Repository\obj\Debug\
 D:\FPT\Chuyên Ngành 7\PRN221\ProjectTeam\On-Tutor-Demand\Repository\obj\Debug\net7.0\refint\Repository.dll
 D:\FPT\Chuyên Ngành 7\PRN221\ProjectTeam\On-Tutor-Demand\Repository\obj\Debug\net7.0\Repository.pdb
 D:\FPT\Chuyên Ngành 7\PRN221\ProjectTeam\On-Tutor-Demand\Repository\obj\Debug\net7.0\ref\Repository.dll
+C:\Users\LENOVO\Desktop\On-Tutor-Demand\Repository\bin\Debug\net7.0\Repository.deps.json
+C:\Users\LENOVO\Desktop\On-Tutor-Demand\Repository\bin\Debug\net7.0\Repository.dll
+C:\Users\LENOVO\Desktop\On-Tutor-Demand\Repository\bin\Debug\net7.0\Repository.pdb
+C:\Users\LENOVO\Desktop\On-Tutor-Demand\Repository\bin\Debug\net7.0\BusinessObject.dll
+C:\Users\LENOVO\Desktop\On-Tutor-Demand\Repository\bin\Debug\net7.0\DataAccessLayer.dll
+C:\Users\LENOVO\Desktop\On-Tutor-Demand\Repository\bin\Debug\net7.0\BusinessObject.pdb
+C:\Users\LENOVO\Desktop\On-Tutor-Demand\Repository\bin\Debug\net7.0\DataAccessLayer.pdb
+C:\Users\LENOVO\Desktop\On-Tutor-Demand\Repository\obj\Debug\net7.0\Repository.csproj.AssemblyReference.cache
+C:\Users\LENOVO\Desktop\On-Tutor-Demand\Repository\obj\Debug\net7.0\Repository.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\LENOVO\Desktop\On-Tutor-Demand\Repository\obj\Debug\net7.0\Repository.AssemblyInfoInputs.cache
+C:\Users\LENOVO\Desktop\On-Tutor-Demand\Repository\obj\Debug\net7.0\Repository.AssemblyInfo.cs
+C:\Users\LENOVO\Desktop\On-Tutor-Demand\Repository\obj\Debug\net7.0\Repository.csproj.CoreCompileInputs.cache
+C:\Users\LENOVO\Desktop\On-Tutor-Demand\Repository\obj\Debug\net7.0\Repository.sourcelink.json
+C:\Users\LENOVO\Desktop\On-Tutor-Demand\Repository\obj\Debug\net7.0\Repository.csproj.CopyComplete
+C:\Users\LENOVO\Desktop\On-Tutor-Demand\Repository\obj\Debug\net7.0\Repository.dll
+C:\Users\LENOVO\Desktop\On-Tutor-Demand\Repository\obj\Debug\net7.0\refint\Repository.dll
+C:\Users\LENOVO\Desktop\On-Tutor-Demand\Repository\obj\Debug\net7.0\Repository.pdb
+C:\Users\LENOVO\Desktop\On-Tutor-Demand\Repository\obj\Debug\net7.0\ref\Repository.dll
 C:\Users\huvo2\source\repos\OnTutorDemandWebApp\Repository\bin\Debug\net7.0\Repository.deps.json
 C:\Users\huvo2\source\repos\OnTutorDemandWebApp\Repository\bin\Debug\net7.0\Repository.dll
 C:\Users\huvo2\source\repos\OnTutorDemandWebApp\Repository\bin\Debug\net7.0\Repository.pdb
