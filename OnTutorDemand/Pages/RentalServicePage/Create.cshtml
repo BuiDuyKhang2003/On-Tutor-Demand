@@ -1,4 +1,4 @@
-﻿@page
+@* @page
 @model OnTutorDemand.Pages.RentalServicePage.CreateModel
 
 @{
@@ -28,10 +28,10 @@
                 <input asp-for="RentalService.NumberOfCourse" class="form-control" />
                 <span asp-validation-for="RentalService.NumberOfCourse" class="text-danger"></span>
             </div>
-            @* <div class="form-group">
+            <div class="form-group">
                 <label asp-for="RentalService.TutorId" class="control-label"></label>
                 <select asp-for="RentalService.TutorId" class ="form-control" asp-items="ViewBag.TutorId"></select>
-            </div> *@
+            </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -46,3 +46,5 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+ *@
+
