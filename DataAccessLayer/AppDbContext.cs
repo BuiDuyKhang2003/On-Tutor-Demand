@@ -22,6 +22,9 @@ public partial class AppDbContext : DbContext
     public DbSet<TutorGrade> TutorGrades { get; set; }
     public DbSet<TutorSubject> TutorSubjects { get; set; }
     public DbSet<Video> Videos { get; set; }
+    public DbSet<Schedule> Schedules { get; set; }
+    public DbSet<TutorRegistration> TutorRegistrations { get; set; }
+
 
     public AppDbContext() { }
 
@@ -94,6 +97,12 @@ public partial class AppDbContext : DbContext
             .WithMany(t => t.RentalServices)
             .HasForeignKey(rs => rs.TutorId)
             .OnDelete(DeleteBehavior.Restrict);
+
+        modelBuilder.Entity<RentalService>()
+            .HasMany(rs => rs.Schedules)
+            .WithOne(s => s.RentalService)
+            .HasForeignKey(s => s.RentalServiceId)
+            .OnDelete(DeleteBehavior.Cascade);
 
         // Tutor Configuration
         modelBuilder.Entity<Tutor>()

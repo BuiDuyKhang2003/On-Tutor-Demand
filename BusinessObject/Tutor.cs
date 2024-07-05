@@ -17,8 +17,13 @@ namespace BusinessObject
         [ForeignKey("Account")]
         public int AccountId { get; set; }
 
+        [StringLength(1000)]
         public string Experience { get; set; }
+
+        [StringLength(1000)]
         public string Education { get; set; }
+
+        [StringLength(1000)]
         public string Description { get; set; }
 
         public virtual Account Account { get; set; }
