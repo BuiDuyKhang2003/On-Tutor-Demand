@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace BusinessObject
 {
-    [Table("Account", Schema = "dbo")]
-    public class Account
+    [Table("TutorRegistration", Schema = "dbo")]
+    public class TutorRegistration
     {
         [Key]
         public int Id { get; set; }
@@ -37,17 +37,19 @@ namespace BusinessObject
         [StringLength(15)]
         public string Phone { get; set; }
 
-        [Required]
-        [StringLength(20)]
-        public string Role { get; set; } 
+        [StringLength(500)]
+        public string Experience { get; set; }
 
-        public bool IsActive { get; set; }
+        [StringLength(500)]
+        public string Education { get; set; }
+        [StringLength(500)]
+        public string Description { get; set; }
 
-        public virtual Tutor Tutor { get; set; }
+        public DateTime ApplicationDate { get; } = DateTime.Now;   
 
-        public virtual ICollection<Feedback> Feedbacks { get; set; } = new List<Feedback>();
-        public virtual ICollection<ChatMessage> SentMessages { get; set; } = new List<ChatMessage>();
-        public virtual ICollection<Conversation> InitiatedConversations { get; set; } = new List<Conversation>();
-        public virtual ICollection<Conversation> ReceivedConversations { get; set; } = new List<Conversation>();
+        public bool IsApproved { get; set; } = false;
     }
+
 }
+
+

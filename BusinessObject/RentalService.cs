@@ -15,19 +15,15 @@ namespace BusinessObject
         public int Id { get; set; }
 
         [Required]
-        public string? Description { get; set; }
-
-        [Required]
-        public int TotalOfHour { get; set; }
-
-        [Required]
-        public int NumberOfCourse { get; set; }
+        [StringLength(1000)]
+        public string Description { get; set; }
 
         [ForeignKey("Tutor")]
         public int TutorId { get; set; }
 
         public virtual Tutor? Tutor { get; set; }
         public virtual ICollection<Feedback> Feedbacks { get; set; } = new List<Feedback>();
+        public virtual ICollection<Schedule> Schedules { get; set; } = new List<Schedule>();
     }
 
 }
