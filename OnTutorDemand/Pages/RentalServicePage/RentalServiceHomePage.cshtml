@@ -1,95 +1,246 @@
-@* @page
-@model OnTutorDemand.Pages.RentalServicePage.RentalServiceHomePageModel
+﻿@page
+@model IndexModel
 @{
+    ViewData["Title"] = "Course Schedule";
 }
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<div class="container-fluid">
-    <div class="row">
-        <div class="container">
-            <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></li>
-                    <li data-bs-target="#myCarousel" data-bs-slide-to="1"></li>
-                    <li data-bs-target="#myCarousel" data-bs-slide-to="2"></li>
-                    <li data-bs-target="#myCarousel" data-bs-slide-to="3"></li>
-                </ol>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img class="d-block w-100 carousel-image"
-                             alt="Image 1" src="https://i.imgur.com/vHcaDtU.jpg">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary: #4e73df;
+            --secondary: #858796;
+            --gray-dark: #5a5c69;
+            --gray: #858796;
+            --font-family-sans-serif: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        }
+
+        body {
+            font-family: var(--font-family-sans-serif);
+            color: var(--gray-dark);
+            background-color: #f8f9fc; /* Thêm màu nền */
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        h5 {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            font-weight: normal;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .text-center {
+            text-align: center !important;
+        }
+
+        .ml-auto {
+            margin-left: auto !important;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            margin-left: auto;
+            display: block;
+        }
+
+            .btn-primary:hover {
+                background-color: #375abb;
+                border-color: #375abb;
+            }
+
+        .modal-title {
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .modal-content {
+            border-radius: 10px;
+        }
+
+        .modal-footer {
+            border-top: none;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            background-color: #fff; /* Thêm màu nền */
+        }
+
+            .table th,
+            .table td {
+                padding: 12px 15px;
+                text-align: center;
+            }
+
+            .table thead th {
+                background-color: var(--primary);
+                color: white;
+                position: sticky;
+                top: 0;
+                z-index: 1;
+            }
+
+            .table tbody tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+            .table tbody tr:hover {
+                background-color: #ddd;
+            }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: var(--gray);
+            background-color: #e9ecef; /* Thêm màu nền */
+            padding: 10px 0; /* Thêm padding */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container mt-4">
+        <h1>Học Toán Lớp 2</h1>
+        <h5>By: TinDinh</h5>
+        <p>Gồm có acasldkfjalskdjflaksdjflaksdjflkasdjf;lkajsd;lfkjasl;dkf</p>
+
+        <h2 class="mt-5 text-center">Weekly Schedule</h2>
+        <button type="button" class="btn btn-primary mb-3 ml-auto" data-toggle="modal" data-target="#addScheduleModal">
+            + Add Schedule
+        </button>
+
+        <!-- Add Schedule Modal -->
+        <div class="modal fade" id="addScheduleModal" tabindex="-1" role="dialog" aria-labelledby="addScheduleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addScheduleModalLabel">Add New Schedule</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100 carousel-image" src="https://i.imgur.com/LYuE6uZ.jpg"
-                             alt="Image 2">
+                    <div class="modal-body">
+                        <form id="scheduleForm">
+                            <div class="form-group">
+                                <label for="dayOfWeek">Day of Week</label>
+                                <select class="form-control" id="dayOfWeek" name="dayOfWeek">
+                                    <option value="Monday">Monday</option>
+                                    <option value="Tuesday">Tuesday</option>
+                                    <option value="Wednesday">Wednesday</option>
+                                    <option value="Thursday">Thursday</option>
+                                    <option value="Friday">Friday</option>
+                                    <option value="Saturday">Saturday</option>
+                                    <option value="Sunday">Sunday</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="startTime">Start Time</label>
+                                <input type="text" class="form-control" id="startTime" name="startTime" placeholder="Enter start time">
+                            </div>
+                            <div class="form-group">
+                                <label for="endTime">End Time</label>
+                                <input type="text" class="form-control" id="endTime" name="endTime" placeholder="Enter end time">
+                            </div>
+                        </form>
                     </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100 carousel-image" src="https://i.imgur.com/UyNN0uQ.jpg"
-                             alt="Image 3">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100 carousel-image" src="https://i.imgur.com/BXOyJna.jpg"
-                             alt="Image 4">
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" onclick="addSchedule()">Save Schedule</button>
                     </div>
                 </div>
-
-                <!-- Controls -->
-                <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#myCarousel" role="button" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </a>
             </div>
         </div>
+
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Day of Week</th>
+                        <th scope="col">Start Time</th>
+                        <th scope="col">End Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Monday</td>
+                        <td>08:00 AM</td>
+                        <td>10:00 AM</td>
+                    </tr>
+                    <tr>
+                        <td>Tuesday</td>
+                        <td>09:00 AM</td>
+                        <td>11:00 AM</td>
+                    </tr>
+                    <tr>
+                        <td>Wednesday</td>
+                        <td>10:00 AM</td>
+                        <td>12:00 PM</td>
+                    </tr>
+                    <tr>
+                        <td>Thursday</td>
+                        <td>11:00 AM</td>
+                        <td>01:00 PM</td>
+                    </tr>
+                    <tr>
+                        <td>Friday</td>
+                        <td>01:00 PM</td>
+                        <td>03:00 PM</td>
+                    </tr>
+                    <tr>
+                        <td>Saturday</td>
+                        <td>09:00 AM</td>
+                        <td>11:00 AM</td>
+                    </tr>
+                    <tr>
+                        <td>Sunday</td>
+                        <td>10:00 AM</td>
+                        <td>12:00 PM</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.RentalService[0].Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RentalService[0].TotalOfHour)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RentalService[0].NumberOfCourse)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RentalService[0].Tutor)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.RentalService)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TotalOfHour)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NumberOfCourse)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Tutor.Description)
-                </td>
-                <td>
-                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Copyright © 2024 - OnTutorDemand - Privacy</p>
+    </footer>
+
+    <!-- Bootstrap and jQuery JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Custom JS -->
+    <script>
+        function addSchedule() {
+            // Thêm logic JavaScript tại đây khi cần thiết
         }
-    </tbody>
-</table> 
- *@
-
+    </script>
+</body>
+</html>

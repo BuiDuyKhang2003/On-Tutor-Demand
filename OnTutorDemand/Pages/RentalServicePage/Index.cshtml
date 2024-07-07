@@ -1,4 +1,4 @@
-@* @page
+@page
 @model OnTutorDemand.Pages.RentalServicePage.IndexModel
 
 @{
@@ -17,12 +17,6 @@
                 @Html.DisplayNameFor(model => model.RentalService[0].Description)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.RentalService[0].TotalOfHour)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RentalService[0].NumberOfCourse)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.RentalService[0].Tutor)
             </th>
             <th></th>
@@ -33,12 +27,6 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TotalOfHour)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumberOfCourse)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Tutor.Description)
@@ -52,5 +40,4 @@
 }
     </tbody>
 </table>
- *@
 

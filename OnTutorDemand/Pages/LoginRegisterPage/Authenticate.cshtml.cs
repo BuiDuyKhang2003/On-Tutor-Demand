@@ -50,7 +50,7 @@ namespace OnTutorDemand.Pages
                         {
                             return RedirectToPage("/TutorPages/TutorPage");
                         }
-                        return  RedirectToPage("/RentalServicePage/RentalServiceHomePage");
+                        return  RedirectToPage("/RentalServicelPage/RentalServiceHomePage");
                     }
                 }
                 ModelState.AddModelError(string.Empty, "Invalid login attempt.");
