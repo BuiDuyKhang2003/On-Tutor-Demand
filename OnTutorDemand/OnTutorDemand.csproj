@@ -26,4 +26,8 @@
     </Content>
   </ItemGroup>
 
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Pages\LoginRegisterPage\Authenticate.cshtml" />
+  </ItemGroup>
+
 </Project>

@@ -10,6 +10,15 @@ namespace OnTutorDemand.Pages.RentalServicePage
     {
         private IRentalServiceRepository _serviceRepository;
 
+        public IActionResult OnGet()
+        {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("UserEmail")))
+            {
+                return RedirectToPage("/Authenticate/LoginRegisterPage");
+            }
+            return Page();
+        }
+        
         public RentalServiceHomePageModel()
         {
 
