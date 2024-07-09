@@ -9,7 +9,7 @@ namespace OnTutorDemand.Pages.RentalServicePage
     public class RentalServiceHomePageModel : PageModel
     {
         private IRentalServiceRepository _serviceRepository;
-
+        
         public RentalServiceHomePageModel()
         {
 
@@ -23,7 +23,7 @@ namespace OnTutorDemand.Pages.RentalServicePage
             var userRole = HttpContext.Session.GetString("UserRole");
             if (userRole == null || (!userRole.Equals("Tutor") && !userRole.Equals("User")))
             {
-                return RedirectToPage("LoginRegisterPage/Authenticate");
+                return RedirectToPage("Authenticate/LoginRegisterPage");
             }
 
             RentalService = _serviceRepository.GetAllRentalServices().ToList();

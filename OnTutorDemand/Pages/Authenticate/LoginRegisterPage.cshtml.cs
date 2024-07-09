@@ -6,12 +6,12 @@ using Repository.RepositoryInterface;
 
 namespace OnTutorDemand.Pages
 {
-    public class AuthenticateModel : PageModel
+    public class LoginRegisterModel : PageModel
     {
         private readonly IAccountRepository accountRepository;
         private readonly ITutorRegistrationRepository registrationRepository;
 
-        public AuthenticateModel(IAccountRepository accountRepository, ITutorRegistrationRepository registrationRepository)
+        public LoginRegisterModel(IAccountRepository accountRepository, ITutorRegistrationRepository registrationRepository)
         {
             this.accountRepository = accountRepository;
             this.registrationRepository = registrationRepository;

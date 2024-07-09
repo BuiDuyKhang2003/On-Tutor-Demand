@@ -26,7 +26,7 @@ namespace OnTutorDemand.Pages.RentalServicePage
             var userRole = HttpContext.Session.GetString("UserRole");
             if (userRole == null || !userRole.Equals("Tutor"))
             {
-                return RedirectToPage("LoginRegisterPage/Authenticate");
+                return RedirectToPage("Authenticate/LoginRegisterPage");
             }
 
             if (_context.RentalServices != null)

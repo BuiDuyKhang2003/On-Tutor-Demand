@@ -12,6 +12,7 @@ namespace BusinessObject
     public class Tutor
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [ForeignKey("Account")]

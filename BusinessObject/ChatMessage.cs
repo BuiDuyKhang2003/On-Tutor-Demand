@@ -13,6 +13,7 @@ namespace BusinessObject
     public class ChatMessage
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [ForeignKey("Conversation")]
