@@ -41,7 +41,7 @@ var isAuthenticated = !string.IsNullOrEmpty(userEmail);
                 </div>
             </div>
         </form>
-
+        
         <!-- Topbar Navbar -->
         <ul class="navbar-nav ml-auto">
 
@@ -68,6 +68,8 @@ var isAuthenticated = !string.IsNullOrEmpty(userEmail);
                     </form>
                 </div>
             </li>
+            @if (isAuthenticated)
+            {
 
             <!-- Nav Item - Alerts -->
             <li class="nav-item dropdown no-arrow mx-1">
@@ -196,13 +198,12 @@ var isAuthenticated = !string.IsNullOrEmpty(userEmail);
 
             <div class="topbar-divider d-none d-sm-block"></div>
 
-            @if (isAuthenticated)
-            {
+            
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    @* <span class="mr-2 d-none d-lg-inline text-gray-600 small">@User.Identity.Name</span> *@
+                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">@userEmail</span>
                     <img class="img-profile rounded-circle"
                          src="~/img/undraw_profile.svg" alt="">
                 </a>
@@ -232,7 +233,7 @@ var isAuthenticated = !string.IsNullOrEmpty(userEmail);
             else
             {
             <li class="nav-item">
-                <a class="nav-link" asp-page="/Authenticate/LoginRegisterPage">Login</a>
+                <a class="mr-2 text-white btn btn-secondary" asp-page="/Authenticate/LoginRegisterPage">Login</a>
             </li>
             }
 
