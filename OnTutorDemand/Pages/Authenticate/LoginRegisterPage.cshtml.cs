@@ -42,7 +42,7 @@ namespace OnTutorDemand.Pages.Authenticate
 
                         if (user.Role.Equals("Moderator"))
                         {
-                            return RedirectToPage("ModeratorPage");
+                            return RedirectToPage("/ModeratorPages/ModeratorPage");
                         }
 
                         if (user.Role.Equals("Tutor"))
