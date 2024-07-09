@@ -21,13 +21,21 @@ namespace OnTutorDemand.Pages.RentalServicePage
 
         public IList<RentalService> RentalService { get;set; } = default!;
 
-        public async Task OnGetAsync()
+        public async Task<IActionResult> OnGetAsync()
         {
+            var userRole = HttpContext.Session.GetString("UserRole");
+            if (userRole == null || !userRole.Equals("Tutor"))
+            {
+                return RedirectToPage("LoginRegisterPage/Authenticate");
+            }
+
             if (_context.RentalServices != null)
             {
                 RentalService = await _context.RentalServices
-                .Include(r => r.Tutor).ToListAsync();
+                    .Include(r => r.Tutor).ToListAsync();
             }
+
+            return Page();
         }
     }
 }

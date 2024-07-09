@@ -35,6 +35,7 @@ namespace DataAccessLayer
 
         public static void UpdateAccount(Account account)
         {
+            db = new();
             db.Entry(account).State = EntityState.Modified;
             db.SaveChanges();
         }

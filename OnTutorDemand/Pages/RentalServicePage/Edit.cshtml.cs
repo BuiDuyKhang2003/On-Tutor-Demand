@@ -28,6 +28,12 @@ namespace OnTutorDemand.Pages.RentalServicePage
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
+            var userRole = HttpContext.Session.GetString("UserRole");
+            if (userRole == null || !userRole.Equals("Tutor"))
+            {
+                return RedirectToPage("LoginRegisterPage/Authenticate");
+            }
+
             if (id == null)
             {
                 return NotFound();

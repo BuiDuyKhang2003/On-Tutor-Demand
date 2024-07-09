@@ -18,8 +18,13 @@ namespace OnTutorDemand.Pages.RentalServicePage
 
         public IList<RentalService> RentalService { get; set; } = default!;
 
-        public async Task<IActionResult> OnGetAsync()
+        public IActionResult OnGet()
         {
+            var userRole = HttpContext.Session.GetString("UserRole");
+            if (userRole == null || (!userRole.Equals("Tutor") && !userRole.Equals("User")))
+            {
+                return RedirectToPage("LoginRegisterPage/Authenticate");
+            }
 
             RentalService = _serviceRepository.GetAllRentalServices().ToList();
 

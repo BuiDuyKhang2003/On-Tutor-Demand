@@ -21,80 +21,63 @@
 <body>
     <div class="container" id="container">
         <div class="form-container register-container">
-            <form class="from-register" method="post">
+            <form class="from-register" method="post" asp-page-handler="Register">
                 <h1>Đăng ký tại đây</h1>
                 <div class="form-control">
-                    <input type="text" id="username" placeholder="Tên" />
-                    <small id="username-error"></small>
-                    <span></span>
+                    <input type="text" asp-for="RegisterModel.Name" placeholder="Tên" />
+                    <span asp-validation-for="RegisterModel.Name"></span>
                 </div>
                 <div class="form-control">
-                    <input type="email" id="email" placeholder="E-mail" />
-                    <small id="email-error"></small>
-                    <span></span>
+                    <input type="email" asp-for="RegisterModel.Email" placeholder="E-mail" />
+                    <span asp-validation-for="RegisterModel.Email"></span>
                 </div>
                 <div class="form-control">
-                    <input type="password" id="password" placeholder="Mật khẩu" />
+                    <input type="password" asp-for="RegisterModel.Password" placeholder="Mật khẩu" />
                     <i class="fa fa-eye password-toggle" id="togglePassword"></i>
-                    <small id="password-error"></small>
-                    <span></span>
+                    <span asp-validation-for="RegisterModel.Password"></span>
                 </div>
                 <div class="form-control">
-                    <input type="text" id="birthdate" placeholder="Ngày sinh" onfocus="(this.type='date')" onblur="(this.type='text')" />
-                    <small id="birthdate-error"></small>
-                    <span></span>
+                    <input type="text" asp-for="RegisterModel.Birthdate" placeholder="Ngày sinh" onfocus="(this.type='date')" onblur="(this.type='text')" />
+                    <span asp-validation-for="RegisterModel.Birthdate"></span>
                 </div>
                 <div class="form-control">
-                    <input type="tel" id="phone" placeholder="Số điện thoại" />
-                    <small id="phone-error"></small>
-                    <span></span>
+                    <input type="tel" asp-for="RegisterModel.Phone" placeholder="Số điện thoại" />
+                    <span asp-validation-for="RegisterModel.Phone"></span>
                 </div>
                 <div class="form-control select-container">
-                    <select id="gender" name="gender">
+                    <select asp-for="RegisterModel.Gender">
                         <option value="male">Nam</option>
                         <option value="female">Nữ</option>
                     </select>
-                    <small id="gender-error"></small>
-                    <span></span>
+                    <span asp-validation-for="RegisterModel.Gender"></span>
                 </div>
                 <div class="form-control">
-                    <input type="text" id="Address" placeholder="Địa Chỉ" />
-                    <small id="Address-error"></small>
-                    <span></span>
+                    <input type="text" asp-for="RegisterModel.Address" placeholder="Địa Chỉ" />
+                    <span asp-validation-for="RegisterModel.Address"></span>
                 </div>
                 <div class="form-control select-container">
-                    <select id="role" name="role">
+                    <select asp-for="RegisterModel.Role" id="role">
                         <option value="user">Học sinh</option>
                         <option value="teacher">Giảng viên</option>
                     </select>
-                    <small id="role-error"></small>
-                    <span></span>
+                    <span asp-validation-for="RegisterModel.Role"></span>
                 </div>
 
                 <!-- Additional fields for teacher role -->
-
                 <div id="additional-fields" style="display:none;">
                     <div class="form-control">
-                        <input type="text" id="experience" placeholder="Kinh nghiệm" />
-                        <small id="experience-error"></small>
-                        <span></span>
+                        <input type="text" asp-for="RegisterModel.Experience" placeholder="Kinh nghiệm" />
+                        <span asp-validation-for="RegisterModel.Experience"></span>
                     </div>
                     <div class="form-control">
-                        <input type="text" id="education" placeholder="Học vấn" />
-                        <small id="education-error"></small>
-                        <span></span>
+                        <input type="text" asp-for="RegisterModel.Education" placeholder="Học vấn" />
+                        <span asp-validation-for="RegisterModel.Education"></span>
                     </div>
                     <div class="form-control">
-                        <input type="text" id="description" placeholder="Mô tả" />
-                        <small id="description-error"></small>
-                        <span></span>
+                        <input type="text" asp-for="RegisterModel.Description" placeholder="Mô tả" />
+                        <span asp-validation-for="RegisterModel.Description"></span>
                     </div>
                 </div>
-
-
-
-
-                
 
                 <button type="submit" value="submit">Đăng ký</button>
                 <span>hoặc sử dụng tài khoản của bạn</span>
@@ -108,21 +91,17 @@
             </form>
         </div>
 
-
-
         <div class="form-container login-container">
-            <form class="form-lg" method="post">
+            <form class="form-lg" method="post" asp-page-handler="Login">
                 <h1>Đăng nhập tại đây</h1>
                 <div class="form-control2">
-                    <input asp-for="Email" type="email" class="email-2" placeholder="E-mail" />
-                    <small class="email-error-2"></small>
-                    <span></span>
+                    <input asp-for="EmailLogin" type="email" class="email-2" placeholder="E-mail" />
+                    <span asp-validation-for="EmailLogin"></span>
                 </div>
                 <div class="form-control2">
-                    <input asp-for="Password" type="password" class="password-2" placeholder="Mật khẩu" />
+                    <input asp-for="PasswordLogin" type="password" class="password-2" placeholder="Mật khẩu" />
                     <i class="fa fa-eye password-toggle" id="togglePassword2"></i>
-                    <small class="password-error-2"></small>
-                    <span></span>
+                    <span asp-validation-for="PasswordLogin"></span>
                 </div>
 
                 <div class="content">
@@ -179,5 +158,4 @@
     </div>
 </body>
 <script src="~/js/AuthenticateJS.js"></script>
-
 </html>
