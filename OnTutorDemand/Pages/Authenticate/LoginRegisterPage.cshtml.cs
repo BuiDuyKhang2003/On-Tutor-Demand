@@ -2,15 +2,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Repository.RepositoryInterface;
 
-namespace OnTutorDemand.Pages
+namespace OnTutorDemand.Pages.Authenticate
 {
-    public class AuthenticateModel : PageModel
+    public class LoginRegisterPage : PageModel
     {
-        private readonly IAccountRepository accountRepository;
+        private readonly IAccountRepository _accountRepository;
 
-        public AuthenticateModel(IAccountRepository accountRepository)
+        public LoginRegisterPage(IAccountRepository accountRepository)
         {
-            this.accountRepository = accountRepository;
+            this._accountRepository = accountRepository;
         }
 
         [BindProperty] public string Email { get; set; }
@@ -26,7 +26,7 @@ namespace OnTutorDemand.Pages
         {
             if (ModelState.IsValid)
             {
-                var user = accountRepository.GetAccountByEmail(Email);
+                var user = _accountRepository.GetAccountByEmail(Email);
 
                 if (user.Password != null)
                 {
