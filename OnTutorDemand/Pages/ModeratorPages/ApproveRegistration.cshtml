@@ -1,0 +1,90 @@
+﻿@page
+@model OnTutorDemand.Pages.ModeratorPages.ApproveRegistrationModel
+
+@{
+    ViewData["Title"] = "ApproveRegistration";
+}
+
+<h1>ApproveRegistration</h1>
+
+<h4>TutorRegistration</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="TutorRegistration.Id" />
+            <div class="form-group">
+                <label asp-for="TutorRegistration.FullName" class="control-label"></label>
+                <input asp-for="TutorRegistration.FullName" class="form-control" />
+                <span asp-validation-for="TutorRegistration.FullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TutorRegistration.Gender" class="control-label"></label>
+                <input asp-for="TutorRegistration.Gender" class="form-control" />
+                <span asp-validation-for="TutorRegistration.Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TutorRegistration.Email" class="control-label"></label>
+                <input asp-for="TutorRegistration.Email" class="form-control" />
+                <span asp-validation-for="TutorRegistration.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TutorRegistration.Password" class="control-label"></label>
+                <input asp-for="TutorRegistration.Password" class="form-control" />
+                <span asp-validation-for="TutorRegistration.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TutorRegistration.Address" class="control-label"></label>
+                <input asp-for="TutorRegistration.Address" class="form-control" />
+                <span asp-validation-for="TutorRegistration.Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TutorRegistration.DateOfBirth" class="control-label"></label>
+                <input asp-for="TutorRegistration.DateOfBirth" class="form-control" />
+                <span asp-validation-for="TutorRegistration.DateOfBirth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TutorRegistration.Phone" class="control-label"></label>
+                <input asp-for="TutorRegistration.Phone" class="form-control" />
+                <span asp-validation-for="TutorRegistration.Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TutorRegistration.Experience" class="control-label"></label>
+                <input asp-for="TutorRegistration.Experience" class="form-control" />
+                <span asp-validation-for="TutorRegistration.Experience" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TutorRegistration.Education" class="control-label"></label>
+                <input asp-for="TutorRegistration.Education" class="form-control" />
+                <span asp-validation-for="TutorRegistration.Education" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TutorRegistration.Description" class="control-label"></label>
+                <input asp-for="TutorRegistration.Description" class="form-control" />
+                <span asp-validation-for="TutorRegistration.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TutorRegistration.ApplicationDate" class="control-label"></label>
+                <input asp-for="TutorRegistration.ApplicationDate" class="form-control" />
+                <span asp-validation-for="TutorRegistration.ApplicationDate" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="TutorRegistration.IsApproved" /> @Html.DisplayNameFor(model => model.TutorRegistration.IsApproved)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./TutorRegistrationPage">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -50,17 +50,17 @@ namespace OnTutorDemand.Pages.Authenticate
 
                         if (user.Role.Equals("Admin"))
                         {
-                            return RedirectToPage("AdminPages/AdminPage");
+                            return RedirectToPage("/AdminPages/AdminPage");
                         }
                         if (user.Role.Equals("Moderator"))
                         {
-                            return RedirectToPage("ModeratorPages/ModeratorPage");
+                            return RedirectToPage("/ModeratorPages/ModeratorPage");
                         }
                         if (user.Role.Equals("Tutor"))
                         {
-                            return RedirectToPage("/TutorPages/TutorPage");
+                            return RedirectToPage("/RentalServicePage/RentalServiceHomePage");
                         }
-                        return  RedirectToPage("/RentalServicePage/RentalServiceHomePage");
+                        return  RedirectToPage("/TutorPages/TutorPage");
                     }
                 }
                 ModelState.AddModelError(string.Empty, "Invalid login attempt.");

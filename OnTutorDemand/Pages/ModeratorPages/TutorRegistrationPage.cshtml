@@ -1,0 +1,98 @@
+﻿@page
+@model OnTutorDemand.Pages.ModeratorPages.TutorRegistrationPageModel
+
+@{
+    ViewData["Title"] = "TutorRegistrationPage";
+}
+
+<h1>TutorRegistrationPage</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TutorRegistration[0].FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TutorRegistration[0].Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TutorRegistration[0].Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TutorRegistration[0].Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TutorRegistration[0].Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TutorRegistration[0].DateOfBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TutorRegistration[0].Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TutorRegistration[0].Experience)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TutorRegistration[0].Education)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TutorRegistration[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TutorRegistration[0].ApplicationDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TutorRegistration[0].IsApproved)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.TutorRegistration) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Experience)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Education)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplicationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsApproved)
+            </td>
+            <td>
+                <a asp-page="./ApproveRegistration" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
