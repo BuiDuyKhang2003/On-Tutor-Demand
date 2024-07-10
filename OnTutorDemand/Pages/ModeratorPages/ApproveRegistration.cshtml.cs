@@ -48,7 +48,7 @@ namespace OnTutorDemand.Pages.ModeratorPages
             }
             tutorRegistrationRepository.UpdateTutorRegistration(TutorRegistration);
 
-            return RedirectToPage("./TutorRegistration");
+            return RedirectToPage("./TutorRegistrationPage");
         }
     }
 }
