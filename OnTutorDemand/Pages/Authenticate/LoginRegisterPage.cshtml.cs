@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using OnTutorDemand.Dto;
 using Repository.RepositoryInterface;
 
-namespace OnTutorDemand.Pages
+namespace OnTutorDemand.Pages.Authenticate
 {
     public class LoginRegisterModel : PageModel
     {
@@ -26,7 +26,6 @@ namespace OnTutorDemand.Pages
         [BindProperty]
         public RegisterInputModel RegisterModel { get; set; }
 
-
         public IActionResult OnGet()
         {
             return Page();
@@ -34,7 +33,6 @@ namespace OnTutorDemand.Pages
 
         public IActionResult OnPostLogin()
         {
-            //ModelState.Remove(nameof(RegisterModel));
             foreach (var property in typeof(RegisterInputModel).GetProperties())
             {
                 ModelState.Remove(property.Name);
@@ -77,9 +75,9 @@ namespace OnTutorDemand.Pages
             ModelState.Remove("PasswordLogin");
             if (RegisterModel.Role == "user")
             {
-                ModelState.Remove("Experience");
-                ModelState.Remove("Education");
-                ModelState.Remove("Description");
+                ModelState.Remove("RegisterModel.Experience");
+                ModelState.Remove("RegisterModel.Education");
+                ModelState.Remove("RegisterModel.Description");
             }
 
             if (ModelState.IsValid)
@@ -88,7 +86,6 @@ namespace OnTutorDemand.Pages
                 {
                     Email = RegisterModel.Email,
                     Password = RegisterModel.Password,
-                    Role = RegisterModel.Role,
                     FullName = RegisterModel.Name,
                     DateOfBirth = RegisterModel.Birthdate,
                     Phone = RegisterModel.Phone,
@@ -97,18 +94,31 @@ namespace OnTutorDemand.Pages
                     IsActive = true
                 };
 
+                if (RegisterModel.Role == "user")
+                {
+                    user.Role = "User";
+                    accountRepository.AddAccount(user);
+                    return RedirectToPage("/Authenticate/LoginRegisterPage");
+                }
+
                 if (RegisterModel.Role == "teacher")
                 {
                     var tutorRegistration = new TutorRegistration
                     {
+                        Email = RegisterModel.Email,
+                        Password = RegisterModel.Password,
+                        FullName = RegisterModel.Name,
+                        DateOfBirth = RegisterModel.Birthdate,
+                        Phone = RegisterModel.Phone,
+                        Gender = RegisterModel.Gender,
+                        Address = RegisterModel.Address,
                         Experience = RegisterModel.Experience,
                         Education = RegisterModel.Education,
                         Description = RegisterModel.Description
                     };
                     registrationRepository.AddTutorRegistration(tutorRegistration);
+                    return RedirectToPage("/Authenticate/LoginRegisterPage");
                 }
-
-                accountRepository.AddAccount(user);
             }
 
             return Page();

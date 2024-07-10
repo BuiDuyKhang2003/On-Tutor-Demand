@@ -33,6 +33,7 @@ namespace BusinessObject
         [StringLength(200)]
         public string Address { get; set; }
 
+        [Column(TypeName = "date")]
         public DateTime DateOfBirth { get; set; }
 
         [StringLength(15)]
@@ -46,7 +47,7 @@ namespace BusinessObject
         [StringLength(500)]
         public string Description { get; set; }
 
-        public DateTime ApplicationDate { get; } = DateTime.Now;   
+        public DateTime ApplicationDate { get; private set; } = DateTime.Now;   
 
         public bool IsApproved { get; set; } = false;
     }

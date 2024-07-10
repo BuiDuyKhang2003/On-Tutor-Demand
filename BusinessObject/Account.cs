@@ -33,6 +33,7 @@ namespace BusinessObject
         [StringLength(200)]
         public string Address { get; set; }
 
+        [Column(TypeName = "date")]
         public DateTime DateOfBirth { get; set; }
 
         [StringLength(15)]

@@ -36,7 +36,7 @@ namespace DataAccessLayer.Migrations
                         .HasColumnType("nvarchar(200)");
 
                     b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("date");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -367,8 +367,11 @@ namespace DataAccessLayer.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
-                    b.Property<DateTime>("DateOfBirth")
+                    b.Property<DateTime>("ApplicationDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateOfBirth")
+                        .HasColumnType("date");
 
                     b.Property<string>("Description")
                         .IsRequired()
