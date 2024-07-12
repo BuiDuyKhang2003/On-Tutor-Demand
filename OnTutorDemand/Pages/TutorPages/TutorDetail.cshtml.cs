@@ -2,7 +2,7 @@
 
 namespace OnTutorDemand.Pages.RentalServicePage;
 
-public class RentalServiceTutorDetail : PageModel
+public class TutorDetail : PageModel
 {
     public void OnGet()
     {

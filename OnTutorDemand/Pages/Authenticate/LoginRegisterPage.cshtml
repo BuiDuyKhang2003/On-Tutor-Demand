@@ -1,167 +1,177 @@
 ﻿@page
 @model OnTutorDemand.Pages.Authenticate.LoginRegisterModel
 @{
-ViewData["Title"] = "Login/Register";
-Layout = null;
+    ViewData["Title"] = "Login/Register";
+    Layout = null;
 }
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Login</title>
-    <link rel="stylesheet" href="~/css/AuthenticateStyle.css" />
+    <link rel="stylesheet" href="~/css/AuthenticateStyle.css"/>
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
           integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
           crossorigin="anonymous"
-          referrerpolicy="no-referrer" />
+          referrerpolicy="no-referrer"/>
 </head>
 <body>
-    <div class="container" id="container">
-        @if (TempData["LogoutMessage"] != null)
-        {
-        <div class="alert alert-success" role="alert">
-            @TempData["LogoutMessage"]
-        </div>
-        }
-            <div class="form-container register-container">
-            <form class="from-register" method="post" asp-page-handler="Register">
-                <h1>Đăng ký tại đây</h1>
-                <div class="form-control">
-                    <input type="text" asp-for="RegisterModel.Name" placeholder="Tên" />
-                    <span asp-validation-for="RegisterModel.Name"></span>
-                </div>
-                <div class="form-control">
-                    <input type="email" asp-for="RegisterModel.Email" placeholder="E-mail" />
-                    <span asp-validation-for="RegisterModel.Email"></span>
-                </div>
-                <div class="form-control">
-                    <input type="password" asp-for="RegisterModel.Password" placeholder="Mật khẩu" />
-                    <i class="fa fa-eye password-toggle" id="togglePassword"></i>
-                    <span asp-validation-for="RegisterModel.Password"></span>
-                </div>
-                <div class="form-control">
-                    <input type="text" asp-for="RegisterModel.Birthdate" placeholder="Ngày sinh" onfocus="(this.type='date')" onblur="(this.type='text')" />
-                    <span asp-validation-for="RegisterModel.Birthdate"></span>
-                </div>
-                <div class="form-control">
-                    <input type="tel" asp-for="RegisterModel.Phone" placeholder="Số điện thoại" />
-                    <span asp-validation-for="RegisterModel.Phone"></span>
-                </div>
-                <div class="form-control select-container">
-                    <select asp-for="RegisterModel.Gender">
-                        <option value="male">Nam</option>
-                        <option value="female">Nữ</option>
-                    </select>
-                    <span asp-validation-for="RegisterModel.Gender"></span>
-                </div>
-                <div class="form-control">
-                    <input type="text" asp-for="RegisterModel.Address" placeholder="Địa Chỉ" />
-                    <span asp-validation-for="RegisterModel.Address"></span>
-                </div>
-                <div class="form-control select-container">
-                    <select asp-for="RegisterModel.Role" id="role">
-                        <option value="user">Học sinh</option>
-                        <option value="teacher">Giảng viên</option>
-                    </select>
-                    <span asp-validation-for="RegisterModel.Role"></span>
-                </div>
+@if (TempData["LogoutMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["LogoutMessage"]</div>
+}
+@if (TempData["LoginMessage"] != null)
+{
+<div class="alert alert-warning">@TempData["LoginMessage"]</div>
+}
+<div class="container" id="container">
+    <div class="form-container register-container">
+        <form class="from-register" method="post" asp-page-handler="Register">
+            <h1>Đăng ký tại đây</h1>
+            <div class="form-control">
+                <input type="text" asp-for="RegisterModel.Name" placeholder="Tên"/>
+                <span asp-validation-for="RegisterModel.Name"></span>
+            </div>
+            <div class="form-control">
+                <input type="email" asp-for="RegisterModel.Email" placeholder="E-mail"/>
+                <span asp-validation-for="RegisterModel.Email"></span>
+            </div>
+            <div class="form-control">
+                <input type="password" asp-for="RegisterModel.Password" placeholder="Mật khẩu"/>
+                <i class="fa fa-eye password-toggle" id="togglePassword"></i>
+                <span asp-validation-for="RegisterModel.Password"></span>
+            </div>
+            <div class="form-control">
+                <input type="text" asp-for="RegisterModel.Birthdate" placeholder="Ngày sinh" onfocus="(this.type='date')" onblur="(this.type='text')"/>
+                <span asp-validation-for="RegisterModel.Birthdate"></span>
+            </div>
+            <div class="form-control">
+                <input type="tel" asp-for="RegisterModel.Phone" placeholder="Số điện thoại"/>
+                <span asp-validation-for="RegisterModel.Phone"></span>
+            </div>
+            <div class="form-control select-container">
+                <select asp-for="RegisterModel.Gender">
+                    <option value="male">Nam</option>
+                    <option value="female">Nữ</option>
+                </select>
+                <span asp-validation-for="RegisterModel.Gender"></span>
+            </div>
+            <div class="form-control">
+                <input type="text" asp-for="RegisterModel.Address" placeholder="Địa Chỉ"/>
+                <span asp-validation-for="RegisterModel.Address"></span>
+            </div>
+            <div class="form-control select-container">
+                <select asp-for="RegisterModel.Role" id="role">
+                    <option value="user">Học sinh</option>
+                    <option value="teacher">Giảng viên</option>
+                </select>
+                <span asp-validation-for="RegisterModel.Role"></span>
+            </div>
 
-                <!-- Additional fields for teacher role -->
-                <div id="additional-fields" style="display:none;">
-                    <div class="form-control">
-                        <input type="text" asp-for="RegisterModel.Experience" placeholder="Kinh nghiệm" />
-                        <span asp-validation-for="RegisterModel.Experience"></span>
-                    </div>
-                    <div class="form-control">
-                        <input type="text" asp-for="RegisterModel.Education" placeholder="Học vấn" />
-                        <span asp-validation-for="RegisterModel.Education"></span>
-                    </div>
-                    <div class="form-control">
-                        <input type="text" asp-for="RegisterModel.Description" placeholder="Mô tả" />
-                        <span asp-validation-for="RegisterModel.Description"></span>
-                    </div>
+            <!-- Additional fields for teacher role -->
+            <div id="additional-fields" style="display:none;">
+                <div class="form-control">
+                    <input type="text" asp-for="RegisterModel.Experience" placeholder="Kinh nghiệm"/>
+                    <span asp-validation-for="RegisterModel.Experience"></span>
                 </div>
+                <div class="form-control">
+                    <input type="text" asp-for="RegisterModel.Education" placeholder="Học vấn"/>
+                    <span asp-validation-for="RegisterModel.Education"></span>
+                </div>
+                <div class="form-control">
+                    <input type="text" asp-for="RegisterModel.Description" placeholder="Mô tả"/>
+                    <span asp-validation-for="RegisterModel.Description"></span>
+                </div>
+            </div>
 
-                <button type="submit" value="submit">Đăng ký</button>
-                <span>hoặc sử dụng tài khoản của bạn</span>
-                <div class="social-container">
-                    <a href="#" class="social">
-                        <i class="fa-brands fa-facebook-f"></i>
-                    </a>
-                    <a href="#" class="social"><i class="fa-brands fa-google"></i></a>
-                    <a href="#" class="social"><i class="fa-brands fa-tiktok"></i></a>
-                </div>
-            </form>
-        </div>
+            <button type="submit" value="submit">Đăng ký</button>
+            <span>hoặc sử dụng tài khoản của bạn</span>
+            <div class="social-container">
+                <a href="#" class="social">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="#" class="social">
+                    <i class="fa-brands fa-google"></i>
+                </a>
+                <a href="#" class="social">
+                    <i class="fa-brands fa-tiktok"></i>
+                </a>
+            </div>
+        </form>
+    </div>
 
-        <div class="form-container login-container">
-            <form class="form-lg" method="post" asp-page-handler="Login">
-                <h1>Đăng nhập tại đây</h1>
-                <div class="form-control2">
-                    <input asp-for="EmailLogin" type="email" class="email-2" placeholder="E-mail" />
-                    <span asp-validation-for="EmailLogin"></span>
-                </div>
-                <div class="form-control2">
-                    <input asp-for="PasswordLogin" type="password" class="password-2" placeholder="Mật khẩu" />
-                    <i class="fa fa-eye password-toggle" id="togglePassword2"></i>
-                    <span asp-validation-for="PasswordLogin"></span>
-                </div>
+    <div class="form-container login-container">
+        <form class="form-lg" method="post" asp-page-handler="Login">
+            <h1>Đăng nhập tại đây</h1>
+            <div class="form-control2">
+                <input asp-for="EmailLogin" type="email" class="email-2" placeholder="E-mail"/>
+                <span asp-validation-for="EmailLogin"></span>
+            </div>
+            <div class="form-control2">
+                <input asp-for="PasswordLogin" type="password" class="password-2" placeholder="Mật khẩu"/>
+                <i class="fa fa-eye password-toggle" id="togglePassword2"></i>
+                <span asp-validation-for="PasswordLogin"></span>
+            </div>
 
-                <div class="content">
-                    <div class="checkbox">
-                        <input type="checkbox" name="checkbox" id="checkbox" />
-                        <label for="checkbox">Lưu mật khẩu</label>
-                    </div>
-                    <div class="pass-link">
-                        <a href="#">Quên mật khẩu?</a>
-                    </div>
+            <div class="content">
+                <div class="checkbox">
+                    <input type="checkbox" name="checkbox" id="checkbox"/>
+                    <label for="checkbox">Lưu mật khẩu</label>
                 </div>
-                <button type="submit" value="submit">Đăng Nhập </button>
-                <span>Hoặc sử dụng tài khoản của bạn</span>
-                <div class="social-container">
-                    <a href="#" class="social">
-                        <i class="fa-brands fa-facebook-f"></i>
-                    </a>
-                    <a href="#" class="social"><i class="fa-brands fa-google"></i></a>
-                    <a href="#" class="social"><i class="fa-brands fa-tiktok"></i></a>
+                <div class="pass-link">
+                    <a href="#">Quên mật khẩu?</a>
                 </div>
-            </form>
-        </div>
+            </div>
+            <button type="submit" value="submit">Đăng Nhập </button>
+            <span>Hoặc sử dụng tài khoản của bạn</span>
+            <div class="social-container">
+                <a href="#" class="social">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="#" class="social">
+                    <i class="fa-brands fa-google"></i>
+                </a>
+                <a href="#" class="social">
+                    <i class="fa-brands fa-tiktok"></i>
+                </a>
+            </div>
+        </form>
+    </div>
 
-        <div class="overlay-container">
-            <div class="overlay">
-                <div class="overlay-panel overlay-left">
-                    <h1 class="title">
-                        xin chào <br />
-                        các bạn
-                    </h1>
-                    <p>Nếu bạn có tài khoản, hãy đăng nhập vào đây để tìm khóa học nào</p>
-                    <button class="ghost" id="login">
-                        Đăng nhập
-                        <i class="fa-solid fa-arrow-left"></i>
-                    </button>
-                </div>
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-left">
+                <h1 class="title">
+                    xin chào <br/>
+                    các bạn
+                </h1>
+                <p>Nếu bạn có tài khoản, hãy đăng nhập vào đây để tìm khóa học nào</p>
+                <button class="ghost" id="login">
+                    Đăng nhập
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+            </div>
 
-                <div class="overlay-panel overlay-right">
-                    <h1 class="title">
-                        Bắt đầu
-                        cuộc hành <br />
-                        trình của bạn bây giờ
-                    </h1>
-                    <p>
-                        Nếu bạn chưa có tài khoản, hãy tham gia cùng chúng tôi và bắt đầu hành trình của bạn
-                    </p>
-                    <button class="ghost" id="register">
-                        Đăng ký tại đây
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </button>
-                </div>
+            <div class="overlay-panel overlay-right">
+                <h1 class="title">
+                    Bắt đầu
+                    cuộc hành <br/>
+                    trình của bạn bây giờ
+                </h1>
+                <p>
+                    Nếu bạn chưa có tài khoản, hãy tham gia cùng chúng tôi và bắt đầu hành trình của bạn
+                </p>
+                <button class="ghost" id="register">
+                    Đăng ký tại đây
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
             </div>
         </div>
     </div>
+</div>
 </body>
 <script src="~/js/AuthenticateJS.js"></script>
 </html>
