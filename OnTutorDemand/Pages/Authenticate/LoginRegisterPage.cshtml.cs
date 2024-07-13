@@ -63,7 +63,7 @@ namespace OnTutorDemand.Pages.Authenticate
                         return RedirectToPage("/RentalServicePage/RentalServiceHomePage");
                     }
                 }
-                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                TempData["LoginMessage"] = "Email hoặc Mật khẩu không chính xác";
             }
 
             return Page();

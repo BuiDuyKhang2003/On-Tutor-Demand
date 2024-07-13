@@ -23,8 +23,8 @@ namespace OnTutorDemand.Pages.RentalServicePage
         public string desSort { get; set; }
         public string CurrentSort { get; set; }
         public string CurrentFilter { get; set; }
-        public PaginatedList<RentalService> RentalService { get; set; }
-        public PaginatedList<Schedule> Schedule { get; set; }
+        public PaginatedList<RentalService> RentalServices { get; set; }
+        public PaginatedList<Schedule> Schedules { get; set; }
         public async Task OnGetAsync(string sortOrder,
             string currentFilter, string searchString, int? pageIndex)
         {
@@ -68,14 +68,15 @@ namespace OnTutorDemand.Pages.RentalServicePage
                     break;
             }
             var pageSize = _configuration.GetValue("PageSize", 4);
-            RentalService = await PaginatedList<RentalService>.CreateAsync(
+            RentalServices = await PaginatedList<RentalService>.CreateAsync(
                 serviceIQ.AsNoTracking(), pageIndex ?? 1, pageSize);
-            Schedule = await PaginatedList<Schedule>.CreateAsync(
+            Schedules = await PaginatedList<Schedule>.CreateAsync(
                 scheduleIQ.AsNoTracking(), pageIndex ?? 1, pageSize);
         }
         [BindProperty]
         //public IList<Schedule> Schedule { get; set; } = default!;
-        public Schedule Schedules { get; set; } = default!;
+        public Schedule Schedule { get; set; } = default!;
+        //public RentalService RentalService { get; set; } = default!;
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
@@ -84,8 +85,10 @@ namespace OnTutorDemand.Pages.RentalServicePage
 
             }
 
-
-            _scheduleRepository.AddSchedule(Schedules);
+            
+                _scheduleRepository.AddSchedule(Schedule);
+            
+            
 
 
             return RedirectToPage("/RentalServicePage/RentalServiceHomePage");

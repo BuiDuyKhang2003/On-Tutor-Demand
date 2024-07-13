@@ -10,126 +10,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewData["Title"]</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- Custom CSS -->
-    <style>
-        :root {
-            --primary: #4e73df;
-            --secondary: #858796;
-            --gray-dark: #5a5c69;
-            --gray: #858796;
-            --font-family-sans-serif: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-        }
-
-        body {
-            font-family: var(--font-family-sans-serif);
-            color: var(--gray-dark);
-            background-color: #f8f9fc; /* Thêm màu n?n */
-        }
-
-        h1 {
-            color: var(--primary);
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-
-        h5 {
-            color: var(--secondary);
-            font-size: 1.2rem;
-            font-weight: normal;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            text-align: center;
-        }
-
-        .text-center {
-            text-align: center !important;
-        }
-
-        .ml-auto {
-            margin-left: auto !important;
-        }
-
-        .btn-primary {
-            background-color: var(--primary);
-            border-color: var(--primary);
-            margin-left: auto;
-            display: block;
-        }
-
-            .btn-primary:hover {
-                background-color: #375abb;
-                border-color: #375abb;
-            }
-
-        .modal-title {
-            color: var(--primary);
-            font-weight: bold;
-        }
-
-        .modal-content {
-            border-radius: 10px;
-        }
-
-        .modal-footer {
-            border-top: none;
-        }
-
-        .table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            overflow: hidden;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            background-color: #fff; /* Thêm màu n?n */
-        }
-
-            .table th,
-            .table td {
-                padding: 12px 15px;
-                text-align: center;
-            }
-
-            .table thead th {
-                background-color: var(--primary);
-                color: white;
-                position: sticky;
-                top: 0;
-                z-index: 1;
-            }
-
-            .table tbody tr:nth-child(even) {
-                background-color: #f2f2f2;
-            }
-
-            .table tbody tr:hover {
-                background-color: #ddd;
-            }
-
-        .footer {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 0.9rem;
-            color: var(--gray);
-            background-color: #e9ecef; /* Thêm màu n?n */
-            padding: 10px 0; /* Thêm padding */
-        }
-    </style>
+    <link href="./vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
+    <link href="./css/sb-admin-2.min.css" rel="stylesheet">
 </head>
 <body>
 
     <div class="container mt-4">
         <h1>H?c Toán L?p 2</h1>
         <h5>By: TinDinh</h5>
-        <p>G?m có: <a>@Html.DisplayNameFor(model => model.RentalService[0].Description)</a></p>
+        <p>G?m có: <a>@Html.DisplayNameFor(model => model.RentalServices[0].Description)</a></p>
 
         <h2 class="mt-5 text-center">Weekly Schedule</h2>
         <button type="button" class="btn btn-primary mb-3 ml-auto" data-toggle="modal" data-target="#addScheduleModal">
@@ -138,10 +29,7 @@
         <form asp-page="./RentalServiceHomePage" method="get">
             <div class="form-actions no-color">
                 <p>
-
-                    Find by name:
-                    <input type="text" name="searchString" value="@Model.CurrentFilter" />
-
+                    Search: <input type="text" name="searchString" value="@Model.CurrentFilter" />
                     <input type="submit" value="Search" class="btn btn-primary" /> |
                     <a asp-page="./RentalServiceHomePage">Back to full List</a>
                 </p>
@@ -161,63 +49,63 @@
                         <form method="post">
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <div class="form-group">
-                                <label asp-for="Schedules.RentalServiceId" class="control-label"></label>
-                                <select asp-for="Schedules.RentalServiceId" class="form-control" asp-items="ViewBag.RentalServiceId"></select>
+                                <label asp-for="Schedule.RentalServiceId" class="control-label"></label>
+                                <select asp-for="Schedule.RentalServiceId" class="form-control" asp-items="ViewBag.RentalServiceId"></select>
                             </div>
                             <div class="form-group">
-                                <label asp-for="Schedules.DayOfWeek" for="dayOfWeek"  class="control-label"></label>
-                                <input asp-for="Schedules.DayOfWeek" class="form-control" />
+                                <label asp-for="Schedule.DayOfWeek" for="dayOfWeek" class="control-label"></label>
+                                <input asp-for="Schedule.DayOfWeek" class="form-control" />
                                 @* <span asp-validation-for="Schedules.DayOfWeek" class="text-danger"></span> *@
-                               @*  <select asp-for="Schedules.DayOfWeek" class="form-control" id="dayOfWeek" name="dayOfWeek">
-                                    <option value="Monday">Monday</option>
-                                    <option value="Tuesday">Tuesday</option>
-                                    <option value="Wednesday">Wednesday</option>
-                                    <option value="Thursday">Thursday</option>
-                                    <option value="Friday">Friday</option>
-                                    <option value="Saturday">Saturday</option>
-                                    <option value="Sunday">Sunday</option>
+                                @*  <select asp-for="Schedules.DayOfWeek" class="form-control" id="dayOfWeek" name="dayOfWeek">
+                                <option value="Monday">Monday</option>
+                                <option value="Tuesday">Tuesday</option>
+                                <option value="Wednesday">Wednesday</option>
+                                <option value="Thursday">Thursday</option>
+                                <option value="Friday">Friday</option>
+                                <option value="Saturday">Saturday</option>
+                                <option value="Sunday">Sunday</option>
                                 </select> *@
                             </div>
                             <div class="form-group">
-                                <label asp-for="Schedules.StartTime" class="control-label"></label>
-                                <input type="time" asp-for="Schedules.StartTime" class="form-control" />
-                                <span asp-validation-for="Schedules.StartTime" class="text-danger"></span>
+                                <label asp-for="Schedule.StartTime" class="control-label"></label>
+                                <input type="time" asp-for="Schedule.StartTime" class="form-control" />
+                                <span asp-validation-for="Schedule.StartTime" class="text-danger"></span>
                             </div>
                             <div class="form-group">
-                                <label asp-for="Schedules.EndTime" class="control-label"></label>
-                                <input type="time" asp-for="Schedules.EndTime" class="form-control" />
-                                <span asp-validation-for="Schedules.EndTime" class="text-danger"></span>
+                                <label asp-for="Schedule.EndTime" class="control-label"></label>
+                                <input type="time" asp-for="Schedule.EndTime" class="form-control" />
+                                <span asp-validation-for="Schedule.EndTime" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 <input type="submit" value="Save Schedule" class="btn btn-primary" />
                             </div>
                         </form>
-                        
+
                     </div>
-                    
+
                 </div>
             </div>
         </div>
 
-        <div class="table-responsive">          
+        <div class="table-responsive">
             <table class="table">
                 <thead>
                     <tr>
                         <th>
-                            @Html.DisplayNameFor(model => model.Schedules.DayOfWeek)
+                            @Html.DisplayNameFor(model => model.Schedule.DayOfWeek)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Schedules.StartTime)
+                            @Html.DisplayNameFor(model => model.Schedule.StartTime)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Schedules.EndTime)
+                            @Html.DisplayNameFor(model => model.Schedule.EndTime)
                         </th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model.Schedule)
+                    @foreach (var item in Model.Schedules)
                     {
                         <tr>
                             <td>
@@ -228,27 +116,42 @@
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.EndTime)
-                            </td>                         
+                            </td>
                         </tr>
                     }
                 </tbody>
             </table>
         </div>
     </div>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <p>Copyright © 2024 - OnTutorDemand - Privacy</p>
-    </footer>
-
-    <!-- Bootstrap and jQuery JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <!-- Custom JS -->
-    <script>
-        function addSchedule() {
-            // Thêm logic JavaScript t?i ?ây khi c?n thi?t
-        }
-    </script>
 </body>
+<script src="./vendor/jquery/jquery.min.js"></script>
+<script src="./vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="./vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="./js/sb-admin-2.min.js"></script>
+<script src="/vendor/chart.js/Chart.min.js"></script>
+<script src="/js/demo/chart-area-demo.js"></script>
+<script src="/js/demo/chart-pie-demo.js"></script>
+<script>
+    function addSchedule() {
+        // Thêm logic JavaScript tại đây khi cần thiết
+    }
+</script>
 </html>
+@{
+    var prevDisabled = !Model.Schedules.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.Schedules.HasNextPage ? "disabled" : "";
+}
+<a asp-page="./RentalServiceHomePage"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.Schedules.PageIndex - 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-primary @prevDisabled">
+    Previous
+</a>
+<a asp-page="./RentalServiceHomePage"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.Schedules.PageIndex + 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-primary @nextDisabled">
+    Next
+</a>

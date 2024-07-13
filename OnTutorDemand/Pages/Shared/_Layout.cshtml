@@ -237,7 +237,6 @@ var isAuthenticated = !string.IsNullOrEmpty(userEmail);
         </ul>
 
     </nav>
-    }
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
@@ -261,10 +260,9 @@ var isAuthenticated = !string.IsNullOrEmpty(userEmail);
             </div>
         </div>
     </div>
-
-            @RenderBody()
-
-
+    }   
+    @RenderBody()
+    
     <footer class="bg-white py-4">
         <footer class="bg-white py-4 mt-auto">
             <div class="container px-5">
@@ -285,10 +283,10 @@ var isAuthenticated = !string.IsNullOrEmpty(userEmail);
         </footer>
     </footer>
 
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-<script src="js/sb-admin-2.min.js"></script>
+<script src="/vendor/jquery/jquery.min.js"></script>
+<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="/js/sb-admin-2.min.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
         const logoutButton = document.querySelector('[asp-page="/Authenticate/Logout"]');
