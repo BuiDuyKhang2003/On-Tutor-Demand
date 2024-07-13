@@ -3,25 +3,20 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using OnTutorDemand.Dto;
 using Repository.RepositoryInterface;
+using System.Threading.Tasks;
 
 namespace OnTutorDemand.Pages.Authenticate
 {
-    public class LoginRegisterModel : PageModel
+    public class RegisterPageModel : PageModel
     {
         private readonly IAccountRepository accountRepository;
         private readonly ITutorRegistrationRepository registrationRepository;
 
-        public LoginRegisterModel(IAccountRepository accountRepository, ITutorRegistrationRepository registrationRepository)
+        public RegisterPageModel(IAccountRepository accountRepository, ITutorRegistrationRepository registrationRepository)
         {
             this.accountRepository = accountRepository;
             this.registrationRepository = registrationRepository;
         }
-
-        [BindProperty]
-        public string EmailLogin { get; set; }
-
-        [BindProperty]
-        public string PasswordLogin { get; set; }
 
         [BindProperty]
         public RegisterInputModel RegisterModel { get; set; }
@@ -31,48 +26,11 @@ namespace OnTutorDemand.Pages.Authenticate
             return Page();
         }
 
-        public IActionResult OnPostLogin()
-        {
-            foreach (var property in typeof(RegisterInputModel).GetProperties())
-            {
-                ModelState.Remove(property.Name);
-            }
-            if (ModelState.IsValid)
-            {
-                var user = accountRepository.GetAccountByEmail(EmailLogin);
-
-                if (user.Password != null)
-                {
-                    if (user.Password.Equals(PasswordLogin))
-                    {
-                        HttpContext.Session.SetString("UserEmail", user.Email);
-                        HttpContext.Session.SetString("UserRole", user.Role);
-
-                        if (user.Role.Equals("Admin"))
-                        {
-                            return RedirectToPage("/AdminPages/AdminPage");
-                        }
-                        if (user.Role.Equals("Moderator"))
-                        {
-                            return RedirectToPage("/ModeratorPages/ModeratorPage");
-                        }
-                        if (user.Role.Equals("Tutor"))
-                        {
-                            return RedirectToPage("/RentalServicePage/RentalServiceHomePage");
-                        }
-                        return RedirectToPage("/RentalServicePage/RentalServiceHomePage");
-                    }
-                }
-                TempData["LoginMessage"] = "Email hoặc Mật khẩu không chính xác";
-            }
-
-            return Page();
-        }
-
         public async Task<IActionResult> OnPostRegister()
         {
             ModelState.Remove("EmailLogin");
             ModelState.Remove("PasswordLogin");
+
             if (RegisterModel.Role == "user")
             {
                 ModelState.Remove("RegisterModel.Experience");
@@ -98,7 +56,7 @@ namespace OnTutorDemand.Pages.Authenticate
                 {
                     user.Role = "User";
                     accountRepository.AddAccount(user);
-                    return RedirectToPage("/Authenticate/LoginRegisterPage");
+                    return RedirectToPage("/Authenticate/Login");
                 }
 
                 if (RegisterModel.Role == "teacher")
@@ -117,7 +75,7 @@ namespace OnTutorDemand.Pages.Authenticate
                         Description = RegisterModel.Description
                     };
                     registrationRepository.AddTutorRegistration(tutorRegistration);
-                    return RedirectToPage("/Authenticate/LoginRegisterPage");
+                    return RedirectToPage("/Authenticate/Login");
                 }
             }
 

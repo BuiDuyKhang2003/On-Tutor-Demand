@@ -1,11 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using OnTutorDemand.Pages.PaginatedListFeature;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Repository.RepositoryInterface;
 using Repository;
 using BusinessObject;
 using Microsoft.EntityFrameworkCore;
-using OnTutorDemand.Pages.PaginatedListFeature;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace OnTutorDemand.Pages.RentalServicePage
 {
