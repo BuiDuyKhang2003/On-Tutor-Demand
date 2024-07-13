@@ -11,13 +11,17 @@ namespace DataAccessLayer
     public class ScheduleDAO
     {
         private static AppDbContext db = new();
-
+        public static IQueryable<Schedule> GetScheduleServicesByQuery()
+        {
+            return from s in db.Schedules
+                   select s;
+        }
         public static List<Schedule> GetAllSchedules()
         {
             return db.Schedules.ToList();
         }
 
-        public async static Task<Schedule> GetScheduleById(int scheduleId)
+        public async static Task<Schedule> GetScheduleById(int? scheduleId)
         {
             return await db.Schedules.FindAsync(scheduleId);
         }
@@ -49,7 +53,7 @@ namespace DataAccessLayer
             }
         }
 
-        public async static void DeleteSchedule(int scheduleId)
+        public async static void DeleteSchedule(int? scheduleId)
         {
             var schedule = await db.Schedules.FindAsync(scheduleId);
             if (schedule != null)

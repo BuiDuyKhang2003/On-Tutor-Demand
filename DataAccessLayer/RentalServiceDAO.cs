@@ -11,7 +11,11 @@ namespace DataAccessLayer
     public class RentalServiceDAO
     {
         private static AppDbContext db = new();
-
+        public static IQueryable<RentalService> GetRentalServicesByQuery()
+        {
+            return from s in db.RentalServices
+                   select s;
+        }
         public static List<RentalService> GetAllRentalServices()
         {
             return db.RentalServices.ToList();

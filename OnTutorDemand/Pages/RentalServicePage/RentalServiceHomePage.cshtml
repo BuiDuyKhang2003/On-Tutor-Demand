@@ -25,7 +25,7 @@
         body {
             font-family: var(--font-family-sans-serif);
             color: var(--gray-dark);
-            background-color: #f8f9fc; /* Thêm màu nền */
+            background-color: #f8f9fc; /* Thêm màu n?n */
         }
 
         h1 {
@@ -89,7 +89,7 @@
             margin-top: 20px;
             overflow: hidden;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            background-color: #fff; /* Thêm màu nền */
+            background-color: #fff; /* Thêm màu n?n */
         }
 
             .table th,
@@ -119,7 +119,7 @@
             margin-top: 20px;
             font-size: 0.9rem;
             color: var(--gray);
-            background-color: #e9ecef; /* Thêm màu nền */
+            background-color: #e9ecef; /* Thêm màu n?n */
             padding: 10px 0; /* Thêm padding */
         }
     </style>
@@ -127,15 +127,26 @@
 <body>
 
     <div class="container mt-4">
-        <h1>Học Toán Lớp 2</h1>
+        <h1>H?c Toán L?p 2</h1>
         <h5>By: TinDinh</h5>
-        <p>Gồm có acasldkfjalskdjflaksdjflaksdjflkasdjf;lkajsd;lfkjasl;dkf</p>
+        <p>G?m có: <a>@Html.DisplayNameFor(model => model.RentalService[0].Description)</a></p>
 
         <h2 class="mt-5 text-center">Weekly Schedule</h2>
         <button type="button" class="btn btn-primary mb-3 ml-auto" data-toggle="modal" data-target="#addScheduleModal">
             + Add Schedule
         </button>
+        <form asp-page="./RentalServiceHomePage" method="get">
+            <div class="form-actions no-color">
+                <p>
 
+                    Find by name:
+                    <input type="text" name="searchString" value="@Model.CurrentFilter" />
+
+                    <input type="submit" value="Search" class="btn btn-primary" /> |
+                    <a asp-page="./RentalServiceHomePage">Back to full List</a>
+                </p>
+            </div>
+        </form>
         <!-- Add Schedule Modal -->
         <div class="modal fade" id="addScheduleModal" tabindex="-1" role="dialog" aria-labelledby="addScheduleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -147,10 +158,17 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form id="scheduleForm">
+                        <form method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <div class="form-group">
-                                <label for="dayOfWeek">Day of Week</label>
-                                <select class="form-control" id="dayOfWeek" name="dayOfWeek">
+                                <label asp-for="Schedules.RentalServiceId" class="control-label"></label>
+                                <select asp-for="Schedules.RentalServiceId" class="form-control" asp-items="ViewBag.RentalServiceId"></select>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Schedules.DayOfWeek" for="dayOfWeek"  class="control-label"></label>
+                                <input asp-for="Schedules.DayOfWeek" class="form-control" />
+                                @* <span asp-validation-for="Schedules.DayOfWeek" class="text-danger"></span> *@
+                               @*  <select asp-for="Schedules.DayOfWeek" class="form-control" id="dayOfWeek" name="dayOfWeek">
                                     <option value="Monday">Monday</option>
                                     <option value="Tuesday">Tuesday</option>
                                     <option value="Wednesday">Wednesday</option>
@@ -158,71 +176,61 @@
                                     <option value="Friday">Friday</option>
                                     <option value="Saturday">Saturday</option>
                                     <option value="Sunday">Sunday</option>
-                                </select>
+                                </select> *@
                             </div>
                             <div class="form-group">
-                                <label for="startTime">Start Time</label>
-                                <input type="time" class="form-control" id="startTime" name="startTime">
+                                <label asp-for="Schedules.StartTime" class="control-label"></label>
+                                <input type="time" asp-for="Schedules.StartTime" class="form-control" />
+                                <span asp-validation-for="Schedules.StartTime" class="text-danger"></span>
                             </div>
                             <div class="form-group">
-                                <label for="endTime">End Time</label>
-                                <input type="time" class="form-control" id="endTime" name="endTime">
+                                <label asp-for="Schedules.EndTime" class="control-label"></label>
+                                <input type="time" asp-for="Schedules.EndTime" class="form-control" />
+                                <span asp-validation-for="Schedules.EndTime" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <input type="submit" value="Save Schedule" class="btn btn-primary" />
                             </div>
                         </form>
+                        
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" onclick="addSchedule()">Save Schedule</button>
-                    </div>
+                    
                 </div>
             </div>
         </div>
 
-        <div class="table-responsive">
-            <table class="table table-striped">
+        <div class="table-responsive">          
+            <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">Day of Week</th>
-                        <th scope="col">Start Time</th>
-                        <th scope="col">End Time</th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Schedules.DayOfWeek)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Schedules.StartTime)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Schedules.EndTime)
+                        </th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Monday</td>
-                        <td>08:00 AM</td>
-                        <td>10:00 AM</td>
-                    </tr>
-                    <tr>
-                        <td>Tuesday</td>
-                        <td>09:00 AM</td>
-                        <td>11:00 AM</td>
-                    </tr>
-                    <tr>
-                        <td>Wednesday</td>
-                        <td>10:00 AM</td>
-                        <td>12:00 PM</td>
-                    </tr>
-                    <tr>
-                        <td>Thursday</td>
-                        <td>11:00 AM</td>
-                        <td>01:00 PM</td>
-                    </tr>
-                    <tr>
-                        <td>Friday</td>
-                        <td>01:00 PM</td>
-                        <td>03:00 PM</td>
-                    </tr>
-                    <tr>
-                        <td>Saturday</td>
-                        <td>09:00 AM</td>
-                        <td>11:00 AM</td>
-                    </tr>
-                    <tr>
-                        <td>Sunday</td>
-                        <td>10:00 AM</td>
-                        <td>12:00 PM</td>
-                    </tr>
+                    @foreach (var item in Model.Schedule)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DayOfWeek)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.StartTime)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EndTime)
+                            </td>                         
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>
@@ -239,7 +247,7 @@
     <!-- Custom JS -->
     <script>
         function addSchedule() {
-            // Thêm logic JavaScript tại đây khi cần thiết
+            // Thêm logic JavaScript t?i ?ây khi c?n thi?t
         }
     </script>
 </body>

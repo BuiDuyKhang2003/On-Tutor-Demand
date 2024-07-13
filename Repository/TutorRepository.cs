@@ -13,9 +13,9 @@ namespace Repository
     {
         public void AddTutor(Tutor tutor) => TutorDAO.AddTutor(tutor);
 
-        public void DeleteTutor(int tutorId) => TutorDAO.DeleteTutor(tutorId);
+        public void DeleteTutor(int? tutorId) => TutorDAO.DeleteTutor(tutorId);
 
-        public Tutor GetTutorById(int tutorId) => TutorDAO.GetTutorById(tutorId);
+        public Tutor GetTutorById(int? tutorId) => TutorDAO.GetTutorById(tutorId);
 
         public IEnumerable<Tutor> GetAllTutors(int pageNumber, int pageSize) => TutorDAO.GetAllTutors(pageNumber, pageSize);
 

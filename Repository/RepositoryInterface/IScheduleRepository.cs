@@ -9,10 +9,11 @@ namespace Repository.RepositoryInterface
 {
     public interface IScheduleRepository
     {
+        IQueryable<Schedule> GetScheduleServicesByQuery();
         IEnumerable<Schedule> GetAllSchedules();
-        Task<Schedule> GetScheduleById(int scheduleId);
+        Task<Schedule> GetScheduleById(int? scheduleId);
         void AddSchedule(Schedule schedule);
         void UpdateSchedule(Schedule schedule);
-        void DeleteSchedule(int scheduleId);
+        void DeleteSchedule(int? scheduleId);
     }
 }

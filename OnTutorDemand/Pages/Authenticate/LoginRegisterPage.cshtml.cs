@@ -60,7 +60,7 @@ namespace OnTutorDemand.Pages.Authenticate
                         {
                             return RedirectToPage("/RentalServicePage/RentalServiceHomePage");
                         }
-                        return  RedirectToPage("/TutorPages/TutorPage");
+                        return RedirectToPage("/RentalServicePage/RentalServiceHomePage");
                     }
                 }
                 ModelState.AddModelError(string.Empty, "Invalid login attempt.");
