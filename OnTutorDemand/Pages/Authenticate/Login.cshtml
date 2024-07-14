@@ -35,9 +35,10 @@
               
                 <span asp-validation-for="PasswordLogin" class="text-danger"></span>
                 <div class="form-control2">
-                    <input asp-for="PasswordLogin" type="password" class="password-2" placeholder="Mật khẩu" />
+                    <input asp-for="PasswordLogin" type="password" class="password" placeholder="Mật khẩu" />
                     <i class="fa fa-eye password-toggle" id="togglePassword"></i>
                 </div>
+
                 <div class="content">
                     <div class="checkbox">
                         <input type="checkbox" name="checkbox" id="checkbox" />
@@ -62,7 +63,11 @@
                     <h1 class="title">xin chào <br /> các bạn</h1>
                     <p>Nếu bạn có tài khoản, hãy đăng nhập vào đây để tìm khóa học nào</p>
                     <button type="button" class="ghost" onclick="window.location.href='@Url.Page("/Authenticate/Register")'">
-                        Đăng ký tại đây
+                        Đăng ký học sinh tại đây
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                    <button type="button" class="ghost" onclick="window.location.href='@Url.Page("/Authenticate/RegisterTutor")'">
+                        Đăng ký giảng viên tại đây
                         <i class="fa-solid fa-arrow-right"></i>
                     </button>
                 </div>

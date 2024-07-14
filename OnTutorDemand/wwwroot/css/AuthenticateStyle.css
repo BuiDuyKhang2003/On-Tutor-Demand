@@ -171,6 +171,16 @@ input {
     min-height: 500px;
 }
 
+.containerRegisterTutor {
+    border-radius: 25px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 0px 10px rgba(0, 0, 0, 0.22);
+    position: relative;
+    overflow: hidden;
+    width: 1250px;
+    max-width: 100%;
+    min-height: 500px;
+}
+
 .form-container {
     position: absolute;
     top: 0;

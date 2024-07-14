@@ -65,11 +65,11 @@
                 </div>
                 <span asp-validation-for="RegisterModel.Role" class="text-danger"></span>
                 <div class="form-control select-container">
-                    <select asp-for="RegisterModel.Role" id="role">
-                        <option value="user">Học sinh</option>
-                        <option value="teacher">Giảng viên</option>
-                    </select>
-                    
+                    <div class="form-control select-container">
+                        <select asp-for="RegisterModel.Role" id="role" readonly disabled>
+                            <option value="student" selected>Học sinh</option>
+                        </select>
+                    </div>                  
                 </div>
             
                 <button type="submit" value="submit">Đăng ký</button>
