@@ -9,6 +9,6 @@ public class Logout : PageModel
     {
         HttpContext.Session.Clear();
         TempData["LogoutMessage"] = "Bạn đã thoát khỏi phiên đăng nhập";
-        return RedirectToPage("/Authenticate/LoginRegisterPage");
+        return RedirectToPage("/Authenticate/Login");
     }
 }

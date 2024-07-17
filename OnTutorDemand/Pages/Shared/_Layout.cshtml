@@ -230,7 +230,7 @@ var isAuthenticated = !string.IsNullOrEmpty(userEmail);
             else
             {
             <li class="nav-item">
-                <a class="mr-2 text-white btn btn-secondary" asp-page="/Authenticate/LoginRegisterPage">Login</a>
+                <a class="mr-2 text-white btn btn-secondary" asp-page="/Authenticate/Login">Login</a>
             </li>
             }
 
@@ -300,7 +300,7 @@ var isAuthenticated = !string.IsNullOrEmpty(userEmail);
                     }
                 }).then(response => {
                     if (response.ok) {
-                        window.location.href = '/Authenticate/LoginRegisterPage';
+                        window.location.href = '/Authenticate/Login';
                     }
                 });
             });
