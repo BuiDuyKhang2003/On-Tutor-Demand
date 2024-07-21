@@ -1,0 +1,658 @@
+﻿@page
+@model OnTutorDemand.Pages.Authenticate.RegisterTutorModel
+@{
+    ViewData["Title"] = "Register Tutor";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register Tutor</title>
+    <link rel="stylesheet" href="~/css/AuthenticateStyle.css" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer" />
+</head>
+<body>
+    @if (TempData["LogoutMessage"] != null)
+    {
+        <div class="alert alert-success">@TempData["LogoutMessage"]</div>
+    }
+    <div class="containerRegisterTutor" id="container">
+        <div class="form-container login-container">
+            <form class="form-register" method="post" asp-page-handler="Register">
+                <h1>Đăng ký giảng viên tại đây</h1>
+                <span asp-validation-for="RegisterModel.Name" class="text-danger"></span>
+                <div class="form-control">
+                    <input type="text" asp-for="RegisterModel.Name" placeholder="Tên" />
+                </div>
+                <span asp-validation-for="RegisterModel.Email" class="text-danger"></span>
+                <div class="form-control">
+                    <input type="email" asp-for="RegisterModel.Email" placeholder="E-mail" />
+                </div>
+                <span asp-validation-for="RegisterModel.Password" class="text-danger"></span>
+                <div class="form-control">
+                    <input type="password" asp-for="RegisterModel.Password" placeholder="Mật khẩu" />
+                    <i class="fa fa-eye password-toggle" id="togglePassword"></i>
+                </div>
+                
+                    <div class="form-control">
+                        <div class="form-group col-md-6">
+                            <select id="province" name="province" class="form-control">
+                                <option value="" disabled selected>Nguyên quán (*) Tỉnh/thành trên CMND</option>
+                                <option value="An Giang">An Giang</option>
+                                <option value="Bà Rịa - Vũng Tàu">Bà Rịa - Vũng Tàu</option>
+                                <option value="Bạc Liêu">Bạc Liêu</option>
+                                <option value="Bắc Kạn">Bắc Kạn</option>
+                                <option value="Bắc Giang">Bắc Giang</option>
+                                <option value="Bắc Ninh">Bắc Ninh</option>
+                                <option value="Bến Tre">Bến Tre</option>
+                                <option value="Bình Dương">Bình Dương</option>
+                                <option value="Bình Định">Bình Định</option>
+                                <option value="Bình Phước">Bình Phước</option>
+                                <option value="Bình Thuận">Bình Thuận</option>
+                                <option value="Cà Mau">Cà Mau</option>
+                                <option value="Cao Bằng">Cao Bằng</option>
+                                <option value="Cần Thơ">Cần Thơ</option>
+                                <option value="Đà Nẵng">Đà Nẵng</option>
+                                <option value="Đắk Lắk">Đắk Lắk</option>
+                                <option value="Đắk Nông">Đắk Nông</option>
+                                <option value="Điện Biên">Điện Biên</option>
+                                <option value="Đồng Nai">Đồng Nai</option>
+                                <option value="Đồng Tháp">Đồng Tháp</option>
+                                <option value="Gia Lai">Gia Lai</option>
+                                <option value="Hà Giang">Hà Giang</option>
+                                <option value="Hà Nam">Hà Nam</option>
+                                <option value="Hà Nội">Hà Nội</option>
+                                <option value="Hà Tĩnh">Hà Tĩnh</option>
+                                <option value="Hải Dương">Hải Dương</option>
+                                <option value="Hải Phòng">Hải Phòng</option>
+                                <option value="Hậu Giang">Hậu Giang</option>
+                                <option value="Hòa Bình">Hòa Bình</option>
+                                <option value="Hưng Yên">Hưng Yên</option>
+                                <option value="Khánh Hòa">Khánh Hòa</option>
+                                <option value="Kiên Giang">Kiên Giang</option>
+                                <option value="Kon Tum">Kon Tum</option>
+                                <option value="Lai Châu">Lai Châu</option>
+                                <option value="Lâm Đồng">Lâm Đồng</option>
+                                <option value="Lạng Sơn">Lạng Sơn</option>
+                                <option value="Lào Cai">Lào Cai</option>
+                                <option value="Long An">Long An</option>
+                                <option value="Nam Định">Nam Định</option>
+                                <option value="Nghệ An">Nghệ An</option>
+                                <option value="Ninh Bình">Ninh Bình</option>
+                                <option value="Ninh Thuận">Ninh Thuận</option>
+                                <option value="Phú Thọ">Phú Thọ</option>
+                                <option value="Phú Yên">Phú Yên</option>
+                                <option value="Quảng Bình">Quảng Bình</option>
+                                <option value="Quảng Nam">Quảng Nam</option>
+                                <option value="Quảng Ngãi">Quảng Ngãi</option>
+                                <option value="Quảng Ninh">Quảng Ninh</option>
+                                <option value="Quảng Trị">Quảng Trị</option>
+                                <option value="Sóc Trăng">Sóc Trăng</option>
+                                <option value="Sơn La">Sơn La</option>
+                                <option value="Tây Ninh">Tây Ninh</option>
+                                <option value="Thái Bình">Thái Bình</option>
+                                <option value="Thái Nguyên">Thái Nguyên</option>
+                                <option value="Thanh Hóa">Thanh Hóa</option>
+                                <option value="Thừa Thiên Huế">Thừa Thiên Huế</option>
+                                <option value="Tiền Giang">Tiền Giang</option>
+                                <option value="TP Hồ Chí Minh">TP Hồ Chí Minh</option>
+                                <option value="Trà Vinh">Trà Vinh</option>
+                                <option value="Tuyên Quang">Tuyên Quang</option>
+                                <option value="Vĩnh Long">Vĩnh Long</option>
+                                <option value="Vĩnh Phúc">Vĩnh Phúc</option>
+                                <option value="Yên Bái">Yên Bái</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <select id="accent" name="accent" class="form-control">
+                                <option value="" disabled selected>--Chọn giọng nói--</option>
+                                <option value="mienbac">Miền Bắc</option>
+                                <option value="mientrung">Miền Trung</option>
+                                <option value="miennam">Miền Nam</option>
+                            </select>
+                        </div>
+                    </div>
+            
+
+                <span asp-validation-for="RegisterModel.Birthdate" class="text-danger"></span>
+                <div class="form-control">
+                    <input type="text" asp-for="RegisterModel.Birthdate" placeholder="Ngày sinh" onfocus="(this.type='date')" onblur="(this.type='text')" />
+                </div>
+                <span asp-validation-for="RegisterModel.Phone" class="text-danger"></span>
+                <div class="form-control">
+                    <input type="tel" asp-for="RegisterModel.Phone" placeholder="Số điện thoại" />
+                </div>
+                <span asp-validation-for="RegisterModel.Gender" class="text-danger"></span>
+                <div class="form-control select-container">
+                    <select asp-for="RegisterModel.Gender">
+                        <option value="male">Nam</option>
+                        <option value="female">Nữ</option>
+                    </select>
+                </div>
+                <span asp-validation-for="RegisterModel.Address" class="text-danger"></span>
+                <div class="form-control">
+                    <input type="text" asp-for="RegisterModel.Address" placeholder="Địa Chỉ" />
+                </div>
+                <span asp-validation-for="RegisterModel.Experience" class="text-danger"></span>
+                <div class="form-control">
+                    <input type="text" asp-for="RegisterModel.Experience" placeholder="Kinh nghiệm giảng dạy" />
+                </div>
+                <span asp-validation-for="RegisterModel.Education" class="text-danger"></span>
+                <div class="form-control">
+                    <input type="text" asp-for="RegisterModel.Education" placeholder="Học vấn" />
+                </div>
+                <span asp-validation-for="RegisterModel.Description" class="text-danger"></span>
+                <div class="form-control">
+                    <input type="text" asp-for="RegisterModel.Description" placeholder="Mô tả" />
+                </div>
+                <!-- Trường đào tạo -->
+                <div class="form-control">
+                    <input type="text" id="trainingInstitute" name="trainingInstitute" required placeholder="Trường đào tạo">
+                    <span></span>
+                </div>
+
+                <!-- Ngành học -->
+                <div class="form-control">                  
+                    <input type="text" id="major" name="major" required placeholder="Ngành học">
+                    <span></span>
+                </div>
+
+                <!-- Niên khóa -->
+                <div class="form-control">
+                    <label for="startYear" style="display: block; width: 100%; text-align: left; margin-bottom: 5px;">Niên khóa</label>
+
+                    <div style="display: flex; width: 100%; justify-content: space-between;">
+                        <select id="startYear" name="startYear" required style="width: 49%;">
+                            <option value="" disabled selected>-Năm nhập học-</option>
+                            
+                        </select>
+                        <select id="graduationYear" name="graduationYear" required style="width: 49%;">
+                            <option value="" disabled selected>-Năm tốt nghiệp-</option>
+                        </select>
+                    </div>
+                    <span></span>
+                </div>
+
+
+                <!-- Trình độ -->
+                <div class="form-control">
+                    
+                    <select id="degree" name="degree" required>
+                        <option value="" disabled selected>Trình độ</option>
+                        <option value="teacher">Giáo viên</option>
+                        <option value="student">Sinh viên</option>
+                        <option value="postgraduate">Siên viên sư phạm</option>
+                        <option value="bachelor">Cử nhân</option>
+                        <option value="engineer">Kỹ sư</option>
+                        <option value="master">Thạc sỹ</option>
+                        <option value="phd">Tiến sỹ</option>
+                        <option value="lecturer">Giảng viên</option>
+                        <option value="other">Bằng cấp khác</option>
+                    </select>
+                    <span></span>
+                </div>
+
+                <!-- Ưu điểm -->
+                <div class="form-control">
+                    <textarea id="advantages" name="advantages" required placeholder="Ưu điểm"
+                              style="height: 100px; padding: 8px 10px; resize: none; width: 100%; border: none; outline: none; background-color: #fff;"></textarea>
+                    <span></span>
+                </div>
+
+                <div class="form-control" style="margin-top: 10px">
+                    <label for="startYear" style="display: block; width: 100%; text-align: left; margin-bottom: 5px;">Chọn môn học:</label>
+    <div style="display: flex; flex-wrap: wrap;">
+        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+            <input type="checkbox" id="toan" name="subjects[]" value="toan">
+            <label for="toan">Toán</label>
+        </div>
+        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+            <input type="checkbox" id="ly" name="subjects[]" value="ly">
+            <label for="ly">Lý</label>
+        </div>
+        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+            <input type="checkbox" id="hoa" name="subjects[]" value="hoa">
+            <label for="hoa">Hóa</label>
+        </div>
+        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+            <input type="checkbox" id="van" name="subjects[]" value="van">
+            <label for="van">Văn</label>
+        </div>
+        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+            <input type="checkbox" id="tiengViet" name="subjects[]" value="tiengViet">
+            <label for="tiengViet">Tiếng Việt</label>
+        </div>
+        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+            <input type="checkbox" id="anhVan" name="subjects[]" value="anhVan">
+            <label for="anhVan">Anh Văn</label>
+        </div>
+        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+            <input type="checkbox" id="baoBai" name="subjects[]" value="baoBai">
+            <label for="baoBai">Báo Bài</label>
+        </div>
+        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+            <input type="checkbox" id="sinh" name="subjects[]" value="sinh">
+            <label for="sinh">Sinh</label>
+        </div>
+        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+            <input type="checkbox" id="su" name="subjects[]" value="su">
+            <label for="su">Sử</label>
+        </div>
+        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+            <input type="checkbox" id="dia" name="subjects[]" value="dia">
+            <label for="dia">Địa</label>
+        </div>
+        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+            <input type="checkbox" id="tinHoc" name="subjects[]" value="tinHoc">
+            <label for="tinHoc">Tin Học</label>
+        </div>
+        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+            <input type="checkbox" id="ve" name="subjects[]" value="ve">
+            <label for="ve">Vẽ</label>
+        </div>
+        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+            <input type="checkbox" id="renChu" name="subjects[]" value="renChu">
+            <label for="renChu">Rèn Chữ</label>
+        </div>
+        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+            <input type="checkbox" id="anhVanGiaoTiep" name="subjects[]" value="anhVanGiaoTiep">
+            <label for="anhVanGiaoTiep">Anh Văn Giao Tiếp</label>
+        </div>
+        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+            <input type="checkbox" id="toeic" name="subjects[]" value="toeic">
+            <label for="toeic">TOEIC</label>
+        </div>
+        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+            <input type="checkbox" id="ielts" name="subjects[]" value="ielts">
+            <label for="ielts">IELTS</label>
+        </div>
+        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+            <input type="checkbox" id="toefl" name="subjects[]" value="toefl">
+            <label for="toefl">TOEFL</label>
+        </div>
+        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+            <input type="checkbox" id="tiengPhap" name="subjects[]" value="tiengPhap">
+            <label for="tiengPhap">Tiếng Pháp</label>
+        </div>
+        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+            <input type="checkbox" id="tiengHan" name="subjects[]" value="tiengHan">
+            <label for="tiengHan">Tiếng Hàn</label>
+        </div>
+        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+            <input type="checkbox" id="tiengHoa" name="subjects[]" value="tiengHoa">
+            <label for="tiengHoa">Tiếng Hoa</label>
+        </div>
+        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+            <input type="checkbox" id="tiengNhat" name="subjects[]" value="tiengNhat">
+            <label for="tiengNhat">Tiếng Nhật</label>
+        </div>
+        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+            <input type="checkbox" id="danPiano" name="subjects[]" value="danPiano">
+            <label for="danPiano">Đàn Piano</label>
+        </div>
+        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+            <input type="checkbox" id="danOrgan" name="subjects[]" value="danOrgan">
+            <label for="danOrgan">Đàn Organ</label>
+        </div>
+        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+            <input type="checkbox" id="danGuitar" name="subjects[]" value="danGuitar">
+            <label for="danGuitar">Đàn Guitar</label>
+        </div>
+        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+            <input type="checkbox" id="tiengVietChoNguoiNuocNgoai" name="subjects[]" value="tiengVietChoNguoiNuocNgoai">
+            <label for="tiengVietChoNguoiNuocNgoai">Tiếng Việt Cho Người Nước Ngoài</label>
+        </div>
+        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+            <input type="checkbox" id="nhayHienDai" name="subjects[]" value="nhayHienDai">
+            <label for="nhayHienDai">Nhảy Hiện Đại</label>
+        </div>
+        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+            <input type="checkbox" id="khoaHocTuNhien" name="subjects[]" value="khoaHocTuNhien">
+            <label for="khoaHocTuNhien">Khoa Học Tự Nhiên</label>
+        </div>
+    </div>
+</div>
+
+                <div class="form-control" style="margin-top: 10px">
+                    <label for="startYear" style="display: block; width: 100%; text-align: left; margin-bottom: 5px;">Chọn lớp dạy:</label>
+                  
+                    <div style="display: flex; flex-wrap: wrap;">
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="lopLa" name="classes[]" value="lopLa" style="display: inline-block; vertical-align: middle;">
+                            <label for="lopLa" style="display: inline-block; vertical-align: middle;">Lớp Lá</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="lop1" name="classes[]" value="lop1" style="display: inline-block; vertical-align: middle;">
+                            <label for="lop1" style="display: inline-block; vertical-align: middle;">Lớp 1</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="lop2" name="classes[]" value="lop2" style="display: inline-block; vertical-align: middle;">
+                            <label for="lop2" style="display: inline-block; vertical-align: middle;">Lớp 2</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="lop3" name="classes[]" value="lop3" style="display: inline-block; vertical-align: middle;">
+                            <label for="lop3" style="display: inline-block; vertical-align: middle;">Lớp 3</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="lop4" name="classes[]" value="lop4" style="display: inline-block; vertical-align: middle;">
+                            <label for="lop4" style="display: inline-block; vertical-align: middle;">Lớp 4</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="lop5" name="classes[]" value="lop5" style="display: inline-block; vertical-align: middle;">
+                            <label for="lop5" style="display: inline-block; vertical-align: middle;">Lớp 5</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="lop6" name="classes[]" value="lop6" style="display: inline-block; vertical-align: middle;">
+                            <label for="lop6" style="display: inline-block; vertical-align: middle;">Lớp 6</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="lop7" name="classes[]" value="lop7" style="display: inline-block; vertical-align: middle;">
+                            <label for="lop7" style="display: inline-block; vertical-align: middle;">Lớp 7</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="lop8" name="classes[]" value="lop8" style="display: inline-block; vertical-align: middle;">
+                            <label for="lop8" style="display: inline-block; vertical-align: middle;">Lớp 8</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="lop9" name="classes[]" value="lop9" style="display: inline-block; vertical-align: middle;">
+                            <label for="lop9" style="display: inline-block; vertical-align: middle;">Lớp 9</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="lop10" name="classes[]" value="lop10" style="display: inline-block; vertical-align: middle;">
+                            <label for="lop10" style="display: inline-block; vertical-align: middle;">Lớp 10</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="lop11" name="classes[]" value="lop11" style="display: inline-block; vertical-align: middle;">
+                            <label for="lop11" style="display: inline-block; vertical-align: middle;">Lớp 11</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="lop12" name="classes[]" value="lop12" style="display: inline-block; vertical-align: middle;">
+                            <label for="lop12" style="display: inline-block; vertical-align: middle;">Lớp 12</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="onThiDaiHoc" name="classes[]" value="onThiDaiHoc" style="display: inline-block; vertical-align: middle;">
+                            <label for="onThiDaiHoc" style="display: inline-block; vertical-align: middle;">Ôn Thi Đại Học</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="daySongNgu" name="classes[]" value="daySongNgu" style="display: inline-block; vertical-align: middle;">
+                            <label for="daySongNgu" style="display: inline-block; vertical-align: middle;">Dạy Song Ngữ</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="dayBangTiengAnh" name="classes[]" value="dayBangTiengAnh" style="display: inline-block; vertical-align: middle;">
+                            <label for="dayBangTiengAnh" style="display: inline-block; vertical-align: middle;">Dạy Bằng Tiếng Anh</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="onTranDaiNghia" name="classes[]" value="onTranDaiNghia" style="display: inline-block; vertical-align: middle;">
+                            <label for="onTranDaiNghia" style="display: inline-block; vertical-align: middle;">Ôn Trần Đại Nghĩa</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="onThiTruongChuyen" name="classes[]" value="onThiTruongChuyen" style="display: inline-block; vertical-align: middle;">
+                            <label for="onThiTruongChuyen" style="display: inline-block; vertical-align: middle;">Ôn Thi Trường Chuyên</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="dayTreTuKy" name="classes[]" value="dayTreTuKy" style="display: inline-block; vertical-align: middle;">
+                            <label for="dayTreTuKy" style="display: inline-block; vertical-align: middle;">Dạy Trẻ Tự Kỷ</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="cacLopKhac" name="classes[]" value="cacLopKhac" style="display: inline-block; vertical-align: middle;">
+                            <label for="cacLopKhac" style="display: inline-block; vertical-align: middle;">Các Lớp Khác</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-control" style="margin-top: 10px">
+                    <label for="startYear" style="display: block; width: 100%; text-align: left; margin-bottom: 5px;">Chọn khu vực dạy:</label>
+                    <div style="display: flex; flex-wrap: wrap;">
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="quan1" name="regions[]" value="quan1" style="display: inline-block; vertical-align: middle;">
+                            <label for="quan1" style="display: inline-block; vertical-align: middle;">Quận 1</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="quan2" name="regions[]" value="quan2" style="display: inline-block; vertical-align: middle;">
+                            <label for="quan2" style="display: inline-block; vertical-align: middle;">Quận 2</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="quan3" name="regions[]" value="quan3" style="display: inline-block; vertical-align: middle;">
+                            <label for="quan3" style="display: inline-block; vertical-align: middle;">Quận 3</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="quan4" name="regions[]" value="quan4" style="display: inline-block; vertical-align: middle;">
+                            <label for="quan4" style="display: inline-block; vertical-align: middle;">Quận 4</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="quan5" name="regions[]" value="quan5" style="display: inline-block; vertical-align: middle;">
+                            <label for="quan5" style="display: inline-block; vertical-align: middle;">Quận 5</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="quan6" name="regions[]" value="quan6" style="display: inline-block; vertical-align: middle;">
+                            <label for="quan6" style="display: inline-block; vertical-align: middle;">Quận 6</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="quan7" name="regions[]" value="quan7" style="display: inline-block; vertical-align: middle;">
+                            <label for="quan7" style="display: inline-block; vertical-align: middle;">Quận 7</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="quan8" name="regions[]" value="quan8" style="display: inline-block; vertical-align: middle;">
+                            <label for="quan8" style="display: inline-block; vertical-align: middle;">Quận 8</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="quan9" name="regions[]" value="quan9" style="display: inline-block; vertical-align: middle;">
+                            <label for="quan9" style="display: inline-block; vertical-align: middle;">Quận 9</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="quan10" name="regions[]" value="quan10" style="display: inline-block; vertical-align: middle;">
+                            <label for="quan10" style="display: inline-block; vertical-align: middle;">Quận 10</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="quan11" name="regions[]" value="quan11" style="display: inline-block; vertical-align: middle;">
+                            <label for="quan11" style="display: inline-block; vertical-align: middle;">Quận 11</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="quan12" name="regions[]" value="quan12" style="display: inline-block; vertical-align: middle;">
+                            <label for="quan12" style="display: inline-block; vertical-align: middle;">Quận 12</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="binhTan" name="regions[]" value="binhTan" style="display: inline-block; vertical-align: middle;">
+                            <label for="binhTan" style="display: inline-block; vertical-align: middle;">Bình Tân</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="binhThanh" name="regions[]" value="binhThanh" style="display: inline-block; vertical-align: middle;">
+                            <label for="binhThanh" style="display: inline-block; vertical-align: middle;">Bình Thạnh</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="goVap" name="regions[]" value="goVap" style="display: inline-block; vertical-align: middle;">
+                            <label for="goVap" style="display: inline-block; vertical-align: middle;">Gò Vấp</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="phuNhuan" name="regions[]" value="phuNhuan" style="display: inline-block; vertical-align: middle;">
+                            <label for="phuNhuan" style="display: inline-block; vertical-align: middle;">Phú Nhuận</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="tanBinh" name="regions[]" value="tanBinh" style="display: inline-block; vertical-align: middle;">
+                            <label for="tanBinh" style="display: inline-block; vertical-align: middle;">Tân Bình</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="tanPhu" name="regions[]" value="tanPhu" style="display: inline-block; vertical-align: middle;">
+                            <label for="tanPhu" style="display: inline-block; vertical-align: middle;">Tân Phú</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="thuDuc" name="regions[]" value="thuDuc" style="display: inline-block; vertical-align: middle;">
+                            <label for="thuDuc" style="display: inline-block; vertical-align: middle;">Thủ Đức</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="binhChanh" name="regions[]" value="binhChanh" style="display: inline-block; vertical-align: middle;">
+                            <label for="binhChanh" style="display: inline-block; vertical-align: middle;">Bình Chánh</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="canGio" name="regions[]" value="canGio" style="display: inline-block; vertical-align: middle;">
+                            <label for="canGio" style="display: inline-block; vertical-align: middle;">Cần Giờ</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="cuChi" name="regions[]" value="cuChi" style="display: inline-block; vertical-align: middle;">
+                            <label for="cuChi" style="display: inline-block; vertical-align: middle;">Củ Chi</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="hocMon" name="regions[]" value="hocMon" style="display: inline-block; vertical-align: middle;">
+                            <label for="hocMon" style="display: inline-block; vertical-align: middle;">Hóc Môn</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="nhaBe" name="regions[]" value="nhaBe" style="display: inline-block; vertical-align: middle;">
+                            <label for="nhaBe" style="display: inline-block; vertical-align: middle;">Nhà Bè</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-control" style="margin-top: 10px">
+                    <label for="startYear" style="display: block; width: 100%; text-align: left; margin-bottom: 5px;">Chọn thời gian dạy:</label>
+                    <div style="display: flex; flex-wrap: wrap;">
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="sangThu2" name="teachingTime[]" value="sangThu2" style="display: inline-block; vertical-align: middle;">
+                            <label for="sangThu2" style="display: inline-block; vertical-align: middle;">Sáng Thứ 2</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="sangThu3" name="teachingTime[]" value="sangThu3" style="display: inline-block; vertical-align: middle;">
+                            <label for="sangThu3" style="display: inline-block; vertical-align: middle;">Sáng Thứ 3</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="sangThu4" name="teachingTime[]" value="sangThu4" style="display: inline-block; vertical-align: middle;">
+                            <label for="sangThu4" style="display: inline-block; vertical-align: middle;">Sáng Thứ 4</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="sangThu5" name="teachingTime[]" value="sangThu5" style="display: inline-block; vertical-align: middle;">
+                            <label for="sangThu5" style="display: inline-block; vertical-align: middle;">Sáng Thứ 5</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="sangThu6" name="teachingTime[]" value="sangThu6" style="display: inline-block; vertical-align: middle;">
+                            <label for="sangThu6" style="display: inline-block; vertical-align: middle;">Sáng Thứ 6</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="sangThu7" name="teachingTime[]" value="sangThu7" style="display: inline-block; vertical-align: middle;">
+                            <label for="sangThu7" style="display: inline-block; vertical-align: middle;">Sáng Thứ 7</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="sangCN" name="teachingTime[]" value="sangCN" style="display: inline-block; vertical-align: middle;">
+                            <label for="sangCN" style="display: inline-block; vertical-align: middle;">Sáng CN</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="chieuThu2" name="teachingTime[]" value="chieuThu2" style="display: inline-block; vertical-align: middle;">
+                            <label for="chieuThu2" style="display: inline-block; vertical-align: middle;">Chiều Thứ 2</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="chieuThu3" name="teachingTime[]" value="chieuThu3" style="display: inline-block; vertical-align: middle;">
+                            <label for="chieuThu3" style="display: inline-block; vertical-align: middle;">Chiều Thứ 3</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="chieuThu4" name="teachingTime[]" value="chieuThu4" style="display: inline-block; vertical-align: middle;">
+                            <label for="chieuThu4" style="display: inline-block; vertical-align: middle;">Chiều Thứ 4</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="chieuThu5" name="teachingTime[]" value="chieuThu5" style="display: inline-block; vertical-align: middle;">
+                            <label for="chieuThu5" style="display: inline-block; vertical-align: middle;">Chiều Thứ 5</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="chieuThu6" name="teachingTime[]" value="chieuThu6" style="display: inline-block; vertical-align: middle;">
+                            <label for="chieuThu6" style="display: inline-block; vertical-align: middle;">Chiều Thứ 6</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="chieuThu7" name="teachingTime[]" value="chieuThu7" style="display: inline-block; vertical-align: middle;">
+                            <label for="chieuThu7" style="display: inline-block; vertical-align: middle;">Chiều Thứ 7</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="chieuCN" name="teachingTime[]" value="chieuCN" style="display: inline-block; vertical-align: middle;">
+                            <label for="chieuCN" style="display: inline-block; vertical-align: middle;">Chiều CN</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="toiThu2" name="teachingTime[]" value="toiThu2" style="display: inline-block; vertical-align: middle;">
+                            <label for="toiThu2" style="display: inline-block; vertical-align: middle;">Tối Thứ 2</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="toiThu3" name="teachingTime[]" value="toiThu3" style="display: inline-block; vertical-align: middle;">
+                            <label for="toiThu3" style="display: inline-block; vertical-align: middle;">Tối Thứ 3</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="toiThu4" name="teachingTime[]" value="toiThu4" style="display: inline-block; vertical-align: middle;">
+                            <label for="toiThu4" style="display: inline-block; vertical-align: middle;">Tối Thứ 4</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="toiThu5" name="teachingTime[]" value="toiThu5" style="display: inline-block; vertical-align: middle;">
+                            <label for="toiThu5" style="display: inline-block; vertical-align: middle;">Tối Thứ 5</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="toiThu6" name="teachingTime[]" value="toiThu6" style="display: inline-block; vertical-align: middle;">
+                            <label for="toiThu6" style="display: inline-block; vertical-align: middle;">Tối Thứ 6</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="toiThu7" name="teachingTime[]" value="toiThu7" style="display: inline-block; vertical-align: middle;">
+                            <label for="toiThu7" style="display: inline-block; vertical-align: middle;">Tối Thứ 7</label>
+                        </div>
+                        <div style="width: 33.33%; box-sizing: border-box; padding: 5px;">
+                            <input type="checkbox" id="toiCN" name="teachingTime[]" value="toiCN" style="display: inline-block; vertical-align: middle;">
+                            <label for="toiCN" style="display: inline-block; vertical-align: middle;">Tối CN</label>
+                        </div>
+                    </div>
+                </div>
+
+                <input type="hidden" asp-for="RegisterModel.Role" value="tutor" />
+                <button type="submit" value="submit">Đăng ký</button>
+                <span>hoặc sử dụng tài khoản của bạn</span>
+                <div class="social-container">
+                    <a href="#" class="social">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social">
+                        <i class="fa-brands fa-google"></i>
+                    </a>
+                    <a href="#" class="social">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+                </div>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-right">
+                    <h1 class="title">Bắt đầu cuộc hành<br /> trình của bạn bây giờ</h1>
+                    <p>Nếu bạn chưa có tài khoản, hãy tham gia cùng chúng tôi và bắt đầu hành trình của bạn</p>
+                    <button class="ghost" onclick="window.location.href='@Url.Page("/Authenticate/Login")'">
+                        Đăng nhập tại đây
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="~/js/AuthenticateJS.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const currentYear = new Date().getFullYear();
+        const startYearSelect = document.getElementById('startYear');
+        const graduationYearSelect = document.getElementById('graduationYear');
+
+        // Điền các năm cho năm nhập học từ năm hiện tại trở về trước 20 năm
+        for (let i = currentYear; i >= currentYear - 40; i--) {
+            const option = document.createElement('option');
+            option.value = i;
+            option.textContent = i;
+            startYearSelect.appendChild(option);
+        }
+
+        // Điền các năm cho năm tốt nghiệp từ 20 năm trước đến 20 năm sau năm hiện tại
+        for (let i = currentYear - 40; i <= currentYear + 20; i++) {
+            const option = document.createElement('option');
+            option.value = i;
+            option.textContent = i;
+            graduationYearSelect.appendChild(option);
+        }
+    });
+
+</script>
+
+</html>

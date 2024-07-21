@@ -1,0 +1,79 @@
+﻿@page
+@model OnTutorDemand.Pages.Authenticate.LoginPageModel
+@{
+    ViewData["Title"] = "Login";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="~/css/AuthenticateStyle.css" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer" />
+</head>
+<body>
+    @if (TempData["LoginMessage"] != null)
+    {
+        <div class="alert alert-warning">@TempData["LoginMessage"]</div>
+    }
+    <div class="container" id="container">
+        <div class="form-container login-container">
+            <form class="form-lg" method="post" asp-page-handler="Login">
+                <h1>Đăng nhập tại đây</h1>
+                <span asp-validation-for="EmailLogin" class="text-danger"></span>
+                <div class="form-control2">
+                    <input asp-for="EmailLogin" type="email" class="email-2" placeholder="E-mail" />
+                </div>
+              
+                <span asp-validation-for="PasswordLogin" class="text-danger"></span>
+                <div class="form-control2">
+                    <input asp-for="PasswordLogin" type="password" class="password" placeholder="Mật khẩu" />
+                    <i class="fa fa-eye password-toggle" id="togglePassword"></i>
+                </div>
+
+                <div class="content">
+                    <div class="checkbox">
+                        <input type="checkbox" name="checkbox" id="checkbox" />
+                        <label for="checkbox">Lưu mật khẩu</label>
+                    </div>
+                    <div class="pass-link">
+                        <a href="#">Quên mật khẩu?</a>
+                    </div>
+                </div>
+                <button type="submit" value="submit">Đăng Nhập</button>
+                <span>Hoặc sử dụng tài khoản của bạn</span>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fa-brands fa-google"></i></a>
+                    <a href="#" class="social"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-right">
+                    <h1 class="title">xin chào <br /> các bạn</h1>
+                    <p>Nếu bạn có tài khoản, hãy đăng nhập vào đây để tìm khóa học nào</p>
+                    <button type="button" class="ghost" onclick="window.location.href='@Url.Page("/Authenticate/Register")'">
+                        Đăng ký học sinh tại đây
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                    <button type="button" class="ghost" onclick="window.location.href='@Url.Page("/Authenticate/RegisterTutor")'">
+                        Đăng ký giảng viên tại đây
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="~/js/AuthenticateJS.js"></script>
+</html>

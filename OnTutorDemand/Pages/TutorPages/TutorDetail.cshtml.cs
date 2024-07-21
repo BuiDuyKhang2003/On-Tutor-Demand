@@ -22,7 +22,7 @@ public class TutorDetail : PageModel
         var userRole = HttpContext.Session.GetString("UserRole");
         if (userRole == null || !userRole.Equals("User"))
         {
-            return RedirectToPage("/Authenticate/LoginRegisterPage");
+            return RedirectToPage("/Authenticate/Login");
         }
 
         return Page();

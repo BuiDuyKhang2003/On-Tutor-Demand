@@ -39,7 +39,7 @@ namespace OnTutorDemand.Pages.ChatPages
             var currentAccount = await accountRepository.GetAccountByEmail(userEmail);
             if (String.IsNullOrEmpty(currentAccount.Email))
             {
-                return RedirectToPage("/Authenticate/LoginRegisterPage");
+                return RedirectToPage("/Authenticate/Login");
             }
 
             UserId = currentAccount.Id;

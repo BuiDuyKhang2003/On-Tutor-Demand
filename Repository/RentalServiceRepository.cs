@@ -20,5 +20,10 @@ namespace Repository
         public IEnumerable<RentalService> GetAllRentalServices() => RentalServiceDAO.GetAllRentalServices();
 
         public void UpdateRentalService(RentalService rentalService) => RentalServiceDAO.UpdateRentalService(rentalService);
+
+        public IQueryable<RentalService> GetRentalServicesByQuery() => RentalServiceDAO.GetRentalServicesByQuery();
+
+
+
     }
 }

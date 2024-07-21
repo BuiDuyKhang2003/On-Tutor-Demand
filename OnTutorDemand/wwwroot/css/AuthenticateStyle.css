@@ -1,8 +1,6 @@
 ﻿@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 * {
-    /* margin: 0;
-    padding: 0; */
     box-sizing: border-box;
 }
 
@@ -146,9 +144,9 @@ form {
     background-color: #fff;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: column;
-    padding: 0 50px;
+    padding: 20px 50px;
     height: 100%;
     text-align: center;
 }
@@ -173,11 +171,22 @@ input {
     min-height: 500px;
 }
 
+.containerRegisterTutor {
+    border-radius: 25px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 0px 10px rgba(0, 0, 0, 0.22);
+    position: relative;
+    overflow: hidden;
+    width: 1250px;
+    max-width: 100%;
+    min-height: 500px;
+}
+
 .form-container {
     position: absolute;
     top: 0;
     height: 100%;
     transition: all 0.6s ease-in-out;
+    overflow-y: auto;
 }
 
 .form-control {
@@ -258,13 +267,11 @@ input {
 }
 
 .register-container {
-    /* position: relative; */
     left: 0;
     width: 50%;
     opacity: 0;
     z-index: 2;
     overflow-y: auto;
-    padding-top: 300px;
     background-color: white;
 }
 
@@ -381,6 +388,7 @@ input {
         .social-container a:hover {
             border: 1px solid #4bb6b7;
         }
+
 /* Select Element Styling */
 select {
     background-color: #fff;
@@ -446,6 +454,7 @@ select {
         width: 0%;
         transition: all 0.3s ease;
     }
+
 #additional-fields,
 #experience,
 #education,
@@ -507,7 +516,7 @@ select {
 }
 
 ::-webkit-scrollbar-thumb {
-    background:#C1BBEB; /* Color of the scrollbar thumb */
+    background: #C1BBEB; /* Color of the scrollbar thumb */
     border-radius: 6px; /* Round the corners of the scrollbar thumb */
 }
 
@@ -547,7 +556,7 @@ select {
 }
 
 .alert {
-    padding: 0.75rem 1.25rem; 
+    padding: 0.75rem 1.25rem;
     margin-bottom: 1rem;
     border: 1px solid transparent;
     border-radius: 0.25rem;
@@ -564,4 +573,8 @@ select {
     color: #0f6848;
     background-color: #d2f4e8;
     border-color: #bff0de;
+}
+.text-danger {
+    color: red;
+    font-size: 0.875em;
 }

@@ -20,7 +20,7 @@ namespace BusinessObject
 
         [Required]
         [StringLength(20)]
-        public string DayOfWeek { get; set; } // Values: "Monday", "Tuesday", etc.
+        public string? DayOfWeek { get; set; } // Values: "Monday", "Tuesday", etc.
 
         [Required]
         public TimeSpan StartTime { get; set; }
@@ -28,7 +28,7 @@ namespace BusinessObject
         [Required]
         public TimeSpan EndTime { get; set; }
 
-        public virtual RentalService RentalService { get; set; }
+        public virtual RentalService? RentalService { get; set; }
     }
 
 }

@@ -13,12 +13,15 @@ namespace Repository
     {
         public IEnumerable<Schedule> GetAllSchedules() => ScheduleDAO.GetAllSchedules();
 
-        public async Task<Schedule> GetScheduleById(int scheduleId) => await ScheduleDAO.GetScheduleById(scheduleId);
+        public async Task<Schedule> GetScheduleById(int? scheduleId) => await ScheduleDAO.GetScheduleById(scheduleId);
 
         public void AddSchedule(Schedule schedule) => ScheduleDAO.AddSchedule(schedule);
 
         public void UpdateSchedule(Schedule schedule) => ScheduleDAO.UpdateSchedule(schedule);
 
-        public void DeleteSchedule(int scheduleId) => ScheduleDAO.DeleteSchedule(scheduleId);
+        public void DeleteSchedule(int? scheduleId) => ScheduleDAO.DeleteSchedule(scheduleId);
+
+        public IQueryable<Schedule> GetScheduleServicesByQuery() => ScheduleDAO.GetScheduleServicesByQuery();
+
     }
 }

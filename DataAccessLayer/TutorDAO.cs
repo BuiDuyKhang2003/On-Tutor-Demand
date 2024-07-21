@@ -25,7 +25,7 @@ namespace DataAccessLayer
                             .ToList();
         }
 
-        public static Tutor GetTutorById(int tutorId)
+        public static Tutor GetTutorById(int? tutorId)
         {
             db = new();
             return db.Tutors.Find(tutorId) ?? new Tutor();
@@ -45,7 +45,7 @@ namespace DataAccessLayer
             db.SaveChanges();
         }
 
-        public static void DeleteTutor(int tutorId)
+        public static void DeleteTutor(int? tutorId)
         {
             db = new();
             var tutor = db.Tutors.Find(tutorId);
