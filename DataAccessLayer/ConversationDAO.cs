@@ -10,37 +10,57 @@ namespace DataAccessLayer
 {
     public class ConversationDAO
     {
-        private static AppDbContext db = new();
+        private static AppDbContext db;
 
-        public static List<Conversation> GetAllConversations()
+        public async static Task<List<Conversation>> GetAllConversationsAsync()
         {
-            return db.Conversations.ToList();
+            db = new();
+            return await db.Conversations.ToListAsync();
         }
 
-        public static Conversation GetConversationById(int conversationId)
+        public async static Task<List<Conversation>> GetConversationsByUserIdAsync(int initiatorId)
         {
-            return db.Conversations.Find(conversationId) ?? new Conversation();
+            db = new();
+            return await db.Conversations.Where(c => c.InitiatorId == initiatorId).ToListAsync();
         }
 
-        public static void AddConversation(Conversation conversation)
+        public async static Task<Conversation> GetConversationByIdAsync(int conversationId)
         {
-            db.Conversations.Add(conversation);
-            db.SaveChanges();
+            db = new();
+            return await db.Conversations
+                   .Include(c => c.Initiator)
+                   .Include(c => c.Receiver)
+                   .FirstOrDefaultAsync(c => c.Id == conversationId);
+        }
+        public async static Task<Conversation> GetConversationByInitiatorIdAndReceiverIdAsync(int initiatorId, int receiverId)
+        {
+            db = new();
+            return await db.Conversations.FirstOrDefaultAsync(c => c.InitiatorId == initiatorId && c.ReceiverId == receiverId);
         }
 
-        public static void UpdateConversation(Conversation conversation)
+        public async static Task<Conversation> AddConversationAsync(Conversation conversation)
         {
+            db = new();
+            await db.Conversations.AddAsync(conversation);
+            await db.SaveChangesAsync();
+            return conversation;
+        }
+
+        public async static void UpdateConversationAsync(Conversation conversation)
+        {
+            db = new();
             db.Entry(conversation).State = EntityState.Modified;
-            db.SaveChanges();
+            await db.SaveChangesAsync();
         }
 
-        public static void DeleteConversation(int conversationId)
+        public async static void DeleteConversationAsync(int conversationId)
         {
-            var conversation = db.Conversations.Find(conversationId);
+            db = new();
+            var conversation = await db.Conversations.FindAsync(conversationId);
             if (conversation != null)
             {
                 db.Conversations.Remove(conversation);
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
         }
     }

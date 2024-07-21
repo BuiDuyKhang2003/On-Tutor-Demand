@@ -31,7 +31,7 @@ namespace OnTutorDemand.Pages.Authenticate
             return Page();
         }
 
-        public IActionResult OnPostLogin()
+        public async Task<IActionResult> OnPostLogin()
         {
             foreach (var property in typeof(RegisterInputModel).GetProperties())
             {
@@ -39,7 +39,7 @@ namespace OnTutorDemand.Pages.Authenticate
             }
             if (ModelState.IsValid)
             {
-                var user = accountRepository.GetAccountByEmail(EmailLogin);
+                var user = await accountRepository.GetAccountByEmail(EmailLogin);
 
                 if (user.Password != null)
                 {
@@ -114,6 +114,7 @@ namespace OnTutorDemand.Pages.Authenticate
                         Address = RegisterModel.Address,
                         Experience = RegisterModel.Experience,
                         Education = RegisterModel.Education,
+                        Status = "Waiting",
                         Description = RegisterModel.Description
                     };
                     registrationRepository.AddTutorRegistration(tutorRegistration);

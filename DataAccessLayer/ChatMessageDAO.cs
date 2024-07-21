@@ -10,37 +10,48 @@ namespace DataAccessLayer
 {
     public class ChatMessageDAO
     {
-        private static AppDbContext db = new();
+        private static AppDbContext db;
 
-        public static List<ChatMessage> GetAllChatMessages()
+        public async static Task<List<ChatMessage>> GetAllChatMessagesAsync()
         {
-            return db.ChatMessages.ToList();
+            db = new();
+            return await db.ChatMessages.ToListAsync();
         }
 
-        public static ChatMessage GetChatMessageById(int chatMessageId)
+        public async static Task<List<ChatMessage>> GetChatMessagesByConversationIdAsync(int conversationId)
         {
-            return db.ChatMessages.Find(chatMessageId) ?? new ChatMessage();
+            db = new();
+            return await db.ChatMessages.Include(c => c.Sender).Where(c => c.ConversationId == conversationId).ToListAsync();
         }
 
-        public static void AddChatMessage(ChatMessage chatMessage)
+        public async static Task<ChatMessage> GetChatMessageByIdAsync(int chatMessageId)
         {
-            db.ChatMessages.Add(chatMessage);
-            db.SaveChanges();
+            db = new();
+            return await db.ChatMessages.FindAsync(chatMessageId);
         }
 
-        public static void UpdateChatMessage(ChatMessage chatMessage)
+        public async static Task AddChatMessageAsync(ChatMessage chatMessage)
         {
+            db = new();
+            await db.ChatMessages.AddAsync(chatMessage);
+            await db.SaveChangesAsync();
+        }
+
+        public async static Task UpdateChatMessageAsync(ChatMessage chatMessage)
+        {
+            db = new();
             db.Entry(chatMessage).State = EntityState.Modified;
-            db.SaveChanges();
+            await db.SaveChangesAsync();
         }
 
-        public static void DeleteChatMessage(int chatMessageId)
+        public async static Task DeleteChatMessageAsync(int chatMessageId)
         {
-            var chatMessage = db.ChatMessages.Find(chatMessageId);
+            db = new();
+            var chatMessage = await db.ChatMessages.FindAsync(chatMessageId);
             if (chatMessage != null)
             {
                 db.ChatMessages.Remove(chatMessage);
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
         }
     }
