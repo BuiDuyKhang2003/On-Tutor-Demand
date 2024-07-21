@@ -10,6 +10,11 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+<form asp-page="./TutorIndex" method="get" class="form-inline">
+    <input type="text" name="searchString" value="@Model.CurrentFilter" placeholder="Search" class="form-control" />
+    <input type="submit" value="Search" class="btn btn-primary ml-2" />
+    <a asp-page="./TutorIndex" class="btn btn-secondary ml-2">Back to full List</a>
+</form>
 <table class="table">
     <thead>
         <tr>
@@ -19,6 +24,7 @@
             <th>Teaching Experience</th>
             <th>Teaching Grade</th>
             <th>Teaching Area</th>
+            <th>Teaching Subject</th>
             <th></th>
         </tr>
     </thead>
@@ -32,6 +38,7 @@
                 <td>@Html.DisplayFor(modelItem => item.Experience)</td>
                 <td>@Html.DisplayFor(modelItem => item.Grades)</td>
                 <td>@Html.DisplayFor(modelItem => item.Districts)</td>
+                <td>@Html.DisplayFor(modelItem => item.Subjects)</td>
                 <td>
                     <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
                     <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
@@ -41,24 +48,22 @@
         }
     </tbody>
 </table>
-
-<div class="pagination">
-    @if (Model.CurrentPage > 1)
-    {
-        <a class="page-link" asp-page="./TutorIndex" asp-route-pageNumber="@(Model.CurrentPage - 1)">Previous</a>
-    }
-
-    @for (int i = 1; i <= Model.TotalPages; i++)
-    {
-        <a class="page-link @(i == Model.CurrentPage ? "active" : "")" asp-page="./TutorIndex" asp-route-pageNumber="@i">@i</a>
-    }
-
-    @if (Model.CurrentPage < Model.TotalPages)
-    {
-        <a class="page-link" asp-page="./TutorIndex" asp-route-pageNumber="@(Model.CurrentPage + 1)">Next</a>
-    }
+<div class="pagination-buttons">
+    <a asp-page="./RentalServiceHomePage"
+       asp-route-sortOrder="@Model.CurrentSort"
+       asp-route-pageIndex="@(Model.Tutors.PageIndex - 1)"
+       asp-route-currentFilter="@Model.CurrentFilter"
+       class="btn btn-primary @(!Model.Tutors.HasPreviousPage ? "disabled" : "")">
+        Previous
+    </a>
+    <a asp-page="./RentalServiceHomePage"
+       asp-route-sortOrder="@Model.CurrentSort"
+       asp-route-pageIndex="@(Model.Tutors.PageIndex + 1)"
+       asp-route-currentFilter="@Model.CurrentFilter"
+       class="btn btn-primary @(!Model.Tutors.HasNextPage ? "disabled" : "")">
+        Next
+    </a>
 </div>
-
 @section Styles {
     <style>
         .pagination {

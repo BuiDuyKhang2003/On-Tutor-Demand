@@ -9,7 +9,8 @@ namespace Repository.RepositoryInterface
 {
     public interface ITutorRepository
     {
-        IEnumerable<Tutor> GetAllTutors(int pageNumber, int pageSize);
+        IQueryable<Tutor> GetTutorServicesByQuery();
+        IEnumerable<Tutor> GetAllTutors();
         Tutor GetTutorById(int? tutorId);
         void AddTutor(Tutor tutor);
         void UpdateTutor(Tutor tutor);

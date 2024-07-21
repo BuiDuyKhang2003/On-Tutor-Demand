@@ -17,10 +17,14 @@ namespace Repository
 
         public Tutor GetTutorById(int? tutorId) => TutorDAO.GetTutorById(tutorId);
 
-        public IEnumerable<Tutor> GetAllTutors(int pageNumber, int pageSize) => TutorDAO.GetAllTutors(pageNumber, pageSize);
+        public IEnumerable<Tutor> GetAllTutors() => TutorDAO.GetAllTutors();
 
         public void UpdateTutor(Tutor tutor) => TutorDAO.UpdateTutor(tutor);
 
         public int GetTotalTutorsCount() => TutorDAO.GetTotalTutorsCount();
+
+        public IQueryable<Tutor> GetTutorServicesByQuery() => TutorDAO.GetTutorServicesByQuery();
+
+
     }
 }

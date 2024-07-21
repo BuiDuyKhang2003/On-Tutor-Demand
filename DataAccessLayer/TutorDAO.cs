@@ -12,19 +12,23 @@ namespace DataAccessLayer
     {
         private static AppDbContext db;
 
-        public static List<Tutor> GetAllTutors(int pageNumber, int pageSize)
+        public static List<Tutor> GetAllTutors()
         {
             db = new();
-            return db.Tutors.Include(t => t.Account)
+            return db.Tutors.ToList();
+        }
+        public static IQueryable<Tutor> GetTutorServicesByQuery()
+        {
+            db = new();
+            return from s in db.Tutors.Include(t => t.Account)
                             .Include(t => t.TutorGrades)
                             .ThenInclude(tg => tg.Grade)
                             .Include(t => t.TutorAreas)
                             .ThenInclude(ta => ta.District)
-                            .Skip((pageNumber - 1) * pageSize)
-                            .Take(pageSize)
-                            .ToList();
+                            .Include(t=>t.TutorSubjects)
+                            .ThenInclude(ts=>ts.Subject)
+                   select s;
         }
-
         public static Tutor GetTutorById(int? tutorId)
         {
             db = new();
