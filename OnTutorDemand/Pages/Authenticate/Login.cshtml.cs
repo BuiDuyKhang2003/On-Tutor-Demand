@@ -51,7 +51,7 @@ namespace OnTutorDemand.Pages.Authenticate
                         {
                             return RedirectToPage("/RentalServicePage/RentalServiceHomePage");
                         }
-                        return RedirectToPage("/TutorPages/TutorPage");
+                        return RedirectToPage("/OnDemandTutorHomePage");
                     }
                 }
                 TempData["LoginMessage"] = "Email hoặc Mật khẩu không chính xác";

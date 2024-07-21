@@ -58,7 +58,7 @@ app.MapRazorPages();
 
 app.MapGet("/", context =>
 {
-    context.Response.Redirect("./Authenticate/Login");
+    context.Response.Redirect("./OnDemandTutorHomePage");
     return Task.CompletedTask;
 });
 
