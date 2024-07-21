@@ -13,7 +13,7 @@ namespace DataAccessLayer
         private static AppDbContext db = new();
         public static IQueryable<RentalService> GetRentalServicesByQuery()
         {
-            return from s in db.RentalServices
+            return from s in db.RentalServices.Include(x=>x.Tutor)
                    select s;
         }
         public static List<RentalService> GetAllRentalServices()
