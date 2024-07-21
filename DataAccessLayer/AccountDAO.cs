@@ -12,46 +12,46 @@ namespace DataAccessLayer
     {
         private static AppDbContext db;
 
-        public static List<Account> GetAllAccounts()
+        public async static Task<List<Account>> GetAllAccountsAsync()
         {
             db = new();
-            return db.Accounts.ToList();
+            return await db.Accounts.ToListAsync();
         }
 
-        public static Account GetAccountById(int accountId)
+        public async static Task<Account> GetAccountByIdAsync(int accountId)
         {
             db = new();
-            return db.Accounts.Find(accountId) ?? new Account();
+            return await db.Accounts.FindAsync(accountId) ?? new Account();
         }
 
-        public static Account GetAccountByEmail(string email)
+        public async static Task<Account> GetAccountByEmailAsync(string email)
         {
             db = new();
-            return db.Accounts.FirstOrDefault(a => a.Email == email) ?? new Account();
+            return await db.Accounts.FirstOrDefaultAsync(a => a.Email.Equals(email)) ?? new Account();
         }
 
-        public static void AddAccount(Account account)
+        public async static void AddAccountAsync(Account account)
         {
             db = new();
-            db.Accounts.Add(account);
-            db.SaveChanges();
+            await db.Accounts.AddAsync(account);
+            await db.SaveChangesAsync();
         }
 
-        public static void UpdateAccount(Account account)
+        public async static void UpdateAccountAsync(Account account)
         {
             db = new();
             db.Entry(account).State = EntityState.Modified;
-            db.SaveChanges();
+            await db.SaveChangesAsync();
         }
 
-        public static void DeleteAccount(int accountId)
+        public async static void DeleteAccountAsync(int accountId)
         {
             db = new();
-            var account = db.Accounts.Find(accountId);
+            var account = await db.Accounts.FindAsync(accountId);
             if (account != null)
             {
                 db.Accounts.Remove(account);
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
         }
     }

@@ -121,7 +121,8 @@
                             <button class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Buy this item">Buy now</button>
                         </th:block>
                     </form>
-
+                            @* <a asp-page-handler="StartChat" asp-route-tutorId="@Model.Tutor.Id" asp-route-tutorName="@Model.Tutor.Account.Name"></a> *@
+                            <a asp-page-handler="startchat" asp-route-tutorId="17" asp-route-tutorName="tutor">Start Chat</a>
                     <div class="p-2">
                         <a href="">
                             <span class="text"><i class="fas fa-pen-square"></i> Start customize</span>

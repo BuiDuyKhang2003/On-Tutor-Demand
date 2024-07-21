@@ -51,7 +51,7 @@ namespace OnTutorDemand.Pages.Authenticate
                     Experience = RegisterModel.Experience,
                     Education = RegisterModel.Education,
                     Description = RegisterModel.Description,
-                    IsApproved = false
+                    Status = "Waiting"
                 };
 
                 registrationRepository.AddTutorRegistration(tutorRegistration);

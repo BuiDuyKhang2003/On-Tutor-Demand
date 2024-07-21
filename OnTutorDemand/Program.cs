@@ -1,15 +1,15 @@
 using DataAccessLayer;
+using OnTutorDemand.Pages.ChatHub;
 using Repository;
 using Repository.RepositoryInterface;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddDbContext<AppDbContext>();
+builder.Services.AddSignalR();
 
 builder.Services.AddScoped(typeof(AccountDAO));
-
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 builder.Services.AddScoped<IChatMessageRepository, ChatMessageRepository>();
 builder.Services.AddScoped<IConversationRepository, ConversationRepository>();
@@ -48,7 +48,7 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseStaticFiles(); 
+app.UseStaticFiles();
 
 app.UseRouting();
 app.UseSession();
@@ -58,8 +58,10 @@ app.MapRazorPages();
 
 app.MapGet("/", context =>
 {
-    context.Response.Redirect("./Authenticate/Login");
+    context.Response.Redirect("./OnDemandTutorHomePage");
     return Task.CompletedTask;
 });
+
+app.MapHub<ChatHub>("/chatHub");
 
 app.Run();

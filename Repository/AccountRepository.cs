@@ -11,16 +11,16 @@ namespace Repository
 {
     public class AccountRepository : IAccountRepository
     {
-        public void AddAccount(Account account) => AccountDAO.AddAccount(account);
+        public void AddAccount(Account account) => AccountDAO.AddAccountAsync(account);
 
-        public void DeleteAccount(int accountId) => AccountDAO.DeleteAccount(accountId);
+        public void DeleteAccount(int accountId) => AccountDAO.DeleteAccountAsync(accountId);
 
-        public Account GetAccountByEmail(string email) => AccountDAO.GetAccountByEmail(email);
+        public async Task<Account> GetAccountByEmail(string email) => await AccountDAO.GetAccountByEmailAsync(email);
 
-        public Account GetAccountById(int accountId) => AccountDAO.GetAccountById(accountId);
+        public async Task<Account> GetAccountById(int accountId) => await AccountDAO.GetAccountByIdAsync(accountId);
 
-        public IEnumerable<Account> GetAllAccounts() => AccountDAO.GetAllAccounts();
+        public async Task<IEnumerable<Account>> GetAllAccounts() => await AccountDAO.GetAllAccountsAsync();
 
-        public void UpdateAccount(Account account) => AccountDAO.UpdateAccount(account);
+        public void UpdateAccount(Account account) => AccountDAO.UpdateAccountAsync(account);
     }
 }

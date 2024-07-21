@@ -26,11 +26,11 @@ namespace OnTutorDemand.Pages.Authenticate
             return Page();
         }
 
-        public IActionResult OnPostLogin()
+        public async Task<IActionResult> OnPostLogin()
         {
             if (ModelState.IsValid)
             {
-                var user = accountRepository.GetAccountByEmail(EmailLogin);
+                var user = await accountRepository.GetAccountByEmail(EmailLogin);
 
                 if (user.Password != null)
                 {
@@ -51,7 +51,7 @@ namespace OnTutorDemand.Pages.Authenticate
                         {
                             return RedirectToPage("/RentalServicePage/RentalServiceHomePage");
                         }
-                        return RedirectToPage("/TutorPages/TutorPage");
+                        return RedirectToPage("/OnDemandTutorHomePage");
                     }
                 }
                 TempData["LoginMessage"] = "Email hoặc Mật khẩu không chính xác";

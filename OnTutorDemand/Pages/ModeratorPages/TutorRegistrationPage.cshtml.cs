@@ -26,7 +26,7 @@ namespace OnTutorDemand.Pages.ModeratorPages
         {
             if (tutorRegistrationRepository.GetAllTutorRegistrations != null)
             {
-                TutorRegistration = tutorRegistrationRepository.GetAllTutorRegistrations().ToList();
+                TutorRegistration = (await tutorRegistrationRepository.GetAllTutorRegistrations()).ToList();
             }
         }
     }

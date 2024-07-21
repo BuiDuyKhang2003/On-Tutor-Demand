@@ -9,9 +9,11 @@ namespace Repository.RepositoryInterface
 {
     public interface IConversationRepository
     {
-        IEnumerable<Conversation> GetAllConversations();
-        Conversation GetConversationById(int conversationId);
-        void AddConversation(Conversation conversation);
+        Task<IEnumerable<Conversation>> GetAllConversations();
+        Task<IEnumerable<Conversation>> GetConversationsByUserId(int initiatorId);
+        Task<Conversation> GetConversationById(int conversationId);
+        Task<Conversation> GetConversationByInitiatorIdAndReceiverIdAsync(int initiatorId, int receiverId);
+        Task<Conversation> AddConversation(Conversation conversation);
         void UpdateConversation(Conversation conversation);
         void DeleteConversation(int conversationId);
     }

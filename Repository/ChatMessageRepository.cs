@@ -11,14 +11,16 @@ namespace Repository
 {
     public class ChatMessageRepository : IChatMessageRepository
     {
-        public void AddChatMessage(ChatMessage chatMessage) => ChatMessageDAO.AddChatMessage(chatMessage);
+        public Task AddChatMessage(ChatMessage chatMessage) => ChatMessageDAO.AddChatMessageAsync(chatMessage);
 
-        public void DeleteChatMessage(int chatMessageId) => ChatMessageDAO.DeleteChatMessage(chatMessageId);
+        public Task DeleteChatMessage(int chatMessageId) => ChatMessageDAO.DeleteChatMessageAsync(chatMessageId);
 
-        public ChatMessage GetChatMessageById(int chatMessageId) => ChatMessageDAO.GetChatMessageById(chatMessageId);
+        public async Task<ChatMessage> GetChatMessageById(int chatMessageId) => await ChatMessageDAO.GetChatMessageByIdAsync(chatMessageId);
 
-        public IEnumerable<ChatMessage> GetAllChatMessages() => ChatMessageDAO.GetAllChatMessages();
+        public async Task<IEnumerable<ChatMessage>> GetAllChatMessages() => await ChatMessageDAO.GetAllChatMessagesAsync();
 
-        public void UpdateChatMessage(ChatMessage chatMessage) => ChatMessageDAO.UpdateChatMessage(chatMessage);
+        public Task UpdateChatMessage(ChatMessage chatMessage) => ChatMessageDAO.UpdateChatMessageAsync(chatMessage);
+
+        public async Task<IEnumerable<ChatMessage>> GetChatMessagesByConversationId(int conversationId) => await ChatMessageDAO.GetChatMessagesByConversationIdAsync(conversationId);
     }
 }

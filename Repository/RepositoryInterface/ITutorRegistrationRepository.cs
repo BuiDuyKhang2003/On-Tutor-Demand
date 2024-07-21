@@ -9,7 +9,7 @@ namespace Repository.RepositoryInterface
 {
     public interface ITutorRegistrationRepository
     {
-        IEnumerable<TutorRegistration> GetAllTutorRegistrations();
+        Task<IEnumerable<TutorRegistration>> GetAllTutorRegistrations();
         Task<TutorRegistration> GetTutorRegistrationById(int registrationId);
         void AddTutorRegistration(TutorRegistration tutorRegistration);
         void UpdateTutorRegistration(TutorRegistration tutorRegistration);

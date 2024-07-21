@@ -9,10 +9,11 @@ namespace Repository.RepositoryInterface
 {
     public interface IChatMessageRepository
     {
-        IEnumerable<ChatMessage> GetAllChatMessages();
-        ChatMessage GetChatMessageById(int chatMessageId);
-        void AddChatMessage(ChatMessage chatMessage);
-        void UpdateChatMessage(ChatMessage chatMessage);
-        void DeleteChatMessage(int chatMessageId);
+        Task<IEnumerable<ChatMessage>> GetAllChatMessages();
+        Task<IEnumerable<ChatMessage>> GetChatMessagesByConversationId(int conversationId);
+        Task<ChatMessage> GetChatMessageById(int chatMessageId);
+        Task AddChatMessage(ChatMessage chatMessage);
+        Task UpdateChatMessage(ChatMessage chatMessage);
+        Task DeleteChatMessage(int chatMessageId);
     }
 }

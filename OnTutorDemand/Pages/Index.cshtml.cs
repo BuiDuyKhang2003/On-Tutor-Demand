@@ -7,7 +7,7 @@ namespace OnTutorDemand.Pages
     {
         public IActionResult OnGet()
         {
-            return RedirectToPage("./RentalServicePage/RentalServiceHomePage");
+            return RedirectToPage("./OnDemandTutorHomePage");
         }
     }
 }

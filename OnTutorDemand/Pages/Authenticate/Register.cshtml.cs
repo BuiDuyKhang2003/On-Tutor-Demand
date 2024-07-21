@@ -72,6 +72,7 @@ namespace OnTutorDemand.Pages.Authenticate
                         Address = RegisterModel.Address,
                         Experience = RegisterModel.Experience,
                         Education = RegisterModel.Education,
+                        Status = "Waiting",
                         Description = RegisterModel.Description
                     };
                     registrationRepository.AddTutorRegistration(tutorRegistration);

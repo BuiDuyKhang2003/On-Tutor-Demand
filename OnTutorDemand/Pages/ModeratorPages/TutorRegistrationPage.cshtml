@@ -12,7 +12,7 @@
 }
 @if (!isAuthenticated || (!isAdmin && !isModerator))
 {
-<script>window.location.href = '/Authenticate/LoginRegisterPage';</script>
+<script>window.location.href = '/Authenticate/Login';</script>
 }
 else
 {
@@ -236,7 +236,7 @@ else
                         @Html.DisplayNameFor(model => model.TutorRegistration[0].ApplicationDate)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.TutorRegistration[0].IsApproved)
+                        @Html.DisplayNameFor(model => model.TutorRegistration[0].Status)
                     </th>
                     <th></th>
                 </tr>
@@ -279,7 +279,7 @@ else
                         @Html.DisplayFor(modelItem => item.ApplicationDate)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.IsApproved)
+                        @Html.DisplayFor(modelItem => item.Status)
                     </td>
                     <td>
                         <a asp-page="./ApproveRegistration" asp-route-id="@item.Id">Edit</a> |

@@ -1,73 +1,85 @@
 ﻿@inject IHttpContextAccessor HttpContextAccessor
 @{
-var userEmail = HttpContextAccessor?.HttpContext?.Session.GetString("UserEmail");
-var isAuthenticated = !string.IsNullOrEmpty(userEmail);
+    var userEmail = HttpContextAccessor?.HttpContext?.Session.GetString("UserEmail");
+    var isAuthenticated = !string.IsNullOrEmpty(userEmail);
 }
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
     <link href="~/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
           rel="stylesheet">
     <link href="~/css/sb-admin-2.min.css" rel="stylesheet">
-    @RenderSection("Styles" , required: false)
+    @RenderSection("Styles", required: false)
 </head>
 <body>
-    @if (!(ViewData["HideNavbar"] as bool? ?? false))
-    {
+@if (!(ViewData["HideNavbar"] as bool? ?? false))
+{
     <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-        <!-- Sidebar Toggle (Topbar) -->
-        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-            <i class="fa fa-bars"></i>
-        </button>
+    <!-- Sidebar Toggle (Topbar) -->
+    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+        <i class="fa fa-bars"></i>
+    </button>
 
-        <!-- Topbar Search -->
-        <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-            <div class="input-group">
-                <input type="text" class="form-control border-0 small" placeholder="Search for..." style="background-color:#eef1f2"
-                       aria-label="Search" aria-describedby="basic-addon2">
-                <div class="input-group-append">
-                    <button class="btn btn-primary" type="button">
-                        <i class="fas fa-search fa-sm"></i>
-                    </button>
-                </div>
-            </div>
-        </form>
-        
-        <!-- Topbar Navbar -->
-        <ul class="navbar-nav ml-auto">
+    <a class="nav-link" href="#">
+        <i class="fas fa-home fa-fw"></i>
+        <span>Trang Chủ</span>
+    </a>
 
-            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-            <li class="nav-item dropdown no-arrow d-sm-none">
-                <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-search fa-fw"></i>
-                </a>
-                <!-- Dropdown - Messages -->
-                <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                     aria-labelledby="searchDropdown">
-                    <form class="form-inline mr-auto w-300 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small"
-                                   placeholder="Search for..." aria-label="Search"
-                                   aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
+        <a class="nav-link" href="#">
+            <i class="fas fa-chalkboard-teacher fa-fw"></i>
+            <span>Dịch Vụ Thuê</span>
+        </a>
+
+    <a class="nav-link" href="#">
+        <i class="fas fa-graduation-cap fa-fw"></i>
+        <span>Gia Sư</span>
+    </a>
+
+    <a class="nav-link" href="#">
+        <i class="fas fa-newspaper fa-fw"></i>
+        <span>Tin Tức</span>
+    </a>
+
+    <a class="nav-link" href="#">
+        <i class="fas fa-envelope fa-fw"></i>
+        <span>Liên Hệ</span>
+    </a>
+
+
+    <!-- Topbar Navbar -->
+    <ul class="navbar-nav ml-auto">
+
+        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+        <li class="nav-item dropdown no-arrow d-sm-none">
+            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-search fa-fw"></i>
+            </a>
+            <!-- Dropdown - Messages -->
+            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                 aria-labelledby="searchDropdown">
+                <form class="form-inline mr-auto w-300 navbar-search">
+                    <div class="input-group">
+                        <input type="text" class="form-control bg-light border-0 small"
+                               placeholder="Search for..." aria-label="Search"
+                               aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="button">
+                                <i class="fas fa-search fa-sm"></i>
+                            </button>
                         </div>
-                    </form>
-                </div>
-            </li>
-            @if (isAuthenticated)
-            {
-
+                    </div>
+                </form>
+            </div>
+        </li>
+        @if (isAuthenticated)
+        {
             <!-- Nav Item - Alerts -->
             <li class="nav-item dropdown no-arrow mx-1">
                 <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
@@ -195,7 +207,6 @@ var isAuthenticated = !string.IsNullOrEmpty(userEmail);
 
             <div class="topbar-divider d-none d-sm-block"></div>
 
-            
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
@@ -226,22 +237,17 @@ var isAuthenticated = !string.IsNullOrEmpty(userEmail);
                     </a>
                 </div>
             </li>
-            }
-            else
-            {
+        }
+        else
+        {
             <li class="nav-item">
                 <a class="mr-2 text-white btn btn-secondary" asp-page="/Authenticate/Login">Login</a>
             </li>
-            }
+        }
 
-        </ul>
+    </ul>
 
     </nav>
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-    <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -260,32 +266,117 @@ var isAuthenticated = !string.IsNullOrEmpty(userEmail);
             </div>
         </div>
     </div>
-    }   
-    @RenderBody()
-    
-    <footer class="bg-white py-4">
-        <footer class="bg-white py-4 mt-auto">
-            <div class="container px-5">
-                <div class="row align-items-center justify-content-between flex-column flex-sm-row" style="font-size: 18px">
-                    <div class="col-auto">
-                        <div class="m-0 text-dark">Copyright &copy; OnTutorDemand 2024</div>
-
+}
+<div class="col-xl-12">
+    <div class="row">
+        <div class="col-xl-2 d-none d-md-block">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <i class="fas fa-book-open"></i> Các lớp dạy kèm
+                </div>
+                <div class="card-body">
+                    <div>
+                        <h5>Khối tiểu học</h5>
+                        <hr/>
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                Lớp 1
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                Lớp 2
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                Lớp 3
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                Lớp 4
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                Lớp 5
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                        </div>
                     </div>
-                    <div class="col-auto">
-                        <a class="link-dark" href="#!">Privacy</a>
-                        <span class="text-white mx-1">&middot;</span>
-                        <a class="link-dark" href="#!">Terms</a>
-                        <span class="text-white mx-1">&middot;</span>
-                        <a class="link-dark" href="#!">Contact</a>
+                    <div>
+                        <h5 class="mt-4">Khối trung học</h5>
+                        <hr/>
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                Lớp 6
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                Lớp 7
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                Lớp 8
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                Lớp 9
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                        </div>
                     </div>
+                    <div>
+                        <h5 class="mt-4">Khối cao học</h5>
+                        <hr/>
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                Lớp 10
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                Lớp 11
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                Lớp 12
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                   
                 </div>
             </div>
-        </footer>
+        </div>
+        <div class="col-xl-10">
+            @RenderBody()
+        </div>
+    </div>
+</div>
+
+
+<footer class="bg-white py-4">
+    <footer class="bg-white py-4 mt-auto">
+        <div class="container px-5">
+            <div class="row align-items-center justify-content-between flex-column flex-sm-row" style="font-size: 18px">
+                <div class="col-auto">
+                    <div class="m-0 text-dark">Copyright &copy; OnTutorDemand 2024</div>
+
+                </div>
+                <div class="col-auto">
+                    <a class="link-dark" href="#!">Bảo Mật</a>
+                    <span class="text-white mx-1">&middot;</span>
+                    <a class="link-dark" href="#!">Điều Khoản</a>
+                    <span class="text-white mx-1">&middot;</span>
+                    <a class="link-dark" href="#!">Liên Hệ</a>
+                </div>
+            </div>
+        </div>
     </footer>
+</footer>
 
 <script src="/vendor/jquery/jquery.min.js"></script>
 <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="~/microsoft/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/chat.js"></script>
 <script src="/js/sb-admin-2.min.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {

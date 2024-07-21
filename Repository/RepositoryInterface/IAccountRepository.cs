@@ -9,9 +9,9 @@ namespace Repository.RepositoryInterface
 {
     public interface IAccountRepository
     {
-        IEnumerable<Account> GetAllAccounts();
-        Account GetAccountById(int accountId);
-        Account GetAccountByEmail(string email);
+        Task<IEnumerable<Account>> GetAllAccounts();
+        Task<Account> GetAccountById(int accountId);
+        Task<Account> GetAccountByEmail(string email);
         void AddAccount(Account account);
         void UpdateAccount(Account account);
         void DeleteAccount(int accountId);

@@ -1,0 +1,72 @@
+﻿@page
+@model OnTutorDemand.Pages.ChatPages.ChatPageModel
+@{
+    ViewData["Title"] = "Chat";
+}
+
+<style>
+    .chat-container {
+        display: flex;
+        height: 80vh;
+    }
+
+    .conversation-list {
+        width: 25%;
+        border-right: 1px solid #ccc;
+        overflow-y: auto;
+    }
+
+    .chat-content {
+        width: 75%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .message-list {
+        flex-grow: 1;
+        overflow-y: auto;
+    }
+
+    .message-input {
+        display: flex;
+        padding: 10px;
+        border-top: 1px solid #ccc;
+    }
+
+        .message-input input {
+            flex-grow: 1;
+            margin-right: 10px;
+        }
+</style>
+
+<div class="chat-container">
+    <div class="conversation-list">
+        <h3>Conversations</h3>
+        <ul>
+            @foreach (var conversation in Model.PreviousConversations)
+            {
+                <li>
+                    <a asp-page="/ChatPages/ChatPage" asp-route-conversationid="@conversation.Id">
+                        @conversation.Subject
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+    <div class="chat-content">
+        <h3>Chat with @Model.Conversation?.Receiver?.FullName</h3>
+        <div id="messagesList" class="message-list">
+            @foreach (var message in Model.ChatMessages)
+            {
+                <div>@(message.Sender?.FullName ?? "Unknown Sender"): @message.Content</div>
+            }
+        </div>
+        <div class="message-input">
+            <input type="hidden" id="conversationId" value="@Model.Conversation.Id" />
+            <input type="hidden" id="userId" value="@Model.UserId" />
+            <input type="text" id="messageInput" placeholder="Type a message..." class="form-control" />
+            <button id="sendButton" class="btn btn-primary">Send</button>
+        </div>
+    </div>
+</div>
