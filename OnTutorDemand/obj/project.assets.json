@@ -11635,19 +11635,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\LENOVO\\.nuget\\packages\\": {}
+    "C:\\Users\\ACER\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\LENOVO\\Documents\\On-Tutor-Demand\\OnTutorDemand\\OnTutorDemand.csproj",
+      "projectUniqueName": "C:\\Users\\ACER\\Desktop\\On-Tutor-Demand\\OnTutorDemand\\OnTutorDemand.csproj",
       "projectName": "OnTutorDemand",
-      "projectPath": "C:\\Users\\LENOVO\\Documents\\On-Tutor-Demand\\OnTutorDemand\\OnTutorDemand.csproj",
-      "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\LENOVO\\Documents\\On-Tutor-Demand\\OnTutorDemand\\obj\\",
+      "projectPath": "C:\\Users\\ACER\\Desktop\\On-Tutor-Demand\\OnTutorDemand\\OnTutorDemand.csproj",
+      "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ACER\\Desktop\\On-Tutor-Demand\\OnTutorDemand\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\LENOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -11661,11 +11661,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\LENOVO\\Documents\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj": {
-              "projectPath": "C:\\Users\\LENOVO\\Documents\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj"
+            "C:\\Users\\ACER\\Desktop\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj": {
+              "projectPath": "C:\\Users\\ACER\\Desktop\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj"
             },
-            "C:\\Users\\LENOVO\\Documents\\On-Tutor-Demand\\Repository\\Repository.csproj": {
-              "projectPath": "C:\\Users\\LENOVO\\Documents\\On-Tutor-Demand\\Repository\\Repository.csproj"
+            "C:\\Users\\ACER\\Desktop\\On-Tutor-Demand\\Repository\\Repository.csproj": {
+              "projectPath": "C:\\Users\\ACER\\Desktop\\On-Tutor-Demand\\Repository\\Repository.csproj"
             }
           }
         }
@@ -11710,7 +11710,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

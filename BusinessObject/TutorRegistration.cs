@@ -32,7 +32,8 @@ namespace BusinessObject
 
         [StringLength(200)]
         public string Address { get; set; }
-
+        
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         [Column(TypeName = "date")]
         public DateTime DateOfBirth { get; set; }
 
