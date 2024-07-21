@@ -1,4 +1,116 @@
 ﻿@page
 @model OnTutorDemand.Pages.TutorPages.TutorPageModel
 @{
+    ViewData["Title"] = "Tutor Profile";
 }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .profile-card {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 30px auto;
+            max-width: 600px;
+            overflow: hidden;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+            .profile-card:hover {
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+                transform: translateY(-5px);
+            }
+
+        .profile-header {
+            background: linear-gradient(135deg, #007bff, #ffffff);
+            padding: 60px 20px;
+            position: relative;
+        }
+
+            .profile-header img {
+                border: 5px solid white;
+                border-radius: 50%;
+                height: 150px;
+                width: 150px;
+                position: absolute;
+                bottom: -75px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+        .profile-body {
+            padding: 80px 20px 20px;
+            text-align: left;
+        }
+
+            .profile-body h2 {
+                color: #007bff;
+                text-align: center;
+            }
+
+            .profile-body p {
+                color: #6c757d;
+                margin-bottom: 10px;
+            }
+
+        .profile-footer {
+            background-color: #f8f9fa;
+            border-top: 1px solid #eee;
+            padding: 20px;
+        }
+
+            .profile-footer .btn {
+                background-color: #007bff;
+                border: none;
+                color: white;
+                padding: 10px 20px;
+                text-transform: uppercase;
+                transition: background-color 0.3s;
+            }
+
+                .profile-footer .btn:hover {
+                    background-color: #0056b3;
+                }
+
+        .divider {
+            border-top: 1px solid #ddd;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="profile-card">
+            <div class="profile-header">
+                <img src="https://via.placeholder.com/150" alt="Tutor Photo">
+            </div>
+            <div class="profile-body">
+                <h2>@Model.Tutor.FullName</h2>
+                <p style="text-align: center;"><i class="fas fa-graduation-cap"></i> @Model.Tutor.Education</p>
+                <div class="divider"></div>
+                <p><strong>Giới Tính:</strong> @Model.Tutor.Gender</p>
+                <p><strong>Năm Sinh:</strong> @Model.Tutor.BirthYear</p>
+                <p><strong>Kinh Nghiệm:</strong> @Model.Tutor.Experience</p>
+                <p><strong>Môn Dạy:</strong> @Model.Tutor.Subjects</p>
+                <p><strong>Khu Vực Dạy:</strong> @Model.Tutor.Districts</p>
+                <p><strong>Lớp Dạy:</strong> @Model.Tutor.Grades</p>
+                <h3 class="section-title"><strong>Mô tả</strong></h3>
+                <p>@Model.Tutor.Description</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

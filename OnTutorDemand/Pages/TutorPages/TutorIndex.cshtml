@@ -1,94 +1,200 @@
 ﻿@page
 @model OnTutorDemand.Pages.TutorPages.TutorIndexModel
-
 @{
     ViewData["Title"] = "Tutor Index";
 }
-
-<h1>Tutor Index</h1>
-
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<form asp-page="./TutorIndex" method="get" class="form-inline">
-    <input type="text" name="searchString" value="@Model.CurrentFilter" placeholder="Search" class="form-control" />
-    <input type="submit" value="Search" class="btn btn-primary ml-2" />
-    <a asp-page="./TutorIndex" class="btn btn-secondary ml-2">Back to full List</a>
-</form>
-<table class="table">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Full Name</th>
-            <th>Education Level</th>
-            <th>Teaching Experience</th>
-            <th>Teaching Grade</th>
-            <th>Teaching Area</th>
-            <th>Teaching Subject</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Tutors)
-        {
-            <tr>
-                <td>@Html.DisplayFor(modelItem => item.Id)</td>
-                <td>@Html.DisplayFor(modelItem => item.FullName)</td>
-                <td>@Html.DisplayFor(modelItem => item.Education)</td>
-                <td>@Html.DisplayFor(modelItem => item.Experience)</td>
-                <td>@Html.DisplayFor(modelItem => item.Grades)</td>
-                <td>@Html.DisplayFor(modelItem => item.Districts)</td>
-                <td>@Html.DisplayFor(modelItem => item.Subjects)</td>
-                <td>
-                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
-<div class="pagination-buttons">
-    <a asp-page="./RentalServiceHomePage"
-       asp-route-sortOrder="@Model.CurrentSort"
-       asp-route-pageIndex="@(Model.Tutors.PageIndex - 1)"
-       asp-route-currentFilter="@Model.CurrentFilter"
-       class="btn btn-primary @(!Model.Tutors.HasPreviousPage ? "disabled" : "")">
-        Previous
-    </a>
-    <a asp-page="./RentalServiceHomePage"
-       asp-route-sortOrder="@Model.CurrentSort"
-       asp-route-pageIndex="@(Model.Tutors.PageIndex + 1)"
-       asp-route-currentFilter="@Model.CurrentFilter"
-       class="btn btn-primary @(!Model.Tutors.HasNextPage ? "disabled" : "")">
-        Next
-    </a>
-</div>
-@section Styles {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .card-custom {
+            background-color: #ffffff; /* Màu nền khác biệt */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Đổ bóng */
+            margin-bottom: 20px;
+            border: 1px; /* Bỏ đường viền mặc định */
+            border-radius: 10px; /* Bo tròn góc */
+            transition: transform 0.2s, box-shadow 0.2s; /* Hiệu ứng chuyển đổi */
+            cursor: pointer; /* Con trỏ chuột khi di chuyển vào card */
+        }
+
+            .card-custom:hover {
+                transform: translateY(-5px); /* Di chuyển lên khi hover */
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Tăng đổ bóng khi hover */
+            }
+
+            .card-custom .card-body {
+                padding: 20px;
+            }
+
+        .card-title {
+            color: #007bff;
+        }
+
+        .card-text {
+            color: #6c757d;
+        }
+
         .pagination {
-            display: flex;
             justify-content: center;
-            margin-top: 20px;
         }
 
-        .page-link {
-            padding: 10px;
-            margin: 5px;
-            text-decoration: none;
-            color: black; /* Change this to the desired text color */
-            border: 1px solid #ccc;
-            border-radius: 5px;
+        .filter-card {
+            cursor: default;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
 
-        .page-link:hover {
-            background-color: #f0f0f0;
-        }
-
-        .page-link.active {
-            font-weight: bold;
-            background-color: #007bff; /* Change this to the desired active background color */
-            color: white; /* Change this to the desired active text color */
-        }
+            .filter-card:hover {
+                transform: none;
+                box-shadow: none;
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+            }
     </style>
-}
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <!-- Filter Column -->
+            <div class="col-md-3">
+                <div class="card card-custom filter-card">
+                    <div class="card-body">                       
+                        <div class="card-header bg-primary text-white" style="margin-top: -20px; margin-right: -20px; margin-left: -20px;">
+                            <i class="fas fa-filter"></i> Filter
+                        </div>
+
+                        <!-- Dropdowns for filters -->
+                        <form asp-page="./TutorIndex" method="get" style="margin-top: 15px;">
+                            <div class="mb-3">
+                                <label for="searchString">Search</label>
+                                <input type="text" id="searchString" name="searchString" value="@Model.CurrentFilter" placeholder="Search" class="form-control" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="level">Trình độ</label>
+                                <select id="level" class="form-select" name="education">
+                                    <option value="">All</option>
+                                    <option value="Sinh viên">Sinh viên</option>
+                                    <option value="Giáo Viên">Giáo Viên</option>
+                                    <option value="Tiến sỹ">Tiến sỹ</option>
+                                    <option value="Thạc Sỹ">Thạc Sỹ</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="subject">Môn học</label>
+                                <select id="subject" class="form-select" name="subject">
+                                    <option value="">All</option>
+                                    <option value="Vật Lí">Vật Lí</option>
+                                    <option value="Hóa Học">Hóa Học</option>
+                                    <option value="Toán Học">Toán Học</option>
+                                    <option value="Sinh Học">Sinh Học</option>
+                                    <option value="Địa Lí">Địa Lí</option>
+                                    <option value="Lịch Sử">Lịch Sử</option>
+                                    <option value="Ngữ Văn">Ngữ Văn</option>
+                                    <option value="Tiếng Anh">Tiếng Anh</option>
+                                    <option value="Giáo Dục Công Dân">Giáo Dục Công Dân</option>
+                                    <option value="Tin Học">Tin Học</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="grade">Lớp</label>
+                                <select id="grade" class="form-select" name="grade">
+                                    <option value="">All</option>
+                                    @for (int i = 1; i <= 12; i++)
+                                    {
+                                        <option value="Lớp @i">Lớp @i</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="district">Khu vực</label>
+                                <select id="district" class="form-select" name="district">
+                                    <option value="">All</option>
+                                    <option value="Quận 1">Quận 1</option>
+                                    <option value="Quận 2">Quận 2</option>
+                                    <option value="Quận 3">Quận 3</option>
+                                    <option value="Quận 4">Quận 4</option>
+                                    <option value="Quận 5">Quận 5</option>
+                                    <option value="Quận 6">Quận 6</option>
+                                    <option value="Quận 7">Quận 7</option>
+                                    <option value="Quận 8">Quận 8</option>
+                                    <option value="Quận 9">Quận 9</option>
+                                    <option value="Quận 10">Quận 10</option>
+                                    <option value="Quận 11">Quận 11</option>
+                                    <option value="Quận 12">Quận 12</option>
+                                    <option value="Bình Thạnh">Bình Thạnh</option>
+                                    <option value="Gò Vấp">Gò Vấp</option>
+                                    <option value="Phú Nhuận">Phú Nhuận</option>
+                                    <option value="Tân Bình">Tân Bình</option>
+                                    <option value="Tân Phú">Tân Phú</option>
+                                    <option value="Thủ Đức">Thủ Đức</option>
+                                    <option value="Bình Tân">Bình Tân</option>
+                                    <option value="Bình Chánh">Bình Chánh</option>
+                                    <option value="Củ Chi">Củ Chi</option>
+                                    <option value="Hóc Môn">Hóc Môn</option>
+                                    <option value="Nhà Bè">Nhà Bè</option>
+                                    <option value="Cần Giờ">Cần Giờ</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Apply Filter</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Cards Columns -->
+            <div class="col-md-9">
+                <div class="row" id="cards-container">
+                    @foreach (var item in Model.Tutors)
+                    {
+                        <div class="col-md-4">
+                            <div class="card card-custom" data-link="@Url.Page("./Details", new { id = item.Id })">
+                                <div class="card-body">
+                                    <h2 class="card-title"><i class="fas fa-graduation-cap fa-fw"></i> @Html.DisplayFor(modelItem => item.FullName)</h2>
+                                    <p class="card-text"><i class="fas fa-book card-icon"></i> Trình độ: @Html.DisplayFor(modelItem => item.Education)</p>
+                                    <p class="card-text"><i class="fas fa-briefcase card-icon"></i> Kinh nghiệm: @Html.DisplayFor(modelItem => item.Experience)</p>
+                                    <p class="card-text"><i class="fas fa-chalkboard-teacher card-icon"></i> Lớp: @Html.DisplayFor(modelItem => item.Grades)</p>
+                                    <p class="card-text"><i class="fas fa-map-marker-alt card-icon"></i> Khu vực: @Html.DisplayFor(modelItem => item.Districts)</p>
+                                    <p class="card-text"><i class="fas fa-book-open card-icon"></i> Môn học: @Html.DisplayFor(modelItem => item.Subjects)</p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <nav>
+                    <ul class="pagination">
+                        <li class="page-item @(Model.Tutors.HasPreviousPage ? "" : "disabled")">
+                            <a class="page-link" asp-page="./TutorIndex"
+                               asp-route-sortOrder="@Model.CurrentSort"
+                               asp-route-pageIndex="@(Model.Tutors.PageIndex - 1)"
+                               asp-route-currentFilter="@Model.CurrentFilter">Previous</a>
+                        </li>
+                        <li class="page-item @(Model.Tutors.HasNextPage ? "" : "disabled")">
+                            <a class="page-link" asp-page="./TutorIndex"
+                               asp-route-sortOrder="@Model.CurrentSort"
+                               asp-route-pageIndex="@(Model.Tutors.PageIndex + 1)"
+                               asp-route-currentFilter="@Model.CurrentFilter">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.card-custom:not(.filter-card)').forEach(card => {
+                card.addEventListener('click', function () {
+                    window.location.href = this.dataset.link;
+                });
+            });
+        });
+    </script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
