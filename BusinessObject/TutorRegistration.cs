@@ -48,8 +48,11 @@ namespace BusinessObject
         [StringLength(500)]
         public string Description { get; set; }
 
-        public DateTime ApplicationDate { get; private set; } = DateTime.Now;   
+        public DateTime ApplicationDate { get; private set; } = DateTime.Now;
 
+        public string TeachingGrades { get; set; }
+        public string TeachingSubjects { get; set; }
+        public string TeachingAreas { get; set; }
         public string Status { get; set; }
     }
 

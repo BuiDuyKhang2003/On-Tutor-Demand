@@ -25,6 +25,10 @@ namespace Repository
 
         public IQueryable<Tutor> GetTutorServicesByQuery() => TutorDAO.GetTutorServicesByQuery();
 
+        public async Task<IEnumerable<District>> GetAllDistricts() => await TutorDAO.GetAllDistricts();
 
+        public async Task<IEnumerable<Subject>> GetAllSubjects() => await TutorDAO.GetAllSubjects();
+
+        public async Task<IEnumerable<Grade>> GetAllGrades() => await TutorDAO.GetAllGrades();
     }
 }

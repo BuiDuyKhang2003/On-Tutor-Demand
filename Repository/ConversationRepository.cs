@@ -17,6 +17,8 @@ namespace Repository
 
         public async Task<Conversation> GetConversationById(int conversationId) => await ConversationDAO.GetConversationByIdAsync(conversationId);
 
+        public async Task<Conversation> GetMostRecentConversationByAccountId(int accountId) => await ConversationDAO.GetMostRecentConversationByAccountIdAsync(accountId);
+
         public async Task<IEnumerable<Conversation>> GetAllConversations() => await ConversationDAO.GetAllConversationsAsync();
 
         public void UpdateConversation(Conversation conversation) => ConversationDAO.UpdateConversationAsync(conversation);

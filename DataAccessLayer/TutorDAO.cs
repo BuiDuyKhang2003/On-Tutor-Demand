@@ -35,6 +35,24 @@ namespace DataAccessLayer
             return db.Tutors.Find(tutorId) ?? new Tutor();
         }
 
+        public async static Task<List<Grade>> GetAllGrades()
+        {
+            db = new();
+            return await db.Grades.ToListAsync();
+        }
+
+        public async static Task<List<District>> GetAllDistricts()
+        {
+            db = new();
+            return await db.Districts.ToListAsync();
+        }
+
+        public async static Task<List<Subject>> GetAllSubjects()
+        {
+            db = new();
+            return await db.Subjects.ToListAsync();
+        }
+
         public static void AddTutor(Tutor tutor)
         {
             db = new();

@@ -1,4 +1,4 @@
-using BusinessObject;
+﻿using BusinessObject;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using OnTutorDemand.Dto;
@@ -11,18 +11,27 @@ namespace OnTutorDemand.Pages.Authenticate
     {
         private readonly IAccountRepository accountRepository;
         private readonly ITutorRegistrationRepository registrationRepository;
+        private readonly ITutorRepository tutorRepository;
 
-        public RegisterTutorModel(IAccountRepository accountRepository, ITutorRegistrationRepository registrationRepository)
+        public RegisterTutorModel(IAccountRepository accountRepository, ITutorRegistrationRepository registrationRepository, ITutorRepository tutorRepository)
         {
             this.accountRepository = accountRepository;
             this.registrationRepository = registrationRepository;
+            this.tutorRepository = tutorRepository;
         }
 
         [BindProperty]
         public RegisterInputModel RegisterModel { get; set; }
 
-        public IActionResult OnGet()
+        public List<Grade> AvailableGrades { get; set; }
+        public List<Subject> AvailableSubjects { get; set; }
+        public List<District> AvailableAreas { get; set; }
+
+        public async Task<IActionResult> OnGet()
         {
+            AvailableGrades = (await tutorRepository.GetAllGrades()).ToList();
+            AvailableSubjects = (await tutorRepository.GetAllSubjects()).ToList();
+            AvailableAreas = (await tutorRepository.GetAllDistricts()).ToList();
             return Page();
         }
 
@@ -36,6 +45,10 @@ namespace OnTutorDemand.Pages.Authenticate
                 ModelState.AddModelError(string.Empty, "Invalid role for this page.");
                 return Page();
             }
+
+            AvailableGrades = (await tutorRepository.GetAllGrades()).ToList();
+            AvailableSubjects = (await tutorRepository.GetAllSubjects()).ToList();
+            AvailableAreas = (await tutorRepository.GetAllDistricts()).ToList();
 
             if (ModelState.IsValid)
             {
@@ -51,6 +64,15 @@ namespace OnTutorDemand.Pages.Authenticate
                     Experience = RegisterModel.Experience,
                     Education = RegisterModel.Education,
                     Description = RegisterModel.Description,
+                    TeachingGrades = RegisterModel.SelectedGrades != null && AvailableGrades != null
+                ? string.Join(",", RegisterModel.SelectedGrades.Select(id => AvailableGrades.FirstOrDefault(g => g.Id == id)?.GradeName ?? ""))
+                : "",
+                    TeachingSubjects = RegisterModel.SelectedSubjects != null && AvailableSubjects != null
+                ? string.Join(",", RegisterModel.SelectedSubjects.Select(id => AvailableSubjects.FirstOrDefault(s => s.Id == id)?.SubjectName ?? ""))
+                : "",
+                    TeachingAreas = RegisterModel.SelectedAreas != null && AvailableAreas != null
+                ? string.Join(",", RegisterModel.SelectedAreas.Select(id => AvailableAreas.FirstOrDefault(a => a.Id == id)?.DistrictName ?? ""))
+                : "",
                     Status = "Waiting"
                 };
 

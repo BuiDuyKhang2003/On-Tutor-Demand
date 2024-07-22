@@ -93,7 +93,10 @@ namespace DataAccessLayer.Migrations
                     Education = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
                     ApplicationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    IsApproved = table.Column<bool>(type: "bit", nullable: false)
+                    TeachingGrades = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TeachingSubjects = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TeachingAreas = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -196,7 +199,8 @@ namespace DataAccessLayer.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
-                    TutorId = table.Column<int>(type: "int", nullable: false)
+                    TutorId = table.Column<int>(type: "int", nullable: false),
+                    PricePerSession = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {

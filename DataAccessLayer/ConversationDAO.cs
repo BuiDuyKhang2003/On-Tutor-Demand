@@ -32,11 +32,21 @@ namespace DataAccessLayer
                    .Include(c => c.Receiver)
                    .FirstOrDefaultAsync(c => c.Id == conversationId);
         }
-        public async static Task<Conversation> GetConversationByInitiatorIdAndReceiverIdAsync(int initiatorId, int receiverId)
+        public async static Task<Conversation> GetConversationByInitiatorIdAndReceiverIdAsync(int studentId, int tutorId)
         {
             db = new();
-            return await db.Conversations.FirstOrDefaultAsync(c => c.InitiatorId == initiatorId && c.ReceiverId == receiverId);
+            return await db.Conversations.FirstOrDefaultAsync(c => c.InitiatorId == studentId && c.ReceiverId == tutorId);
         }
+
+        public async static Task<Conversation> GetMostRecentConversationByAccountIdAsync(int accountId)
+        {
+            db = new();
+            return await db.Conversations
+                .Where(c => c.InitiatorId == accountId || c.ReceiverId == accountId)
+                .OrderByDescending(c => c.LastMessageDate)
+                .FirstOrDefaultAsync();
+        }
+
 
         public async static Task<Conversation> AddConversationAsync(Conversation conversation)
         {

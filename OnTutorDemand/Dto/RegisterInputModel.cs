@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using BusinessObject;
+using System.ComponentModel.DataAnnotations;
 
 namespace OnTutorDemand.Dto
 {
@@ -34,5 +35,15 @@ namespace OnTutorDemand.Dto
         public string Experience { get; set; }
         public string Education { get; set; }
         public string Description { get; set; }
+
+        [Required(ErrorMessage = "Vui lòng chọn ít nhất một lớp dạy")]
+        public IEnumerable<int> SelectedGrades { get; set; }
+
+        [Required(ErrorMessage = "Vui lòng chọn ít nhất một môn học")]
+        public IEnumerable<int> SelectedSubjects { get; set; }
+
+        [Required(ErrorMessage = "Vui lòng chọn ít nhất một khu vực dạy")]
+        public IEnumerable<int> SelectedAreas { get; set; }
+
     }
 }

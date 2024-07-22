@@ -12,6 +12,9 @@ namespace Repository.RepositoryInterface
         IQueryable<Tutor> GetTutorServicesByQuery();
         IEnumerable<Tutor> GetAllTutors();
         Tutor GetTutorById(int? tutorId);
+        Task<IEnumerable<District>> GetAllDistricts();
+        Task<IEnumerable<Subject>> GetAllSubjects();
+        Task<IEnumerable<Grade>> GetAllGrades();
         void AddTutor(Tutor tutor);
         void UpdateTutor(Tutor tutor);
         void DeleteTutor(int? tutorId);
