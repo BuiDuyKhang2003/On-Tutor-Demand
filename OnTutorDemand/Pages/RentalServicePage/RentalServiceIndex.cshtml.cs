@@ -33,8 +33,7 @@ namespace OnTutorDemand.Pages.RentalServicePage
 
         public async Task OnGetAsync(string sortOrder, string currentFilter, string searchString, int? pageIndex)
         {
-            ViewData["RentalServiceId"] = new SelectList(_serviceRepository.GetAllRentalServices(), "Id", "Description");
-            ViewData["TutorId"] = new SelectList(_tutorRepository.GetAllTutors(), "Id", "FullName");
+            
             var userRole = HttpContext.Session.GetString("UserRole");
             if (userRole == null || (!userRole.Equals("Tutor") && !userRole.Equals("User")))
             {

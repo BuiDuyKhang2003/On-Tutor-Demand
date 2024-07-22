@@ -72,8 +72,8 @@
                         <!-- Dropdowns for filters -->
                         <form asp-page="./TutorIndex" method="get" style="margin-top: 15px;">
                             <div class="mb-3">
-                                <label for="searchString">Search</label>
-                                <input type="text" id="searchString" name="searchString" value="@Model.CurrentFilter" placeholder="Search" class="form-control" />
+                                <label for="searchString">Tìm kiếm</label>
+                                <input type="text" id="searchString" name="searchString" value="@Model.CurrentFilter" placeholder="Tìm kiếm" class="form-control" />
                             </div>
                             <div class="mb-3">
                                 <label for="level">Trình độ</label>
@@ -141,7 +141,7 @@
                                     <option value="Cần Giờ">Cần Giờ</option>
                                 </select>
                             </div>
-                            <button type="submit" class="btn btn-primary">Apply Filter</button>
+                            <button type="submit" class="btn btn-primary">Tìm kiếm</button>
                         </form>
                     </div>
                 </div>
@@ -171,13 +171,13 @@
                             <a class="page-link" asp-page="./TutorIndex"
                                asp-route-sortOrder="@Model.CurrentSort"
                                asp-route-pageIndex="@(Model.Tutors.PageIndex - 1)"
-                               asp-route-currentFilter="@Model.CurrentFilter">Previous</a>
+                               asp-route-currentFilter="@Model.CurrentFilter">Trước</a>
                         </li>
                         <li class="page-item @(Model.Tutors.HasNextPage ? "" : "disabled")">
                             <a class="page-link" asp-page="./TutorIndex"
                                asp-route-sortOrder="@Model.CurrentSort"
                                asp-route-pageIndex="@(Model.Tutors.PageIndex + 1)"
-                               asp-route-currentFilter="@Model.CurrentFilter">Next</a>
+                               asp-route-currentFilter="@Model.CurrentFilter">Kế tiếp</a>
                         </li>
                     </ul>
                 </nav>

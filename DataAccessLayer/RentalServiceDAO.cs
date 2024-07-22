@@ -14,6 +14,9 @@ namespace DataAccessLayer
         public static IQueryable<RentalService> GetRentalServicesByQuery()
         {
             return from s in db.RentalServices.Include(x=>x.Tutor).ThenInclude(x => x.Account)
+                                              .Include(t => t.Tutor).ThenInclude(t => t.TutorSubjects).ThenInclude(ts => ts.Subject)
+                                              .Include(x => x.Tutor).ThenInclude(d=>d.TutorAreas).ThenInclude(ta=>ta.District)
+                                              .Include(x => x.Tutor).ThenInclude(tg=>tg.TutorGrades).ThenInclude(g=>g.Grade)
                    select s;
         }
         public static List<RentalService> GetAllRentalServices()
