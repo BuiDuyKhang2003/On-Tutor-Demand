@@ -12,7 +12,7 @@ namespace Repository.RepositoryInterface
         Task<IEnumerable<Account>> GetAllAccounts();
         Task<Account> GetAccountById(int accountId);
         Task<Account> GetAccountByEmail(string email);
-        void AddAccount(Account account);
+        Task<Account> AddAccount(Account account);
         void UpdateAccount(Account account);
         void DeleteAccount(int accountId);
     }

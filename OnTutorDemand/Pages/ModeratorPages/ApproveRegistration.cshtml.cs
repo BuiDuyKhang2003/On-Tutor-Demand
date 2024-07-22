@@ -42,11 +42,12 @@ namespace OnTutorDemand.Pages.ModeratorPages
 
         public async Task<IActionResult> OnPostAsync()
         {
+            ModelState.Remove("TutorRegistration.Password");
             if (!ModelState.IsValid)
             {
                 return Page();
             }
-            tutorRegistrationRepository.UpdateTutorRegistration(TutorRegistration);
+            await tutorRegistrationRepository.UpdateTutorRegistration(TutorRegistration);
 
             return RedirectToPage("./TutorRegistrationPage");
         }

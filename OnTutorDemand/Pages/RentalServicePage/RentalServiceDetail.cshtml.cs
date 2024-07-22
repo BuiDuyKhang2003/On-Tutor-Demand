@@ -37,7 +37,7 @@ namespace OnTutorDemand.Pages.RentalServicePage
             var userRole = HttpContext.Session.GetString("UserRole");
             if (userRole == null || (!userRole.Equals("Tutor") && !userRole.Equals("User")))
             {
-                RedirectToPage("/Authenticate/LoginRegisterPage");
+                RedirectToPage("/Authenticate/Login");
             }
 
             CurrentSort = sortOrder;
