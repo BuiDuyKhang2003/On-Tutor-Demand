@@ -32,28 +32,26 @@ namespace OnTutorDemand.Pages.Authenticate
             {
                 var user = await accountRepository.GetAccountByEmail(EmailLogin);
 
-                if (user.Password != null)
+                if (user != null && user.Password.Equals(PasswordLogin))
                 {
-                    if (user.Password.Equals(PasswordLogin))
+                    if (!user.IsActive)
                     {
-                        HttpContext.Session.SetString("UserEmail", user.Email);
-                        HttpContext.Session.SetString("UserRole", user.Role);
-
-                        if (user.Role.Equals("Admin"))
-                        {
-                            return RedirectToPage("/AdminPages/AdminPage");
-                        }
-                        if (user.Role.Equals("Moderator"))
-                        {
-                            return RedirectToPage("/ModeratorPages/ModeratorPage");
-                        }
-                        if (user.Role.Equals("Tutor"))
-                        {
-                            return RedirectToPage("/RentalServicePage/RentalServiceHomePage");
-                        }
-                        return RedirectToPage("/OnDemandTutorHomePage");
+                        TempData["LoginMessage"] = "Tài khoản của bạn đã bị vô hiệu hóa.";
+                        return Page();
                     }
+
+                    HttpContext.Session.SetString("UserEmail", user.Email);
+                    HttpContext.Session.SetString("UserRole", user.Role);
+
+                    return user.Role switch
+                    {
+                        "Admin" => RedirectToPage("/AdminPages/AdminPage"),
+                        "Moderator" => RedirectToPage("/ModeratorPages/ModeratorPage"),
+                        "Tutor" => RedirectToPage("/RentalServicePage/RentalServiceIndex"),
+                        _ => RedirectToPage("/OnDemandTutorHomePage")
+                    };
                 }
+
                 TempData["LoginMessage"] = "Email hoặc Mật khẩu không chính xác";
             }
 
