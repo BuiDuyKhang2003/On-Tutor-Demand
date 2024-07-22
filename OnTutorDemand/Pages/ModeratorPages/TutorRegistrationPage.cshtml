@@ -246,7 +246,19 @@ else
                                 @Html.DisplayFor(modelItem => item.ApplicationDate)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Status)
+                                @if (item.Status.Equals("Approved"))
+                                {
+                                <span class="text-success font-weight-bold">@Html.DisplayFor(modelItem => item.Status)</span> 
+                                }
+                                else if(item.Status.Equals("Waiting"))
+                                {
+                                    <span class="text-warning font-weight-bold">@Html.DisplayFor(modelItem => item.Status)</span> 
+                                }
+                                else
+                                {
+                                <span class="text-danger font-weight-bold">@Html.DisplayFor(modelItem => item.Status)</span>
+                                }
+                                
                             </td>
                             <td>
                                 <a class="btn btn-info" asp-page="./ApproveRegistration" asp-route-id="@item.Id">Details</a>

@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Net;
+using System.Net.Mail;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using BusinessObject;
-using DataAccessLayer;
 using Repository.RepositoryInterface;
 
 namespace OnTutorDemand.Pages.ModeratorPages
@@ -23,6 +19,12 @@ namespace OnTutorDemand.Pages.ModeratorPages
 
         [BindProperty]
         public TutorRegistration TutorRegistration { get; set; } = default!;
+        
+        [BindProperty]
+        public string Email { get; set; } = default!;
+
+        [BindProperty]
+        public string Description { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -48,8 +50,37 @@ namespace OnTutorDemand.Pages.ModeratorPages
                 return Page();
             }
             await tutorRegistrationRepository.UpdateTutorRegistration(TutorRegistration);
+            await SendEmailAsync(Email, "Tutor Registration " + TutorRegistration.Status, Description);
 
             return RedirectToPage("./TutorRegistrationPage");
+        }
+        
+        private async Task SendEmailAsync(string toEmail, string subject, string body)
+        {
+            try
+            {
+                var smtpClient = new SmtpClient("smtp.gmail.com")
+                {
+                    Port = 587,
+                    Credentials = new NetworkCredential("styematic@gmail.com", "tcqcqeigvocszmas"),
+                    EnableSsl = true,
+                };
+
+                var mailMessage = new MailMessage
+                {
+                    From = new MailAddress("styematic@gmail.com"),
+                    Subject = subject,
+                    Body = body,
+                    IsBodyHtml = true,
+                };
+                mailMessage.To.Add(toEmail);
+
+                await smtpClient.SendMailAsync(mailMessage);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Failed to send email", ex);
+            }
         }
     }
 }
