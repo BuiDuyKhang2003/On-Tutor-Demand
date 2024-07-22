@@ -26,12 +26,20 @@ namespace OnTutorDemand.Pages.RentalServicePage
         public string desSort { get; set; }
         public string CurrentSort { get; set; }
         public string CurrentFilter { get; set; }
-        public List<RentalService> RentalServices { get; set; } = default!;
+        public RentalService RentalService { get; set; } = default!;
         public PaginatedList<Schedule> Schedules { get; set; }
 
-        public async Task OnGetAsync(string sortOrder, string currentFilter, string searchString, int? pageIndex)
+        public async Task<IActionResult> OnGetAsync(int? id,string sortOrder, string currentFilter, string searchString, int? pageIndex)
         {
-            ViewData["RentalServiceId"] = new SelectList(_serviceRepository.GetAllRentalServices(), "Id", "Description");
+            var rentalservice = _serviceRepository.GetRentalServiceById(id);
+            if (rentalservice == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                RentalService = rentalservice;
+            }
             ViewData["DaysOfWeek"] = new SelectList(new List<string> { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" });
 
             var userRole = HttpContext.Session.GetString("UserRole");
@@ -68,7 +76,9 @@ namespace OnTutorDemand.Pages.RentalServicePage
             var pageSize = _configuration.GetValue("PageSize", 4);
             Schedules = await PaginatedList<Schedule>.CreateAsync(
                 scheduleIQ.AsNoTracking(), pageIndex ?? 1, pageSize);
+            return Page();
         }
+        
 
         [BindProperty]
         public Schedule Schedule { get; set; } = default!;
@@ -81,7 +91,7 @@ namespace OnTutorDemand.Pages.RentalServicePage
             }
 
             _scheduleRepository.AddSchedule(Schedule);
-            return RedirectToPage("/RentalServicePage/RentalServiceHomePage");
+            return RedirectToPage("/RentalServicePage/RentalServiceIndex");
         }
     }
 }

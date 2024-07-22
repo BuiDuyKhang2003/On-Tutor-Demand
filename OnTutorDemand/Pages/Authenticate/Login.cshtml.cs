@@ -49,7 +49,7 @@ namespace OnTutorDemand.Pages.Authenticate
                         }
                         if (user.Role.Equals("Tutor"))
                         {
-                            return RedirectToPage("/RentalServicePage/RentalServiceHomePage");
+                            return RedirectToPage("/RentalServicePage/RentalServiceIndex");
                         }
                         return RedirectToPage("/OnDemandTutorHomePage");
                     }

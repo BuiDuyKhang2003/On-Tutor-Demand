@@ -51,7 +51,7 @@ namespace OnTutorDemand.Pages.RentalServicePage
             _serviceRepository.AddRentalService(RentalService);
 
 
-            return RedirectToPage("/RentalServicePage/RentalServiceHomePage");
+            return RedirectToPage("/RentalServicePage/RentalServiceIndex");
         }
     }
 }
