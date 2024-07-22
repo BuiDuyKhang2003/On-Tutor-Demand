@@ -485,7 +485,6 @@ coverage/
 .node_repl_history
 
 # Built application files
-/dist/
 dist-ssr/
 *.local
 
@@ -540,7 +539,6 @@ $RECYCLE.BIN/
 ~$*
 
 # Web Pack
-dist/
 
 # Storybook
 storybook-static/

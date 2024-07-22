@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using OnTutorDemand.Dto;
 using Repository.RepositoryInterface;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace OnTutorDemand.Pages.Authenticate
@@ -52,6 +53,12 @@ namespace OnTutorDemand.Pages.Authenticate
 
             if (ModelState.IsValid)
             {
+                HttpClient client = new HttpClient();
+                var response = await client.GetStringAsync("http://worldtimeapi.org/api/timezone/Etc/UTC");
+                var jsonDocument = JsonDocument.Parse(response);
+                var datetimeString = jsonDocument.RootElement.GetProperty("datetime").GetString();
+                var vietNamTime = DateTime.SpecifyKind(DateTime.Parse(datetimeString), DateTimeKind.Utc);
+
                 var tutorRegistration = new TutorRegistration
                 {
                     FullName = RegisterModel.Name,
@@ -64,6 +71,7 @@ namespace OnTutorDemand.Pages.Authenticate
                     Experience = RegisterModel.Experience,
                     Education = RegisterModel.Education,
                     Description = RegisterModel.Description,
+                    ApplicationDate = vietNamTime,
                     TeachingGrades = RegisterModel.SelectedGrades != null && AvailableGrades != null
                 ? string.Join(",", RegisterModel.SelectedGrades.Select(id => AvailableGrades.FirstOrDefault(g => g.Id == id)?.GradeName ?? ""))
                 : "",

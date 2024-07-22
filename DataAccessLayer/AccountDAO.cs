@@ -10,7 +10,7 @@ namespace DataAccessLayer
 {
     public class AccountDAO
     {
-        private static AppDbContext db;
+        private static AppDbContext db = new();
 
         public async static Task<List<Account>> GetAllAccountsAsync()
         {
