@@ -30,11 +30,12 @@ namespace DataAccessLayer
             return await db.Accounts.FirstOrDefaultAsync(a => a.Email.Equals(email)) ?? new Account();
         }
 
-        public async static void AddAccountAsync(Account account)
+        public async static Task<Account> AddAccountAsync(Account account)
         {
             db = new();
             await db.Accounts.AddAsync(account);
             await db.SaveChangesAsync();
+            return account;
         }
 
         public async static void UpdateAccountAsync(Account account)

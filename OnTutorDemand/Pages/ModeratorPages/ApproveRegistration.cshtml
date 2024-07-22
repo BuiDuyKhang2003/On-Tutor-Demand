@@ -12,7 +12,7 @@
 }
 @if (!isAuthenticated || !isModerator)
 {
-<script>window.location.href = '/Authenticate/LoginRegisterPage';</script>
+<script>window.location.href = '/Authenticate/Login';</script>
 }
 else
 {
@@ -191,7 +191,6 @@ else
         </div>
     </div>
     <div class="container-fluid" style="padding-bottom: 850px;">
-        <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-12 col-lg-12 col-md-9">
                     <div class="card o-hidden border-0 shadow-lg my-5">
@@ -204,8 +203,7 @@ else
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="p-1">
-                                        <form class="user" method="post"
-                                              enctype="multipart/form-data">
+                                        <form class="user" method="post" enctype="multipart/form-data" id="tutorForm">
 
                                             <div class="form-group row">
                                                 <div class="col-sm-6 mb-3 mb-sm-0">
@@ -247,6 +245,22 @@ else
                                                     <input type="text" class="form-control form-control-user" maxlength="80" asp-for="TutorRegistration.Education" readonly>
                                                 </div>
                                             </div>
+                                            <div class="form-group row">
+                                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                                    <label>Teaching Grades</label>
+                                                    <input type="text" class="form-control form-control-user" maxlength="80" asp-for="TutorRegistration.TeachingGrades" readonly>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <label>Teaching Areas</label>
+                                                    <input type="text" class="form-control form-control-user" maxlength="80" asp-for="TutorRegistration.TeachingAreas" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-sm-12 mb-3 mb-sm-0">
+                                                    <label>Teaching Subjects</label>
+                                                    <input type="text" class="form-control form-control-user" maxlength="80" asp-for="TutorRegistration.TeachingSubjects" readonly>
+                                                </div>
+                                            </div>
                                             <div class="form-group" style="margin-bottom: 20px;">
                                                 <label>Description</label>
                                                 <textarea class="form-control"
@@ -257,12 +271,12 @@ else
                                             <div class="row justify-content-center">
                                                 <div class="col-md-6 d-flex justify-content-center">
                                                     <a class="dropdown-item" data-toggle="modal" data-target="#approveModal">
-                                                        <i class="fas fa-check fa-fw mr-2 text-gray-600"></i>
-                                                        Approve this form
+                                                                        <i class="fas fa-check fa-fw mr-2 text-gray-600"></i>
+                                                                        Approve this form
                                                     </a>
                                                     <a class="dropdown-item" data-toggle="modal" data-target="#rejectModal">
-                                                        <i class="fas fa-times fa-fw mr-2 text-gray-600"></i>
-                                                        Reject this form
+                                                                        <i class="fas fa-times fa-fw mr-2 text-gray-600"></i>
+                                                                        Reject this form
                                                     </a>
                                                 </div>
                                             </div>
@@ -278,44 +292,57 @@ else
     </div>
     </div>
     </div>
-    </div>
-    <div class="modal fade" id="approveModal" tabindex="-1" role="dialog" aria-labelledby="approveModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="approveModalLabel">Approve This Tutor?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Confirm" below if you are ready to approve this form.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="/Authenticate/Logout">Approve</a>
+        <!-- Approve Modal -->
+        <div class="modal fade" id="approveModal" tabindex="-1" role="dialog" aria-labelledby="approveModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="approveModalLabel">Approve This Tutor?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Confirm" below if you are ready to approve this form.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <button class="btn btn-primary" type="button" onclick="submitForm('Approved')">Approve</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Reject Modal -->
-    <div class="modal fade" id="rejectModal" tabindex="-1" role="dialog" aria-labelledby="rejectModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="rejectModalLabel">Reject This Tutor?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Confirm" below if you want to reject this form.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-danger" href="/SomewhereElse">Reject</a>
+        <!-- Reject Modal -->
+        <div class="modal fade" id="rejectModal" tabindex="-1" role="dialog" aria-labelledby="rejectModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="rejectModalLabel">Reject This Tutor?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Confirm" below if you want to reject this form.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <button class="btn btn-danger" type="button" onclick="submitForm('Rejected')">Reject</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </body>
+    <script>
+        function submitForm(status) {
+            // Set the status value
+            var statusInput = document.createElement('input');
+            statusInput.type = 'hidden';
+            statusInput.name = 'TutorRegistration.Status';
+            statusInput.value = status;
+            document.getElementById('tutorForm').appendChild(statusInput);
+
+            // Submit the form
+            document.getElementById('tutorForm').submit();
+        }
+    </script>
     <script src="./vendor/jquery/jquery.min.js"></script>
     <script src="./vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="./vendor/jquery-easing/jquery.easing.min.js"></script>

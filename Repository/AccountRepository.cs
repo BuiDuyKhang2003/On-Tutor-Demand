@@ -11,7 +11,7 @@ namespace Repository
 {
     public class AccountRepository : IAccountRepository
     {
-        public void AddAccount(Account account) => AccountDAO.AddAccountAsync(account);
+        public async Task<Account> AddAccount(Account account) => await AccountDAO.AddAccountAsync(account);
 
         public void DeleteAccount(int accountId) => AccountDAO.DeleteAccountAsync(accountId);
 

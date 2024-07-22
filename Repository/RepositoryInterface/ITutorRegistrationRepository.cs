@@ -12,7 +12,7 @@ namespace Repository.RepositoryInterface
         Task<IEnumerable<TutorRegistration>> GetAllTutorRegistrations();
         Task<TutorRegistration> GetTutorRegistrationById(int registrationId);
         void AddTutorRegistration(TutorRegistration tutorRegistration);
-        void UpdateTutorRegistration(TutorRegistration tutorRegistration);
+        Task UpdateTutorRegistration(TutorRegistration tutorRegistration);
         void DeleteTutorRegistration(int registrationId);
     }
 }

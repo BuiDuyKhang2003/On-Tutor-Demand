@@ -14,7 +14,7 @@ namespace Repository
         public async Task<IEnumerable<TutorRegistration>> GetAllTutorRegistrations() => await TutorRegistrationDAO.GetAllTutorRegistrationsAsync();
         public async Task<TutorRegistration> GetTutorRegistrationById(int registrationId) => await TutorRegistrationDAO.GetTutorRegistrationByIdAsync(registrationId);
         public void AddTutorRegistration(TutorRegistration tutorRegistration) => TutorRegistrationDAO.AddTutorRegistrationAsync(tutorRegistration);
-        public void UpdateTutorRegistration(TutorRegistration tutorRegistration) => TutorRegistrationDAO.UpdateTutorRegistrationAsync(tutorRegistration);
+        public async Task UpdateTutorRegistration(TutorRegistration tutorRegistration) => await TutorRegistrationDAO.UpdateTutorRegistrationAsync(tutorRegistration);
         public void DeleteTutorRegistration(int registrationId) => TutorRegistrationDAO.DeleteTutorRegistrationAsync(registrationId);
     }
 }

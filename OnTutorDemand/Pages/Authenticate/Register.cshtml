@@ -63,14 +63,7 @@
                     <input type="text" asp-for="RegisterModel.Address" placeholder="Địa Chỉ" />
                    
                 </div>
-                <span asp-validation-for="RegisterModel.Role" class="text-danger"></span>
-                <div class="form-control select-container">
-                    <div class="form-control select-container">
-                        <select asp-for="RegisterModel.Role" id="role" readonly disabled>
-                            <option value="student" selected>Học sinh</option>
-                        </select>
-                    </div>                  
-                </div>
+                <input type="hidden" asp-for="RegisterModel.Role" value="student" />
             
                 <button type="submit" value="submit">Đăng ký</button>
                 <span>hoặc sử dụng tài khoản của bạn</span>

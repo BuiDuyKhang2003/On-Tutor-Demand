@@ -31,11 +31,11 @@ namespace DataAccessLayer
             await db.SaveChangesAsync();
         }
 
-        public async static void UpdateTutorRegistrationAsync(TutorRegistration tutorRegistration)
+        public async static Task UpdateTutorRegistrationAsync(TutorRegistration tutorRegistration)
         {
             db = new();
             var existingRegistration = await db.TutorRegistrations
-                                           .FirstOrDefaultAsync(tr => tr.Id == tutorRegistration.Id);
+                                           .FirstOrDefaultAsync(tr => tr.Email.Trim().Equals(tutorRegistration.Email.Trim()));
 
             if (existingRegistration != null)
             {
@@ -46,31 +46,32 @@ namespace DataAccessLayer
             {
                 throw new Exception("Tutor registration not found.");
             }
-            var existAccount = await AccountDAO.GetAccountByEmailAsync(tutorRegistration.Email);
+            var existAccount = await AccountDAO.GetAccountByEmailAsync(existingRegistration.Email);
             var existEmail = existAccount.Email;
             if (existingRegistration.Status.Equals("Approved") && existEmail == null) 
             {
                 var user = new Account
                 {
-                    Email = tutorRegistration.Email,
-                    Password = tutorRegistration.Password,
-                    FullName = tutorRegistration.FullName,
-                    DateOfBirth = tutorRegistration.DateOfBirth,
-                    Phone = tutorRegistration.Phone,
-                    Gender = tutorRegistration.Gender,
-                    Address = tutorRegistration.Address,
+                    Email = existingRegistration.Email,
+                    Password = existingRegistration.Password,
+                    FullName = existingRegistration.FullName,
+                    DateOfBirth = existingRegistration.DateOfBirth,
+                    Phone = existingRegistration.Phone,
+                    Gender = existingRegistration.Gender,
+                    Address = existingRegistration.Address,
                     Role = "Tutor",
                     IsActive = true
                 };
 
-                AccountDAO.AddAccountAsync(user);
+                Account newUser = await AccountDAO.AddAccountAsync(user);
+                await db.SaveChangesAsync();
 
                 Tutor tutor = new Tutor
                 {
-                    AccountId = user.Id,
-                    Education = tutorRegistration.Education,
-                    Experience = tutorRegistration.Experience,
-                    Description = tutorRegistration.Description
+                    AccountId = newUser.Id,
+                    Education = existingRegistration.Education,
+                    Experience = existingRegistration.Experience,
+                    Description = existingRegistration.Description
                 };
 
                 TutorDAO.AddTutor(tutor);
