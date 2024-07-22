@@ -31,11 +31,14 @@ namespace OnTutorDemand.Pages.Authenticate
             ModelState.Remove("EmailLogin");
             ModelState.Remove("PasswordLogin");
 
-            if (RegisterModel.Role == "user")
+            if (RegisterModel.Role == "student")
             {
                 ModelState.Remove("RegisterModel.Experience");
                 ModelState.Remove("RegisterModel.Education");
                 ModelState.Remove("RegisterModel.Description");
+                ModelState.Remove("RegisterModel.SelectedGrades");
+                ModelState.Remove("RegisterModel.SelectedSubjects");
+                ModelState.Remove("RegisterModel.SelectedAreas");
             }
 
             if (ModelState.IsValid)
@@ -52,32 +55,12 @@ namespace OnTutorDemand.Pages.Authenticate
                     IsActive = true
                 };
 
-                if (RegisterModel.Role == "user")
+                if (RegisterModel.Role.Equals("student"))
                 {
                     user.Role = "User";
-                    accountRepository.AddAccount(user);
+                    await accountRepository.AddAccount(user);
                     return RedirectToPage("/Authenticate/Login");
-                }
-
-                if (RegisterModel.Role == "teacher")
-                {
-                    var tutorRegistration = new TutorRegistration
-                    {
-                        Email = RegisterModel.Email,
-                        Password = RegisterModel.Password,
-                        FullName = RegisterModel.Name,
-                        DateOfBirth = RegisterModel.Birthdate,
-                        Phone = RegisterModel.Phone,
-                        Gender = RegisterModel.Gender,
-                        Address = RegisterModel.Address,
-                        Experience = RegisterModel.Experience,
-                        Education = RegisterModel.Education,
-                        Status = "Waiting",
-                        Description = RegisterModel.Description
-                    };
-                    registrationRepository.AddTutorRegistration(tutorRegistration);
-                    return RedirectToPage("/Authenticate/Login");
-                }
+                }           
             }
 
             return Page();
