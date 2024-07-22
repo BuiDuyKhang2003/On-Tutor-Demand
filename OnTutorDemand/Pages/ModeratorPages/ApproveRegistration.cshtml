@@ -268,18 +268,21 @@ else
                                                                       asp-for="TutorRegistration.Description"
                                                                       readonly></textarea>
                                             </div>
-                                            <div class="row justify-content-center">
-                                                <div class="col-md-6 d-flex justify-content-center">
-                                                    <a class="dropdown-item" data-toggle="modal" data-target="#approveModal">
-                                                                        <i class="fas fa-check fa-fw mr-2 text-gray-600"></i>
-                                                                        Approve this form
-                                                    </a>
-                                                    <a class="dropdown-item" data-toggle="modal" data-target="#rejectModal">
-                                                                        <i class="fas fa-times fa-fw mr-2 text-gray-600"></i>
-                                                                        Reject this form
-                                                    </a>
+                                            @if (Model.TutorRegistration.Status.Equals("Waiting"))
+                                            {
+                                                <div class="row justify-content-center">
+                                                    <div class="col-md-6 d-flex justify-content-center">
+                                                        <a class="dropdown-item" data-toggle="modal" data-target="#approveModal">
+                                                            <i class="fas fa-check fa-fw mr-2 text-gray-600"></i>
+                                                            Approve this form
+                                                        </a>
+                                                        <a class="dropdown-item" data-toggle="modal" data-target="#rejectModal">
+                                                            <i class="fas fa-times fa-fw mr-2 text-gray-600"></i>
+                                                            Reject this form
+                                                        </a>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            }
                                         </form>
                                     </div>
                                 </div>
@@ -293,54 +296,91 @@ else
     </div>
     </div>
         <!-- Approve Modal -->
-        <div class="modal fade" id="approveModal" tabindex="-1" role="dialog" aria-labelledby="approveModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="approveModalLabel">Approve This Tutor?</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">Select "Confirm" below if you are ready to approve this form.</div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <button class="btn btn-primary" type="button" onclick="submitForm('Approved')">Approve</button>
-                    </div>
+    <div class="modal fade" id="approveModal" tabindex="-1" role="dialog" aria-labelledby="approveModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="approveModalLabel">Approve This Tutor?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="approveEmailForm">
+                        <div class="form-group">
+                            <label for="approveEmail">Email:</label>
+                            <input type="email" class="form-control" id="approveEmail" name="email" value="@Model.TutorRegistration.Email" required readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="approveDescription">Reason:</label>
+                            <textarea class="form-control" id="approveDescription" name="description" rows="3" required></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-primary" type="button" onclick="submitForm('Approved')">Approve</button>
                 </div>
             </div>
         </div>
+    </div>
 
         <!-- Reject Modal -->
-        <div class="modal fade" id="rejectModal" tabindex="-1" role="dialog" aria-labelledby="rejectModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="rejectModalLabel">Reject This Tutor?</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">Select "Confirm" below if you want to reject this form.</div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <button class="btn btn-danger" type="button" onclick="submitForm('Rejected')">Reject</button>
-                    </div>
+    <div class="modal fade" id="rejectModal" tabindex="-1" role="dialog" aria-labelledby="rejectModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="rejectModalLabel">Reject This Tutor?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="rejectEmailForm">
+                        <div class="form-group">
+                            <label for="rejectEmail">Email:</label>
+                            <input type="email" class="form-control" id="rejectEmail" name="email" value="@Model.TutorRegistration.Email" required readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="rejectDescription">Reason:</label>
+                            <textarea class="form-control" id="rejectDescription" name="description" rows="3" required></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-danger" type="button" onclick="submitForm('Rejected')">Reject</button>
                 </div>
             </div>
         </div>
+    </div>
     </body>
     <script>
         function submitForm(status) {
-            // Set the status value
-            var statusInput = document.createElement('input');
+            const email = document.getElementById(status === 'Approved' ? 'approveEmail' : 'rejectEmail').value;
+            const description = status === 'Approved' ? document.getElementById('approveDescription').value : document.getElementById('rejectDescription').value;
+
+            const statusInput = document.createElement('input');
             statusInput.type = 'hidden';
             statusInput.name = 'TutorRegistration.Status';
             statusInput.value = status;
-            document.getElementById('tutorForm').appendChild(statusInput);
 
-            // Submit the form
-            document.getElementById('tutorForm').submit();
+            const emailInput = document.createElement('input');
+            emailInput.type = 'hidden';
+            emailInput.name = 'Email';
+            emailInput.value = email;
+
+            const descriptionInput = document.createElement('input');
+            descriptionInput.type = 'hidden';
+            descriptionInput.name = 'Description';
+            descriptionInput.value = description;
+
+            const form = document.getElementById('tutorForm');
+            form.appendChild(statusInput);
+            form.appendChild(emailInput);
+            form.appendChild(descriptionInput);
+
+            form.submit();
         }
     </script>
     <script src="./vendor/jquery/jquery.min.js"></script>
