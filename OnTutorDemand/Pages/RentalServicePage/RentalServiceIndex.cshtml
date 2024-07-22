@@ -25,6 +25,9 @@
                 </a>
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.RentalServices[0].PricePerSession)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.RentalServices[0].Tutor.FullName)
             </th>
             <th></th>
@@ -36,6 +39,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PricePerSession)
+                </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Tutor.FullName)
             </td>

@@ -34,7 +34,7 @@ namespace OnTutorDemand.Pages.RentalServicePage
         public async Task OnGetAsync(string sortOrder, string currentFilter, string searchString, int? pageIndex)
         {
             ViewData["RentalServiceId"] = new SelectList(_serviceRepository.GetAllRentalServices(), "Id", "Description");
-            ViewData["Id"] = new SelectList(_tutorRepository.GetAllTutors(), "Id", "FullName");
+            ViewData["TutorId"] = new SelectList(_tutorRepository.GetAllTutors(), "Id", "FullName");
             var userRole = HttpContext.Session.GetString("UserRole");
             if (userRole == null || (!userRole.Equals("Tutor") && !userRole.Equals("User")))
             {
@@ -55,7 +55,7 @@ namespace OnTutorDemand.Pages.RentalServicePage
             IQueryable<RentalService> serviceIQ = _serviceRepository.GetRentalServicesByQuery();
             if (!String.IsNullOrEmpty(searchString))
             {
-                serviceIQ = serviceIQ.Include(t => t.Tutor).ThenInclude(t => t.TutorAreas)
+                serviceIQ = serviceIQ.Include(t => t.Tutor).ThenInclude(ta => ta.TutorAreas)
                     .ThenInclude(ta => ta.District)
                     .Include(t => t.Tutor).ThenInclude(t => t.TutorGrades)
                     .ThenInclude(tg => tg.Grade)

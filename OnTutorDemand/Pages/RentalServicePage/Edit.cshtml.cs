@@ -28,6 +28,7 @@ namespace OnTutorDemand.Pages.RentalServicePage
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
+            ViewData["TutorId"] = new SelectList(_tutorRepository.GetAllTutors(), "Id", "FullName");
             var userRole = HttpContext.Session.GetString("UserRole");
             if (userRole == null || !userRole.Equals("Tutor"))
             {
@@ -70,7 +71,7 @@ namespace OnTutorDemand.Pages.RentalServicePage
                 throw new Exception();
             }
 
-            return RedirectToPage("/RentalServicePage/RentalServiceIndex");
+            return RedirectToPage("/RentalServicePage/RentalServiceIndexForTurtor");
         }
     }
 }

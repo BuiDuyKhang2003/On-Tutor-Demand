@@ -13,17 +13,17 @@ namespace DataAccessLayer
         private static AppDbContext db = new();
         public static IQueryable<RentalService> GetRentalServicesByQuery()
         {
-            return from s in db.RentalServices.Include(x=>x.Tutor)
+            return from s in db.RentalServices.Include(x=>x.Tutor).ThenInclude(x => x.Account)
                    select s;
         }
         public static List<RentalService> GetAllRentalServices()
         {
-            return db.RentalServices.ToList();
+            return db.RentalServices.Include(r=>r.Tutor).ThenInclude(x=>x.Account).ToList();
         }
 
         public static RentalService GetRentalServiceById(int? rentalServiceId)
         {
-            return db.RentalServices.Find(rentalServiceId) ?? new RentalService();
+            return db.RentalServices.Include(r => r.Tutor).ThenInclude(x => x.Account).FirstOrDefault(s => s.Id == rentalServiceId) ?? new RentalService();
         }
 
         public static void AddRentalService(RentalService rentalService)
@@ -41,7 +41,7 @@ namespace DataAccessLayer
 
         public static void DeleteRentalService(int? rentalServiceId)
         {
-            var rentalService = db.RentalServices.Find(rentalServiceId);
+            var rentalService = db.RentalServices.Include(r => r.Tutor).ThenInclude(x => x.Account).FirstOrDefault(s=> s.Id == rentalServiceId);
             if (rentalService != null)
             {
                 db.RentalServices.Remove(rentalService);
