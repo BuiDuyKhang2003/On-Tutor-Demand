@@ -66,7 +66,7 @@ namespace OnTutorDemand.Pages.RentalServicePage
 
             }
 
-            return RedirectToPage("/RentalServicePage/RentalServiceHomePage");
+            return RedirectToPage("/RentalServicePage/RentalServiceIndex");
         }
     }
 }

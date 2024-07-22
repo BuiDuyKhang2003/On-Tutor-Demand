@@ -70,7 +70,7 @@ namespace OnTutorDemand.Pages.RentalServicePage
                 throw new Exception();
             }
 
-            return RedirectToPage("/RentalServicePage/RentalServiceHomePage");
+            return RedirectToPage("/RentalServicePage/RentalServiceIndex");
         }
     }
 }

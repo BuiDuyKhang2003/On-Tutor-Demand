@@ -152,7 +152,7 @@
                     @foreach (var item in Model.Tutors)
                     {
                         <div class="col-md-4">
-                            <div class="card card-custom" data-link="@Url.Page("./Details", new { id = item.Id })">
+                            <div class="card card-custom" data-link="@Url.Page("./TutorPage", new { id = item.Id })">
                                 <div class="card-body">
                                     <h2 class="card-title"><i class="fas fa-graduation-cap fa-fw"></i> @Html.DisplayFor(modelItem => item.FullName)</h2>
                                     <p class="card-text"><i class="fas fa-book card-icon"></i> Trình độ: @Html.DisplayFor(modelItem => item.Education)</p>
