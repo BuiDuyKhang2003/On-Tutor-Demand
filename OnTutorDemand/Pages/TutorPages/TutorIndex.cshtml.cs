@@ -61,13 +61,29 @@ namespace OnTutorDemand.Pages.TutorPages
                      || s.TutorAreas.Any(ta => ta.District.DistrictName.ToUpper().Contains(searchString))
                      || s.TutorGrades.Any(ta => ta.Grade.GradeName.ToUpper().Contains(searchString))
                      || s.TutorSubjects.Any(ta => ta.Subject.SubjectName.ToUpper().Contains(searchString))
-
                  );
-           
-
             }
 
-           
+            // Apply additional filters
+            if (!String.IsNullOrEmpty(education))
+            {
+                tutorIQ = tutorIQ.Where(s => s.Education == education);
+            }
+
+            if (!String.IsNullOrEmpty(subject))
+            {
+                tutorIQ = tutorIQ.Where(s => s.TutorSubjects.Any(ts => ts.Subject.SubjectName == subject));
+            }
+
+            if (!String.IsNullOrEmpty(grade))
+            {
+                tutorIQ = tutorIQ.Where(s => s.TutorGrades.Any(tg => tg.Grade.GradeName == grade));
+            }
+
+            if (!String.IsNullOrEmpty(district))
+            {
+                tutorIQ = tutorIQ.Where(s => s.TutorAreas.Any(ta => ta.District.DistrictName == district));
+            }
 
             switch (sortOrder)
             {
@@ -86,5 +102,6 @@ namespace OnTutorDemand.Pages.TutorPages
             Tutors = await PaginatedList<Tutor>.CreateAsync(
                 tutorIQ.AsNoTracking(), pageIndex ?? 1, pageSize);
         }
+
     }
 }

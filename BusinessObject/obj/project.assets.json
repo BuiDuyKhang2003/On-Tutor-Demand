@@ -3254,24 +3254,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\huvo2\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\TinDinh\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\huvo2\\OneDrive\\Máy tính\\PRN221\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj",
+      "projectUniqueName": "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\v2\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj",
       "projectName": "BusinessObject",
-      "projectPath": "C:\\Users\\huvo2\\OneDrive\\Máy tính\\PRN221\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj",
-      "packagesPath": "C:\\Users\\huvo2\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\huvo2\\OneDrive\\Máy tính\\PRN221\\On-Tutor-Demand\\BusinessObject\\obj\\",
+      "projectPath": "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\v2\\On-Tutor-Demand\\BusinessObject\\BusinessObject.csproj",
+      "packagesPath": "C:\\Users\\TinDinh\\.nuget\\packages\\",
+      "outputPath": "D:\\FPT\\Chuyên Ngành 7\\PRN221\\ProjectTeam\\v2\\On-Tutor-Demand\\BusinessObject\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\huvo2\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\TinDinh\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3334,7 +3329,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
       }
     }
   }

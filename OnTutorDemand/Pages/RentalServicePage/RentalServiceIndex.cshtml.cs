@@ -31,9 +31,8 @@ namespace OnTutorDemand.Pages.RentalServicePage
         public string CurrentFilter { get; set; }
         public PaginatedList<RentalService> RentalServices { get; set; }
 
-        public async Task OnGetAsync(string sortOrder, string currentFilter, string searchString, int? pageIndex)
+        public async Task OnGetAsync(string sortOrder, string currentFilter, string searchString, int? pageIndex, string education, string subject, string grade, string district)
         {
-            
             var userRole = HttpContext.Session.GetString("UserRole");
             if (userRole == null || (!userRole.Equals("Tutor") && !userRole.Equals("User")))
             {
@@ -66,7 +65,30 @@ namespace OnTutorDemand.Pages.RentalServicePage
 
                     );
             }
-            switch (sortOrder) {
+
+            // Apply additional filters
+            if (!String.IsNullOrEmpty(education))
+            {
+                serviceIQ = serviceIQ.Where(s => s.Tutor.Education == education);
+            }
+
+            if (!String.IsNullOrEmpty(subject))
+            {
+                serviceIQ = serviceIQ.Where(s => s.Tutor.TutorSubjects.Any(ts => ts.Subject.SubjectName == subject));
+            }
+
+            if (!String.IsNullOrEmpty(grade))
+            {
+                serviceIQ = serviceIQ.Where(s => s.Tutor.TutorGrades.Any(tg => tg.Grade.GradeName == grade));
+            }
+
+            if (!String.IsNullOrEmpty(district))
+            {
+                serviceIQ = serviceIQ.Where(s => s.Tutor.TutorAreas.Any(ta => ta.District.DistrictName == district));
+            }
+
+            switch (sortOrder)
+            {
                 case "Description_desc":
                     serviceIQ = serviceIQ.OrderByDescending(s => s.Description);
                     break;
@@ -74,10 +96,11 @@ namespace OnTutorDemand.Pages.RentalServicePage
                     serviceIQ = serviceIQ.OrderBy(s => s.Description);
                     break;
             }
-             
-                var pageSize = _configuration.GetValue("PageSize", 4);
-                RentalServices = await PaginatedList<RentalService>.CreateAsync(
-                    serviceIQ.AsNoTracking(), pageIndex ?? 1, pageSize);
-            }
+
+            var pageSize = _configuration.GetValue("PageSize", 6);
+            RentalServices = await PaginatedList<RentalService>.CreateAsync(
+                serviceIQ.AsNoTracking(), pageIndex ?? 1, pageSize);
+        }
+
     }
 }
