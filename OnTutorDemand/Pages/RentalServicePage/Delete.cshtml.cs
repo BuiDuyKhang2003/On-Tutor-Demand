@@ -9,17 +9,18 @@ using BusinessObject;
 using DataAccessLayer;
 using Repository.RepositoryInterface;
 using Repository;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace OnTutorDemand.Pages.RentalServicePage
 {
     public class DeleteModel : PageModel
     {
         private IRentalServiceRepository _serviceRepository;
-
+        private ITutorRepository _tutorRepository;
         public DeleteModel()
         {
             _serviceRepository = new RentalServiceRepository();
-
+            _tutorRepository = new TutorRepository();   
         }
 
         [BindProperty]
@@ -27,6 +28,7 @@ namespace OnTutorDemand.Pages.RentalServicePage
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
+            ViewData["TutorId"] = new SelectList(_tutorRepository.GetAllTutors(), "Id", "Description");
             var userRole = HttpContext.Session.GetString("UserRole");
             if (userRole == null || !userRole.Equals("Tutor"))
             {
@@ -66,7 +68,7 @@ namespace OnTutorDemand.Pages.RentalServicePage
 
             }
 
-            return RedirectToPage("/RentalServicePage/RentalServiceIndex");
+            return RedirectToPage("/RentalServicePage/RentalServiceIndexForTurtor");
         }
     }
 }

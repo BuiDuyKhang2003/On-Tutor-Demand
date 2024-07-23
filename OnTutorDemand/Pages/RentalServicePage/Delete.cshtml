@@ -19,18 +19,24 @@
             @Html.DisplayFor(model => model.RentalService.Description)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.RentalService.Tutor)
+            @Html.DisplayNameFor(model => model.RentalService.PricePerSession)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.RentalService.Tutor.Description)
+            @Html.DisplayFor(model => model.RentalService.PricePerSession)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.RentalService.Tutor.FullName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.RentalService.Tutor.FullName)
         </dd>
     </dl>
-    
+
     <form method="post">
         <input type="hidden" asp-for="RentalService.Id" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-page="./RentalServiceHomePage">Back to List</a>
+        <a asp-page="./RentalServiceIndexForTurtor">Back to List</a>
     </form>
 </div>
- 
+
 

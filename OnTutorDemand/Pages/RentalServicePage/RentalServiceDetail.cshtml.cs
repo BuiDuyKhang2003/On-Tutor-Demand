@@ -91,7 +91,7 @@ namespace OnTutorDemand.Pages.RentalServicePage
             }
 
             _scheduleRepository.AddSchedule(Schedule);
-            return RedirectToPage("/RentalServicePage/RentalServiceIndex");
+            return RedirectToPage("/RentalServicePage/RentalServiceIndexForTurtor");
         }
     }
 }

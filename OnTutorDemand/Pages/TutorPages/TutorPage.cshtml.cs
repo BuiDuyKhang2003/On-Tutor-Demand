@@ -11,15 +11,16 @@ namespace OnTutorDemand.Pages.TutorPages
             // Dummy data for demonstration purposes
             Tutor = new TutorInfo
             {
-                FullName = "Nguy?n V?n A",
+                FullName = "Nguyễn Văn A",
                 Gender = "Nam",
                 BirthYear = 1985,
-                Education = "Th?c S?",
-                Experience = "10 n?m",
-                Subjects = "To�n, L�, H�a",
-                Districts = "Qu?n 1, Qu?n 3, Qu?n 5",
-                Grades = "L?p 10, L?p 11, L?p 12",
-                Description = "C� nhi?u kinh nghi?m gi?ng d?y c�c l?p c?p 3, ph??ng ph�p gi?ng d?y d? hi?u, chuy�n s�u c�c m�n To�n, L�, H�a."
+                Education = "Thạc Sĩ",
+                Experience = "10 năm",
+                Subjects = "Toán, Lý, Hóa",
+                Districts = "Quận 1, Quận 3, Quận 5",
+                Grades = "Lớp 10, Lớp 11, Lớp 12",
+                Description = "Có nhiều kinh nghiệm giảng dạy các lớp cấp 3, phương pháp giảng dạy dễ hiểu, chuyên sâu các môn Toán, Lý, Hóa."
+
             };
         }
 

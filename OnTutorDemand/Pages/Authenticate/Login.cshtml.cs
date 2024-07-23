@@ -47,7 +47,7 @@ namespace OnTutorDemand.Pages.Authenticate
                     {
                         "Admin" => RedirectToPage("/AdminPages/AdminPage"),
                         "Moderator" => RedirectToPage("/ModeratorPages/ModeratorPage"),
-                        "Tutor" => RedirectToPage("/RentalServicePage/RentalServiceIndex"),
+                        "Tutor" => RedirectToPage("/RentalServicePage/RentalServiceIndexForTurtor"),
                         _ => RedirectToPage("/OnDemandTutorHomePage")
                     };
                 }

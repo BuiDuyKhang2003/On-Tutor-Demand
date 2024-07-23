@@ -1,0 +1,68 @@
+﻿@page
+@model RentalServiceIndexForTutorModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.desSort"
+                   >
+                    @Html.DisplayNameFor(model => model.RentalService[0].Description)
+                </a>
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.RentalService[0].PricePerSession)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RentalService[0].Tutor.FullName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.RentalService) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PricePerSession)
+            </td>
+            <td>
+                    @Html.DisplayFor(model => item.Tutor.FullName)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+        <div class="pagination-buttons">
+            <a asp-page="./RentalServiceHomePage"
+               asp-route-sortOrder="@Model.CurrentSort"
+               asp-route-pageIndex="@(Model.RentalService.PageIndex - 1)"
+               
+               class="btn btn-primary @(!Model.RentalService.HasPreviousPage ? "disabled" : "")">
+                Previous
+            </a>
+            <a asp-page="./RentalServiceHomePage"
+               asp-route-sortOrder="@Model.CurrentSort"
+               asp-route-pageIndex="@(Model.RentalService.PageIndex + 1)"
+               
+               class="btn btn-primary @(!Model.RentalService.HasNextPage ? "disabled" : "")">
+                Next
+            </a>
+        </div>
+    </tbody>
+</table>
