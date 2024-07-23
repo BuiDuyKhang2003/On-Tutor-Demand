@@ -107,50 +107,82 @@ ViewData["Title"] = "Chat";
     <div class="chat-container">
         <div class="conversation-list">
             <h5>Conversations</h5>
-            <ul class="list-unstyled">
-                @foreach (var conversation in Model.PreviousConversations)
+                @if (Model.PreviousConversations == null || !Model.PreviousConversations.Any())
                 {
-                <li class="conversation-item">
-                    <img src="/img/undraw_profile_1.svg" alt="User Image" />
-                    <a asp-page-handler="conversation" asp-route-conversationid="@conversation.Id">
-                        <div>
-                            <strong>@conversation.Subject</strong><br />
-                            <small>@Model.FormatRelativeDate(conversation.LastMessageDate)</small><br />
-                            @* <small>@conversation.ChatMessages</small> *@
-                            last message send
-                        </div>
-                    </a>
-                </li>
+                    <p>There are no previous conversations.</p>
                 }
-            </ul>
+                else
+                {
+                    <ul class="list-unstyled">
+                        @foreach (var conversation in Model.PreviousConversations)
+                        {
+                            <li class="conversation-item">
+                                <img src="/img/undraw_profile_1.svg" alt="User Image" />
+                                <a asp-page-handler="conversation" asp-route-conversationid="@conversation.Id">
+                                    <div>
+                                        @if (conversation.Initiator.FullName.Equals(Model.CurrentUserName))
+                                        {
+                                            <strong>@conversation.Receiver.FullName</strong><br/>
+                                        }
+                                        else
+                                        {
+                                            <strong>@conversation.Initiator.FullName</strong><br/>
+                                        }
+                                        <small>@Model.FormatRelativeDate(conversation.LastMessageDate)</small><br />
+                                        last message send
+                                    </div>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                }
         </div>
         <div class="chat-content">
-            <div class="chat-header">
-                <div class="user-info">
-                    <img src="/img/undraw_profile_1.svg" alt="User Image" />
-                    <div>
-                        <strong>@Model.Conversation?.Receiver?.FullName</strong><br />
-                        <small>@Model.Conversation?.Receiver?.DateOfBirth.ToString("d")</small>
-                    </div>
-                </div>
-            </div>
-            <div id="messagesList" class="message-list">
-                @foreach (var message in Model.ChatMessages)
+                @if (Model.Conversation == null)
                 {
-                <div class="message-item">
-                    <strong>@(message.Sender?.FullName ?? "Unknown Sender"):</strong><span>@message.Content</span>                            
-                </div>
+                    <div class="chat-header">
+                        <p>No conversation selected.</p>
+                    </div>
+                    <div id="messagesList" class="message-list">
+                        <p>Please select a conversation from the list</p>
+                    </div>
                 }
-            </div>
-            <div class="message-input">
-                <input type="hidden" id="conversationId" value="@Model.Conversation.Id"/>
-                <input type="hidden" id="userId" value="@Model.UserId"/>
-                <div class="d-flex flex-column w-100">
-                    <textarea id="messageInput" placeholder="Type a message..." class="form-control mb-2"></textarea>
-                    <span class="text-danger font-italic font-weight-light" style="font-size: 14px">*Illegal actions or trading sensitive information are prohibited on this platform.</span>
-                </div>
-                <button id="sendButton" class="btn btn-primary ml-2"><i class="fas fa-paper-plane"></i> Send</button>
-            </div>
+                else
+                {
+                    <div class="chat-header">
+                        <div class="user-info">
+                            <img src="/img/undraw_profile_1.svg" alt="User Image" />
+                            <div>
+                                <strong>@Model.Conversation.Receiver?.FullName</strong><br />
+                                <small>@Model.Conversation.Receiver?.DateOfBirth.ToString("d")</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="messagesList" class="message-list">
+                        @if (Model.ChatMessages == null || !Model.ChatMessages.Any())
+                        {
+                            <p>There are no messages in this conversation yet.</p>
+                        }
+                        else
+                        {
+                            @foreach (var message in Model.ChatMessages)
+                            {
+                                <div class="message-item">
+                                    <strong>@(message.Sender?.FullName ?? "Unknown Sender"):</strong><span>@message.Content</span>
+                                </div>
+                            }
+                        }
+                    </div>
+                    <div class="message-input">
+                        <input type="hidden" id="conversationId" value="@Model.Conversation.Id" />
+                        <input type="hidden" id="userId" value="@Model.UserId" />
+                        <div class="d-flex flex-column w-100">
+                            <textarea id="messageInput" placeholder="Type a message..." class="form-control mb-2"></textarea>
+                            <span class="text-danger font-italic font-weight-light" style="font-size: 14px">*Illegal actions or trading sensitive information are prohibited on this platform.</span>
+                        </div>
+                        <button id="sendButton" class="btn btn-primary ml-2"><i class="fas fa-paper-plane"></i> Send</button>
+                    </div>
+                }
         </div>
     </div>
 </div>

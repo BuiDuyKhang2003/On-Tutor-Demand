@@ -21,7 +21,7 @@ namespace DataAccessLayer
         public async static Task<List<Conversation>> GetConversationsByUserIdAsync(int accountId)
         {
             db = new();
-            return await db.Conversations.Where(c => c.InitiatorId == accountId || c.ReceiverId == accountId).ToListAsync();
+            return await db.Conversations.Include(c => c.Initiator).Include(c => c.Receiver).Where(c => c.InitiatorId == accountId || c.ReceiverId == accountId).ToListAsync();
         }
 
         public async static Task<Conversation> GetConversationByIdAsync(int conversationId)

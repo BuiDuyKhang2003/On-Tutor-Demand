@@ -32,7 +32,10 @@ namespace OnTutorDemand.Pages.ChatPages
 
         [BindProperty]
         public int UserId { get; set; }
-        
+
+        [BindProperty]
+        public string CurrentUserName { get; set; }
+
         public string FormatRelativeDate(DateTime dateTime)
         {
             var span = DateTime.Now - dateTime;
@@ -54,6 +57,8 @@ namespace OnTutorDemand.Pages.ChatPages
             {
                 return RedirectToPage("/Authenticate/Login");
             }
+
+            CurrentUserName = currentAccount.FullName;
 
             UserId = currentAccount.Id;
             PreviousConversations = (await conversationRepository.GetConversationsByUserId(UserId)).ToList();
