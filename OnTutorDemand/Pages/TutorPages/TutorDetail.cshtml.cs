@@ -58,7 +58,7 @@ public class TutorDetail : PageModel
                 LastMessageDate = vietNamTime
             };            
             Conversation addedConversation = await conversationRepository.AddConversation(newConversation);
-            return RedirectToPage("/ChatPages/ChatPage", new { conversationid = addedConversation.Id });
+            return RedirectToPage("/ChatPages/ChatPage", new { handler = "Conversation", conversationId = addedConversation.Id });
         }
     }
 }

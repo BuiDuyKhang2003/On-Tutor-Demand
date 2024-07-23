@@ -1,6 +1,7 @@
 ﻿document.addEventListener("DOMContentLoaded", function () {
     const connection = new signalR.HubConnectionBuilder()
         .withUrl("/chatHub")
+        .withAutomaticReconnect()
         .build();
 
     connection.on("ReceiveMessage", function (user, message) {

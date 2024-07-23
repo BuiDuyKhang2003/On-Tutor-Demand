@@ -1,5 +1,6 @@
 ﻿using BusinessObject;
 using Microsoft.AspNetCore.SignalR;
+using Repository;
 using Repository.RepositoryInterface;
 using System;
 using System.Text.Json;
@@ -11,11 +12,13 @@ namespace OnTutorDemand.Pages.ChatHub
     {
         private readonly IChatMessageRepository chatMessageRepository;
         private readonly IAccountRepository accountRepository;
+        private readonly IConversationRepository conversationRepository;
 
-        public ChatHub(IChatMessageRepository chatMessageRepository, IAccountRepository accountRepository)
+        public ChatHub(IChatMessageRepository chatMessageRepository, IAccountRepository accountRepository, IConversationRepository conversationRepository)
         {
             this.chatMessageRepository = chatMessageRepository;
             this.accountRepository = accountRepository;
+            this.conversationRepository = conversationRepository;
         }
 
         public async Task SendMessage(int conversationId, int senderId, string message)
@@ -45,6 +48,12 @@ namespace OnTutorDemand.Pages.ChatHub
                 Account sender = await accountRepository.GetAccountById(senderId);
 
                 await chatMessageRepository.AddChatMessage(chatMessage);
+
+                Conversation currentConversation = await conversationRepository.GetConversationById(conversationId);
+
+                currentConversation.LastMessageDate = vietNamTime;
+
+                conversationRepository.UpdateConversation(currentConversation);
 
                 await Clients.Group(conversationId.ToString()).SendAsync("ReceiveMessage", sender.FullName, message);
             }

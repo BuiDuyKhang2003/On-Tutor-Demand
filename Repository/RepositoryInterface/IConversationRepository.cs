@@ -10,7 +10,7 @@ namespace Repository.RepositoryInterface
     public interface IConversationRepository
     {
         Task<IEnumerable<Conversation>> GetAllConversations();
-        Task<IEnumerable<Conversation>> GetConversationsByUserId(int initiatorId);
+        Task<IEnumerable<Conversation>> GetConversationsByUserId(int accountId);
         Task<Conversation> GetConversationById(int conversationId);
         Task<Conversation> GetMostRecentConversationByAccountId(int accountId);
         Task<Conversation> GetConversationByInitiatorIdAndReceiverIdAsync(int initiatorId, int receiverId);

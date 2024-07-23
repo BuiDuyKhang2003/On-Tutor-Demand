@@ -25,6 +25,6 @@ namespace Repository
 
         public async Task<Conversation> GetConversationByInitiatorIdAndReceiverIdAsync(int initiatorId, int receiverId) => await ConversationDAO.GetConversationByInitiatorIdAndReceiverIdAsync(initiatorId, receiverId);
 
-        public async Task<IEnumerable<Conversation>> GetConversationsByUserId(int initiatorId) => await ConversationDAO.GetConversationsByUserIdAsync(initiatorId);
+        public async Task<IEnumerable<Conversation>> GetConversationsByUserId(int accountId) => await ConversationDAO.GetConversationsByUserIdAsync(accountId);
     }
 }

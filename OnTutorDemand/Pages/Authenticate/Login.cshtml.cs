@@ -32,7 +32,7 @@ namespace OnTutorDemand.Pages.Authenticate
             {
                 var user = await accountRepository.GetAccountByEmail(EmailLogin);
 
-                if (user != null && user.Password.Equals(PasswordLogin))
+                if (user.Password != null)
                 {
                     if (!user.IsActive)
                     {

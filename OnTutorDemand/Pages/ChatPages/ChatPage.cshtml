@@ -47,7 +47,7 @@
             @foreach (var conversation in Model.PreviousConversations)
             {
                 <li>
-                    <a asp-page="/ChatPages/ChatPage" asp-route-conversationid="@conversation.Id">
+                    <a asp-page-handler="conversation" asp-route-conversationid="@conversation.Id">
                         @conversation.Subject
                     </a>
                 </li>

@@ -33,7 +33,7 @@ namespace OnTutorDemand.Pages.ChatPages
         [BindProperty]
         public int UserId { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int conversationId)
+        public async Task<IActionResult> OnGetConversationAsync(int conversationId)
         {
             var userEmail = HttpContext.Session.GetString("UserEmail");
             var currentAccount = await accountRepository.GetAccountByEmail(userEmail);
@@ -53,6 +53,28 @@ namespace OnTutorDemand.Pages.ChatPages
 
             ChatMessages = (await chatMessageRepository.GetChatMessagesByConversationId(conversationId)).ToList();
             return Page();
+        }
+
+        public async Task<IActionResult> OnGetAsync()
+        {
+            var userEmail = HttpContext.Session.GetString("UserEmail");
+            var currentAccount = await accountRepository.GetAccountByEmail(userEmail);
+            if (String.IsNullOrEmpty(currentAccount.Email))
+            {
+                return RedirectToPage("/Authenticate/Login");
+            }
+
+            UserId = currentAccount.Id;
+            var mostRecentConversation = await conversationRepository.GetMostRecentConversationByAccountId(UserId);
+
+            if (mostRecentConversation != null)
+            {
+                return RedirectToPage(new { handler = "Conversation", conversationId = mostRecentConversation.Id });
+            }
+            else
+            {
+                return Page();
+            }
         }
     }
 }

@@ -70,7 +70,6 @@ namespace OnTutorDemand.Pages.Authenticate
                     Phone = RegisterModel.Phone,
                     Experience = RegisterModel.Experience,
                     Education = RegisterModel.Education,
-                    ApplicationDate = vietNamTime,
                     Description = RegisterModel.Description,
                     ApplicationDate = vietNamTime,
                     TeachingGrades = RegisterModel.SelectedGrades != null && AvailableGrades != null
