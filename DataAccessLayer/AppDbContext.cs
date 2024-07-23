@@ -24,6 +24,7 @@ public partial class AppDbContext : DbContext
     public DbSet<Video> Videos { get; set; }
     public DbSet<Schedule> Schedules { get; set; }
     public DbSet<TutorRegistration> TutorRegistrations { get; set; }
+    public DbSet<BookingSchedule> Bookings { get; set; }
 
 
     public AppDbContext() { }
@@ -104,6 +105,26 @@ public partial class AppDbContext : DbContext
             .HasForeignKey(s => s.RentalServiceId)
             .OnDelete(DeleteBehavior.Cascade);
 
+        // Schedule Configuration
+        modelBuilder.Entity<Schedule>()
+            .HasOne(s => s.RentalService)
+            .WithMany(rs => rs.Schedules)
+            .HasForeignKey(s => s.RentalServiceId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        // BookingSchedule Configuration
+        modelBuilder.Entity<BookingSchedule>()
+            .HasOne(b => b.Account)
+            .WithMany(a => a.Bookings)
+            .HasForeignKey(b => b.AccountId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        modelBuilder.Entity<BookingSchedule>()
+            .HasOne(bs => bs.Schedule)
+            .WithOne(s => s.Booking)
+            .HasForeignKey<BookingSchedule>(bs => bs.ScheduleId)
+            .OnDelete(DeleteBehavior.Restrict);
+
         // Tutor Configuration
         modelBuilder.Entity<Tutor>()
             .HasOne(t => t.Account)
@@ -115,25 +136,25 @@ public partial class AppDbContext : DbContext
             .HasMany(t => t.Videos)
             .WithOne(v => v.Tutor)
             .HasForeignKey(v => v.TutorId)
-            .OnDelete(DeleteBehavior.Restrict);
+            .OnDelete(DeleteBehavior.Cascade);
 
         modelBuilder.Entity<Tutor>()
             .HasMany(t => t.TutorSubjects)
             .WithOne(ts => ts.Tutor)
             .HasForeignKey(ts => ts.TutorId)
-            .OnDelete(DeleteBehavior.Restrict);
+            .OnDelete(DeleteBehavior.Cascade);
 
         modelBuilder.Entity<Tutor>()
             .HasMany(t => t.TutorGrades)
             .WithOne(tg => tg.Tutor)
             .HasForeignKey(tg => tg.TutorId)
-            .OnDelete(DeleteBehavior.Restrict);
+            .OnDelete(DeleteBehavior.Cascade);
 
         modelBuilder.Entity<Tutor>()
             .HasMany(t => t.TutorAreas)
             .WithOne(ta => ta.Tutor)
             .HasForeignKey(ta => ta.TutorId)
-            .OnDelete(DeleteBehavior.Restrict);
+            .OnDelete(DeleteBehavior.Cascade);
 
         // Video Configuration
         modelBuilder.Entity<Video>()

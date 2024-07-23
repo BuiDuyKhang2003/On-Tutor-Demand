@@ -53,11 +53,13 @@ namespace DataAccessLayer
             return await db.Subjects.ToListAsync();
         }
 
-        public static void AddTutor(Tutor tutor)
+        public static async Task AddTutorAsync(Tutor tutor)
         {
             db = new();
-            db.Tutors.Add(tutor);
-            db.SaveChanges();
+            {
+                db.Tutors.Add(tutor);
+                await db.SaveChangesAsync();
+            }
         }
 
         public static void UpdateTutor(Tutor tutor)

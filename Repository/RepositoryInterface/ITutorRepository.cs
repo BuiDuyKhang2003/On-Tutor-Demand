@@ -15,7 +15,7 @@ namespace Repository.RepositoryInterface
         Task<IEnumerable<District>> GetAllDistricts();
         Task<IEnumerable<Subject>> GetAllSubjects();
         Task<IEnumerable<Grade>> GetAllGrades();
-        void AddTutor(Tutor tutor);
+        Task AddTutor(Tutor tutor);
         void UpdateTutor(Tutor tutor);
         void DeleteTutor(int? tutorId);
         int GetTotalTutorsCount();

@@ -51,5 +51,6 @@ namespace BusinessObject
         public virtual ICollection<ChatMessage> SentMessages { get; set; } = new List<ChatMessage>();
         public virtual ICollection<Conversation> InitiatedConversations { get; set; } = new List<Conversation>();
         public virtual ICollection<Conversation> ReceivedConversations { get; set; } = new List<Conversation>();
+        public virtual ICollection<BookingSchedule> Bookings { get; set; } = new List<BookingSchedule>();
     }
 }

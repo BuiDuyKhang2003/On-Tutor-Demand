@@ -11,7 +11,7 @@ namespace Repository
 {
     public class TutorRepository : ITutorRepository
     {
-        public void AddTutor(Tutor tutor) => TutorDAO.AddTutor(tutor);
+        public async Task AddTutor(Tutor tutor) => await TutorDAO.AddTutorAsync(tutor);
 
         public void DeleteTutor(int? tutorId) => TutorDAO.DeleteTutor(tutorId);
 

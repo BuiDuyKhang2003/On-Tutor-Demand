@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -64,17 +65,27 @@ namespace DataAccessLayer
                 };
 
                 Account newUser = await AccountDAO.AddAccountAsync(user);
-                await db.SaveChangesAsync();
+
+                List<string> grades = existingRegistration.TeachingGrades.Split(",").Select(g => g.Trim().ToLower()).ToList();
+                List<string> subjects = existingRegistration.TeachingSubjects.Split(",").Select(s => s.Trim().ToLower()).ToList();
+                List<string> areas = existingRegistration.TeachingAreas.Split(",").Select(a => a.Trim().ToLower()).ToList();
+
+                var gradeList = await db.Grades.Where(g => grades.Contains(g.GradeName.ToLower().Trim())).ToListAsync();
+                var subjectList = await db.Subjects.Where(s => subjects.Contains(s.SubjectName.ToLower().Trim())).ToListAsync();
+                var districtList = await db.Districts.Where(d => areas.Contains(d.DistrictName.ToLower().Trim())).ToListAsync();
 
                 Tutor tutor = new Tutor
                 {
                     AccountId = newUser.Id,
                     Education = existingRegistration.Education,
                     Experience = existingRegistration.Experience,
-                    Description = existingRegistration.Description
+                    Description = existingRegistration.Description,
+                    TutorAreas = districtList.Select(d => new TutorArea { DistrictId = d.Id }).ToList(),
+                    TutorGrades = gradeList.Select(g => new TutorGrade { GradeId = g.Id }).ToList(),
+                    TutorSubjects = subjectList.Select(s => new TutorSubject { SubjectId = s.Id }).ToList()
                 };
 
-                TutorDAO.AddTutor(tutor);
+                await TutorDAO.AddTutorAsync(tutor);
                 await db.SaveChangesAsync();
             }           
         }

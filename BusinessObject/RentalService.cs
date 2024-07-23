@@ -24,7 +24,7 @@ namespace BusinessObject
 
         public long PricePerSession { get; set; }
 
-        public virtual Tutor? Tutor { get; set; }
+        public virtual Tutor Tutor { get; set; }
         public virtual ICollection<Feedback> Feedbacks { get; set; } = new List<Feedback>();
         public virtual ICollection<Schedule> Schedules { get; set; } = new List<Schedule>();
     }
