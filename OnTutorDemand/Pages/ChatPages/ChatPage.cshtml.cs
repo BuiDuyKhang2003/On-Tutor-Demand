@@ -32,6 +32,19 @@ namespace OnTutorDemand.Pages.ChatPages
 
         [BindProperty]
         public int UserId { get; set; }
+        
+        public string FormatRelativeDate(DateTime dateTime)
+        {
+            var span = DateTime.Now - dateTime;
+
+            if (span.TotalMinutes < 60)
+                return $"{(int)span.TotalMinutes}m";
+            if (span.TotalHours < 24)
+                return $"{(int)span.TotalHours}h";
+            if (span.TotalDays < 7)
+                return $"{(int)span.TotalDays}d";
+            return $"{(int)(span.TotalDays / 7)}w";
+        }
 
         public async Task<IActionResult> OnGetAsync(int conversationId)
         {
