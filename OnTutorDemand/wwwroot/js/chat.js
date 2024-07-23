@@ -5,10 +5,26 @@
         .build();
 
     connection.on("ReceiveMessage", function (user, message) {
-        const msg = document.createElement("div");
-        msg.textContent = `${user}: ${message}`;
-        document.getElementById("messagesList").appendChild(msg);
+        const msgItem = document.createElement("div");
+        msgItem.classList.add("message-item");
+
+        const userName = document.createElement("strong");
+        userName.textContent = `${user}: `;
+
+        const msgContent = document.createElement("span");
+        msgContent.textContent = message;
+
+        msgItem.appendChild(userName);
+        msgItem.appendChild(msgContent);
+
+        document.getElementById("messagesList").appendChild(msgItem);
+        scrollToBottom();
     });
+
+    function scrollToBottom() {
+        var messagesList = document.getElementById("messagesList");
+        messagesList.scrollTop = messagesList.scrollHeight;
+    }
 
     connection.start().then(function () {
         const conversationId = document.getElementById("conversationId").value;
