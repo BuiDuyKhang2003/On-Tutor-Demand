@@ -25,6 +25,11 @@
                 <span asp-validation-for="RentalService.TutorId" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="RentalService.PricePerSession" class="control-label"></label>
+                <input asp-for="RentalService.PricePerSession" class="form-control" />
+                <span asp-validation-for="RentalService.PricePerSession" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
@@ -32,10 +37,11 @@
 </div>
 
 <div>
-    <a asp-page="./RentalServiceHomePage">Back to List</a>
+    <a asp-page="./RentalServiceIndexForTurtor">Back to List</a>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
-

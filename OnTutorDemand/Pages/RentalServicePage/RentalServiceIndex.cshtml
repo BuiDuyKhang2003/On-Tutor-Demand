@@ -22,7 +22,7 @@
             margin-bottom: 60px;
         }
 
-        <<<<<<< HEAD
+        
         .container {
             background-color: #ffffff;
             border-radius: 8px;
@@ -170,11 +170,11 @@
                 <thead>
                     <tr>
                         <th>@Html.DisplayNameFor(model => model.RentalServices[0].Tutor.FullName)</th>
-                        <th>Trình độ</th>
-                        <th>Kinh nghiệm</th>
-                        <th>Môn dạy</th>
-                        <th>Khu vực dạy</th>
-                        <th>Lớp dạy</th>                        
+                        <th>@Html.DisplayNameFor(model => model.RentalServices[0].Tutor.Education)</th>
+                        <th>@Html.DisplayNameFor(model => model.RentalServices[0].Tutor.Experience)</th>
+                        <th>@Html.DisplayNameFor(model => model.RentalServices[0].Tutor.Subjects)</th>
+                        <th>@Html.DisplayNameFor(model => model.RentalServices[0].Tutor.Districts)</th>
+                        <th>@Html.DisplayNameFor(model => model.RentalServices[0].Tutor.Grades)</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -182,11 +182,11 @@
                     {
                         <tr>
                             <td>@Html.DisplayFor(modelItem => item.Tutor.FullName)</td>
-                            <td>Fake Level</td>
-                            <td>Fake Experience</td>
-                            <td>Fake Subject</td>
-                            <td>Fake Area</td>
-                            <td>Fake Class</td>                          
+                            <td>@Html.DisplayFor(modelItem => item.Tutor.Education)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Tutor.Experience)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Tutor.Subjects)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Tutor.Districts)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Tutor.Grades)</td>
                         </tr>
                     }
                 </tbody>
@@ -218,4 +218,3 @@
     <script src="/js/demo/chart-area-demo.js"></script>
     <script src="/js/demo/chart-pie-demo.js"></script>
 </body>
-</html>

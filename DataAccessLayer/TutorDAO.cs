@@ -15,7 +15,7 @@ namespace DataAccessLayer
         public static List<Tutor> GetAllTutors()
         {
             db = new();
-            return db.Tutors.ToList();
+            return db.Tutors.Include(x=>x.Account).ToList();
         }
         public static IQueryable<Tutor> GetTutorServicesByQuery()
         {

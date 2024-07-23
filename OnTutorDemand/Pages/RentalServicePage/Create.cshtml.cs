@@ -10,6 +10,7 @@ using DataAccessLayer;
 using Repository.RepositoryInterface;
 using Repository;
 using System.Drawing.Printing;
+using Microsoft.EntityFrameworkCore;
 
 namespace OnTutorDemand.Pages.RentalServicePage
 {
@@ -25,6 +26,7 @@ namespace OnTutorDemand.Pages.RentalServicePage
 
         public async Task<IActionResult> OnGetAsync()
         {
+            ViewData["TutorId"] = new SelectList(_tutorRepository.GetAllTutors(), "Id", "FullName");
             var userRole = HttpContext.Session.GetString("UserRole");
             if (userRole == null || !userRole.Equals("Tutor"))
             {
@@ -51,7 +53,7 @@ namespace OnTutorDemand.Pages.RentalServicePage
             _serviceRepository.AddRentalService(RentalService);
 
 
-            return RedirectToPage("/RentalServicePage/RentalServiceIndex");
+            return RedirectToPage("/RentalServicePage/RentalServiceIndexForTurtor");
         }
     }
 }
