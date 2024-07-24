@@ -35,7 +35,7 @@ namespace OnTutorDemand.Pages.RentalServicePage
             
             ViewData["TutorId"] = new SelectList(_tutorRepository.GetAllTutors(), "Id", "FullName");
             var userRole = HttpContext.Session.GetString("UserRole");
-            if (userRole == null || (!userRole.Equals("Tutor") && !userRole.Equals("User")))
+            if (userRole == null || (!userRole.Equals("Tutor")))
             {
                 RedirectToPage("/Authenticate/Login");
             }

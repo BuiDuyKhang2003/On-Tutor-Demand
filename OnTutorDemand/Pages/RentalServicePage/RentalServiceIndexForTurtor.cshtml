@@ -98,11 +98,14 @@
 <body>
     <div class="container mt-4">
         <h1>Danh sách dịch vụ cho thuê</h1>
+        <p>
+            <a asp-page="/ShedulePages/RentalServiceDetail">Create Schedule</a>
+        </p>
         <div class="form-actions">
             <form asp-page="./RentalServiceHomePage" method="get" class="form-inline">
                 <input type="text" name="searchString" value="@Model.CurrentFilter" placeholder="Tìm kiếm" class="form-control" />
                 <input type="submit" value="Tìm kiếm" class="btn btn-primary ml-2" />
-                <a asp-page="./RentalServiceHomePage" class="btn btn-secondary ml-2">Trở lại</a>
+                <a asp-page="./RentalServiceIndexForTurtor" class="btn btn-secondary ml-2">Trở lại</a>
             </form>
             <a asp-page="Create" class="btn btn-success">Tạo mới</a>
         </div>

@@ -8,7 +8,7 @@ using Repository;
 using BusinessObject;
 using Microsoft.EntityFrameworkCore;
 
-namespace OnTutorDemand.Pages.RentalServicePage
+namespace OnTutorDemand.Pages.ShedulePages
 {
     public class RentalServiceHomePageModel : PageModel
     {
@@ -29,7 +29,7 @@ namespace OnTutorDemand.Pages.RentalServicePage
         public RentalService RentalService { get; set; } = default!;
         public PaginatedList<Schedule> Schedules { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id,string sortOrder, string currentFilter, string searchString, int? pageIndex)
+        public async Task<IActionResult> OnGetAsync(int? id, string sortOrder, string currentFilter, string searchString, int? pageIndex)
         {
             var rentalservice = _serviceRepository.GetRentalServiceById(id);
             if (rentalservice == null)
@@ -41,15 +41,15 @@ namespace OnTutorDemand.Pages.RentalServicePage
                 RentalService = rentalservice;
             }
             ViewData["DaysOfWeek"] = new SelectList(new List<string> { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" });
-
+            ViewData["RentalServiceId"] = new SelectList(_serviceRepository.GetAllRentalServices(), "Id", "Description");
             var userRole = HttpContext.Session.GetString("UserRole");
-            if (userRole == null || (!userRole.Equals("Tutor") && !userRole.Equals("User")))
+            if (userRole == null || !userRole.Equals("Tutor"))
             {
                 RedirectToPage("/Authenticate/Login");
             }
 
             CurrentSort = sortOrder;
-            desSort = String.IsNullOrEmpty(sortOrder) ? "Description_desc" : "";
+            desSort = string.IsNullOrEmpty(sortOrder) ? "Description_desc" : "";
             if (searchString != null)
             {
                 pageIndex = 1;
@@ -59,11 +59,11 @@ namespace OnTutorDemand.Pages.RentalServicePage
                 searchString = currentFilter;
             }
             CurrentFilter = searchString;
-            
+
             IQueryable<Schedule> scheduleIQ = _scheduleRepository.GetScheduleServicesByQuery();
-            if (!String.IsNullOrEmpty(searchString))
+            if (!string.IsNullOrEmpty(searchString))
             {
-               
+
                 scheduleIQ = scheduleIQ.Where(sc => sc.DayOfWeek.ToUpper().Contains(searchString)
                 || sc.StartTime.ToString().Contains(searchString)
                 || sc.EndTime.ToString().Contains(searchString));
@@ -71,14 +71,14 @@ namespace OnTutorDemand.Pages.RentalServicePage
 
             switch (sortOrder)
             {
-               
+
             }
-            var pageSize = _configuration.GetValue("PageSize", 4);
+            var pageSize = _configuration.GetValue("PageSize", 8);
             Schedules = await PaginatedList<Schedule>.CreateAsync(
                 scheduleIQ.AsNoTracking(), pageIndex ?? 1, pageSize);
             return Page();
         }
-        
+
 
         [BindProperty]
         public Schedule Schedule { get; set; } = default!;
@@ -91,7 +91,7 @@ namespace OnTutorDemand.Pages.RentalServicePage
             }
 
             _scheduleRepository.AddSchedule(Schedule);
-            return RedirectToPage("/RentalServicePage/RentalServiceIndexForTurtor");
+            return RedirectToPage("./RentalServiceDetail");
         }
     }
 }

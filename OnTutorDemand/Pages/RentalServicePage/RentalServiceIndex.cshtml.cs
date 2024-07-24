@@ -34,7 +34,7 @@ namespace OnTutorDemand.Pages.RentalServicePage
         public async Task OnGetAsync(string sortOrder, string currentFilter, string searchString, int? pageIndex, string education, string subject, string grade, string district)
         {
             var userRole = HttpContext.Session.GetString("UserRole");
-            if (userRole == null || (!userRole.Equals("Tutor") && !userRole.Equals("User")))
+            if (userRole == null || !userRole.Equals("User"))
             {
                 RedirectToPage("/Authenticate/Login");
             }

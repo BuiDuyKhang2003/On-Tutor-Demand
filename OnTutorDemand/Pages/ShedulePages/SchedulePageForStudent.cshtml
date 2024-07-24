@@ -1,7 +1,7 @@
 ﻿@page
-@model OnTutorDemand.Pages.RentalServicePage.RentalServiceHomePageModel
+@model OnTutorDemand.Pages.ShedulePages.SchedulePageForStudentModel
 @{
-    ViewData["Title"] = "Course Schedule";
+    ViewData["Title"] = "Course Schedule for student";
 }
 
 <!DOCTYPE html>
@@ -148,97 +148,57 @@
         </div>
 
         <h2 class="mt-5 text-center">Weekly Schedule</h2>
-        <div class="form-actions">
-            <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#addScheduleModal">
-                + Add Schedule
-            </button>
-            <form asp-page="./RentalServiceHomePage" method="get" class="form-inline">
-                <input type="text" name="searchString" value="@Model.CurrentFilter" placeholder="Search" class="form-control" />
-                <input type="submit" value="Search" class="btn btn-primary ml-2" />
-                <a asp-page="./RentalServiceHomePage" class="btn btn-secondary ml-2">Back to full List</a>
-            </form>
-        </div>
-
-        <!-- Add Schedule Modal -->
-        <div class="modal fade" id="addScheduleModal" tabindex="-1" role="dialog" aria-labelledby="addScheduleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="addScheduleModalLabel">Add New Schedule</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form method="post">
-                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                            <div class="form-group">
-                                <label asp-for="Schedule.RentalServiceId" class="control-label"></label>
-                                <select asp-for="Schedule.RentalServiceId" class="form-control" asp-items="ViewBag.RentalServiceId"></select>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="Schedule.DayOfWeek" class="control-label"></label>
-                                <select asp-for="Schedule.DayOfWeek" class="form-control">
-                                    <option value="Monday">Monday</option>
-                                    <option value="Tuesday">Tuesday</option>
-                                    <option value="Wednesday">Wednesday</option>
-                                    <option value="Thursday">Thursday</option>
-                                    <option value="Friday">Friday</option>
-                                    <option value="Saturday">Saturday</option>
-                                    <option value="Sunday">Sunday</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="Schedule.StartTime" class="control-label"></label>
-                                <input type="time" asp-for="Schedule.StartTime" class="form-control" />
-                                <span asp-validation-for="Schedule.StartTime" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="Schedule.EndTime" class="control-label"></label>
-                                <input type="time" asp-for="Schedule.EndTime" class="form-control" />
-                                <span asp-validation-for="Schedule.EndTime" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <input type="submit" value="Save Schedule" class="btn btn-primary" />
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        
         <div class="table-responsive">
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>@Html.DisplayNameFor(model => model.Schedule.DayOfWeek)</th>
-                        <th>@Html.DisplayNameFor(model => model.Schedule.StartTime)</th>
-                        <th>@Html.DisplayNameFor(model => model.Schedule.EndTime)</th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Schedules[0].DayOfWeek)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Schedules[0].StartTime)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Schedules[0].EndTime)
+                        </th>
+                        
                     </tr>
                 </thead>
                 <tbody>
+                    
                     @foreach (var item in Model.Schedules)
                     {
                         <tr>
-                            <td>@Html.DisplayFor(modelItem => item.DayOfWeek)</td>
-                            <td>@Html.DisplayFor(modelItem => item.StartTime)</td>
-                            <td>@Html.DisplayFor(modelItem => item.EndTime)</td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DayOfWeek)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.StartTime)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.EndTime)
+                                </td>
+                                
+                                <td>
+                                    
+                                </td>
                         </tr>
                     }
+                    
                 </tbody>
             </table>
         </div>
 
         <div class="pagination-buttons">
-            <a asp-page="./RentalServiceHomePage"
+            <a asp-page="./RentalServiceDetail"
                asp-route-sortOrder="@Model.CurrentSort"
                asp-route-pageIndex="@(Model.Schedules.PageIndex - 1)"
                asp-route-currentFilter="@Model.CurrentFilter"
                class="btn btn-primary @(!Model.Schedules.HasPreviousPage ? "disabled" : "")">
                 Previous
             </a>
-            <a asp-page="./RentalServiceHomePage"
+            <a asp-page="./RentalServiceDetail"
                asp-route-sortOrder="@Model.CurrentSort"
                asp-route-pageIndex="@(Model.Schedules.PageIndex + 1)"
                asp-route-currentFilter="@Model.CurrentFilter"
