@@ -21,18 +21,35 @@
         scrollToBottom();
     });
 
-    function scrollToBottom() {
-        var messagesList = document.getElementById("messagesList");
-        messagesList.scrollTop = messagesList.scrollHeight;
-    }
+    connection.on("NewConversation", function (conversationId, otherUserName, lastMessageDate) {
+        const noConversationElement = document.getElementById("noConversation");
+        if (noConversationElement) {
+            noConversationElement.remove();
+        }
+        const conversationList = document.querySelector(".conversation-list ul");
+        const newConversationItem = document.createElement("li");
+        newConversationItem.classList.add("conversation-item");
+        newConversationItem.innerHTML = `
+            <img src="/img/undraw_profile_1.svg" alt="User Image" />
+            <a href="/ChatPages/ChatPage?handler=Conversation&conversationId=${conversationId}">
+                <div>
+                    <strong>${otherUserName}</strong><br/>
+                    <small>${formatRelativeDate(new Date(lastMessageDate))}</small><br />
+                    New conversation
+                </div>
+            </a>
+        `;
+        conversationList.insertBefore(newConversationItem, conversationList.firstChild);
+    });
 
     connection.start().then(function () {
         const conversationId = document.getElementById("conversationId").value;
-        if (conversationId) {
-            connection.invoke("JoinConversation", parseInt(conversationId))
+        const userId = document.getElementById("userId").value;
+        if (conversationId && userId) {
+            connection.invoke("JoinConversation", parseInt(conversationId), parseInt(userId))
                 .catch(err => console.error(`Failed to invoke 'JoinConversation': ${err}`));
         } else {
-            console.error("Conversation ID not found");
+            console.error("Conversation ID or User ID not found");
         }
     }).catch(err => console.error(`Connection start failed: ${err}`));
 
@@ -54,4 +71,19 @@
         event.preventDefault();
     });
 
+    function formatRelativeDate(date) {
+        const now = new Date();
+        const diffInMinutes = Math.floor((now - date) / (1000 * 60));
+        if (diffInMinutes < 60) return `${diffInMinutes}m`;
+        const diffInHours = Math.floor(diffInMinutes / 60);
+        if (diffInHours < 24) return `${diffInHours}h`;
+        const diffInDays = Math.floor(diffInHours / 24);
+        if (diffInDays < 7) return `${diffInDays}d`;
+        return `${Math.floor(diffInDays / 7)}w`;
+    }
+
+    function scrollToBottom() {
+        var messagesList = document.getElementById("messagesList");
+        messagesList.scrollTop = messagesList.scrollHeight;
+    }
 });

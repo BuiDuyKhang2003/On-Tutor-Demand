@@ -1,7 +1,10 @@
 ﻿using BusinessObject;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
+using NuGet.Protocol.Plugins;
+using OnTutorDemand.Pages.ChatHub;
 using Repository.RepositoryInterface;
 using System.Text.Json;
 
@@ -39,7 +42,7 @@ public class TutorDetail : PageModel
         Conversation existConversation = await conversationRepository.GetConversationByInitiatorIdAndReceiverIdAsync(currentAccount.Id, tutorId);
         if (existConversation != null)
         {
-            return RedirectToPage("/ChatPages/ChatPage", new { conversationid = existConversation.Id });
+            return RedirectToPage("/ChatPages/ChatPage", new { handler = "Conversation", conversationid = existConversation.Id });
         }
         else
         {
@@ -56,8 +59,10 @@ public class TutorDetail : PageModel
                 Subject = tutorName,
                 CreatedDate = vietNamTime,
                 LastMessageDate = vietNamTime
-            };            
+            };           
+            
             Conversation addedConversation = await conversationRepository.AddConversation(newConversation);
+
             return RedirectToPage("/ChatPages/ChatPage", new { handler = "Conversation", conversationId = addedConversation.Id });
         }
     }

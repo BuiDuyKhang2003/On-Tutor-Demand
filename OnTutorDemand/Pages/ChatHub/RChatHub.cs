@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace OnTutorDemand.Pages.ChatHub
 {
-    public class ChatHub : Hub
+    public class RChatHub : Hub
     {
         private readonly IChatMessageRepository chatMessageRepository;
         private readonly IAccountRepository accountRepository;
         private readonly IConversationRepository conversationRepository;
 
-        public ChatHub(IChatMessageRepository chatMessageRepository, IAccountRepository accountRepository, IConversationRepository conversationRepository)
+        public RChatHub(IChatMessageRepository chatMessageRepository, IAccountRepository accountRepository, IConversationRepository conversationRepository)
         {
             this.chatMessageRepository = chatMessageRepository;
             this.accountRepository = accountRepository;
@@ -65,17 +65,27 @@ namespace OnTutorDemand.Pages.ChatHub
         }
 
 
-        public async Task JoinConversation(int conversationId)
+        public async Task JoinConversation(int conversationId, int userId)
         {
-            try
+            if (conversationId != 0)
             {
                 await Groups.AddToGroupAsync(Context.ConnectionId, conversationId.ToString());
+                await Groups.AddToGroupAsync(Context.ConnectionId, $"User_{userId}");
+
+                var conversation = await conversationRepository.GetConversationById(conversationId);
+                if (conversation != null && (conversation.InitiatorId == userId || conversation.ReceiverId == userId))
+                {
+                    var otherUserId = conversation.ReceiverId;
+                    var currentUser = await accountRepository.GetAccountById(userId);
+
+                    await Clients.Group($"User_{otherUserId}").SendAsync("NewConversation", conversationId, currentUser.FullName, conversation.LastMessageDate);
+                }
             }
-            catch (Exception ex)
+            else
             {
-                Console.WriteLine($"Error in JoinConversation: {ex.Message}");
-                throw;
+                await Groups.AddToGroupAsync(Context.ConnectionId, $"User_{userId}");
             }
+
         }
     }
 }
