@@ -31,6 +31,6 @@ namespace BusinessObject
         public virtual Account Account { get; set; }
 
         [ForeignKey("ScheduleId")]
-        public virtual Schedule Schedule { get; set; }
+        public virtual Schedule? Schedule { get; set; }
     }
 }

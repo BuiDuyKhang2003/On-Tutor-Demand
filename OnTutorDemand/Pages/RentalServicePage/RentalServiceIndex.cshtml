@@ -142,6 +142,7 @@
                                 </select>
                             </div>
                             <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+                            <a asp-page="./RentalServiceIndex" class="btn btn-secondary ml-2">Trở lại</a>
                         </form>
 
                     </div>
@@ -153,7 +154,7 @@
                     @foreach (var item in Model.RentalServices)
                     {
                         <div class="col-md-4">
-                            <div class="card card-custom" data-link="@Url.Page("./RentalServiceHomePage", new { id = item.Id })">
+                            <div class="card card-custom" data-link="@Url.Page("/ShedulePages/SchedulePageForStudent", new { id = item.Id })">
                                 <div class="card-body">
                                     <h2 class="card-title"><i class="fas fa-graduation-cap fa-fw"></i> @Html.DisplayFor(modelItem => item.Tutor.FullName)</h2>
                                     <p class="card-text"><i class="fas fa-book card-icon"></i> Trình độ: @Html.DisplayFor(modelItem => item.Tutor.Education)</p>

@@ -15,7 +15,7 @@ namespace Repository
 
         public async Task<Schedule> GetScheduleById(int? scheduleId) => await ScheduleDAO.GetScheduleById(scheduleId);
 
-        public void AddSchedule(Schedule schedule) => ScheduleDAO.AddSchedule(schedule);
+        public async Task<Schedule> AddScheduleAsync(Schedule schedule) => await ScheduleDAO.AddScheduleAsync(schedule);
 
         public void UpdateSchedule(Schedule schedule) => ScheduleDAO.UpdateSchedule(schedule);
 

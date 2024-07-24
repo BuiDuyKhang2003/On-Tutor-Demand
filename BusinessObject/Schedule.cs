@@ -30,7 +30,7 @@ namespace BusinessObject
 
         public virtual RentalService? RentalService { get; set; }
 
-        public virtual BookingSchedule Booking { get; set; }
+        public virtual BookingSchedule? Booking { get; set; }
     }
 
 }
