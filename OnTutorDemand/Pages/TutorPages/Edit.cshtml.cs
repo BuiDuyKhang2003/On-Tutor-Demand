@@ -39,7 +39,7 @@ namespace OnTutorDemand.Pages.TutorPages
                 return NotFound();
             }
 
-            var tutor = _tutorRepository.GetTutorById(id);
+            var tutor = await _tutorRepository.GetTutorById(id);
             if (tutor == null)
             {
                 return NotFound();

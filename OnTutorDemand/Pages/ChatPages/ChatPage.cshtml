@@ -104,6 +104,7 @@ ViewData["Title"] = "Chat";
 </style>
 
 <div class="container">
+        <input type="hidden" id="isNew" value="@Model.IsNew.ToString().ToLower()" />
     <div class="chat-container">
         <div class="conversation-list">
             <h5>Conversations</h5>
@@ -129,7 +130,6 @@ ViewData["Title"] = "Chat";
                                             <strong>@conversation.Initiator.FullName</strong><br/>
                                         }
                                         <small>@Model.FormatRelativeDate(conversation.LastMessageDate)</small><br />
-                                        last message send
                                     </div>
                                 </a>
                             </li>
@@ -155,15 +155,21 @@ ViewData["Title"] = "Chat";
                         <div class="user-info">
                             <img src="/img/undraw_profile_1.svg" alt="User Image" />
                             <div>
-                                <strong>@Model.Conversation.Receiver?.FullName</strong><br />
-                                <small>@Model.Conversation.Receiver?.DateOfBirth.ToString("d")</small>
+                                @if (@Model.Conversation.Initiator.FullName.Equals(Model.CurrentUserName))
+                                {
+                                    <strong>@Model.Conversation.Receiver.FullName</strong><br/>
+                                }
+                                else
+                                {
+                                    <strong>@Model.Conversation.Initiator.FullName</strong><br/>
+                                }
                             </div>
                         </div>
                     </div>
                     <div id="messagesList" class="message-list">
                         @if (Model.ChatMessages == null || !Model.ChatMessages.Any())
                         {
-                            <p>There are no messages in this conversation yet.</p>
+                            <div id="noMessage">There are no messages in this conversation yet.</div>
                         }
                         else
                         {

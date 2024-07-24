@@ -33,6 +33,9 @@ namespace OnTutorDemand.Pages.ChatPages
         [BindProperty]
         public int UserId { get; set; }
 
+        [BindProperty(SupportsGet = true)]
+        public bool IsNew { get; set; } = false;
+
         [BindProperty]
         public string CurrentUserName { get; set; }
 
@@ -49,7 +52,7 @@ namespace OnTutorDemand.Pages.ChatPages
             return $"{(int)(span.TotalDays / 7)}w";
         }
 
-        public async Task<IActionResult> OnGetConversationAsync(int conversationId)
+        public async Task<IActionResult> OnGetConversationAsync(int conversationId, bool isNew = false)
         {
             var userEmail = HttpContext.Session.GetString("UserEmail");
             var currentAccount = await accountRepository.GetAccountByEmail(userEmail);
@@ -66,10 +69,11 @@ namespace OnTutorDemand.Pages.ChatPages
             Conversation = await conversationRepository.GetConversationById(conversationId);
             if (Conversation == null)
             {
-                return NotFound();
+                return Page();
             }
 
             ChatMessages = (await chatMessageRepository.GetChatMessagesByConversationId(conversationId)).ToList();
+            IsNew = isNew;
             return Page();
         }
 

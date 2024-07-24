@@ -235,12 +235,6 @@ public partial class AppDbContext : DbContext
             .WithMany(a => a.ReceivedConversations)
             .HasForeignKey(c => c.ReceiverId)
             .OnDelete(DeleteBehavior.Restrict);
-
-        modelBuilder.Entity<Conversation>()
-            .HasMany(c => c.ChatMessages)
-            .WithOne(cm => cm.Conversation)
-            .HasForeignKey(cm => cm.ConversationId)
-            .OnDelete(DeleteBehavior.Restrict);
     }
 
 }

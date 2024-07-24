@@ -42,6 +42,7 @@ namespace BusinessObject
 
         [NotMapped]
         public string Districts => string.Join(", ", TutorAreas.Select(ta => ta.District.DistrictName));
+
         [NotMapped]
         public string Subjects => string.Join(", ", TutorSubjects.Select(ta => ta.Subject.SubjectName));
     }

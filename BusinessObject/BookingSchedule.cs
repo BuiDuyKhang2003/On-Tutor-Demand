@@ -24,6 +24,9 @@ namespace BusinessObject
         [Required]
         public DateTime BookingDate { get; set; }
 
+        [Required]
+        public string Status { get; set; }
+
         [ForeignKey("AccountId")]
         public virtual Account Account { get; set; }
 
