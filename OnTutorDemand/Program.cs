@@ -62,6 +62,6 @@ app.MapGet("/", context =>
     return Task.CompletedTask;
 });
 
-app.MapHub<ChatHub>("/chatHub");
+app.MapHub<RChatHub>("/chatHub");
 
 app.Run();

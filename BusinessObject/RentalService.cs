@@ -17,12 +17,18 @@ namespace BusinessObject
 
         [Required]
         [StringLength(1000)]
+        public string ServiceName { get; set; }
+
+        [Required]
+        [StringLength(1000)]
         public string Description { get; set; }
 
         [ForeignKey("Tutor")]
         public int TutorId { get; set; }
 
         public long PricePerSession { get; set; }
+
+        public DateTime CreatedDate { get; private set; } = DateTime.Now;
 
         public virtual Tutor Tutor { get; set; }
         public virtual ICollection<Feedback> Feedbacks { get; set; } = new List<Feedback>();

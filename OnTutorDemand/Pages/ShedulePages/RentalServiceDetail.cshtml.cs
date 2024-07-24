@@ -90,7 +90,7 @@ namespace OnTutorDemand.Pages.ShedulePages
                 return Page();
             }
 
-            _scheduleRepository.AddSchedule(Schedule);
+            await _scheduleRepository.AddScheduleAsync(Schedule);
             return RedirectToPage("./RentalServiceDetail");
         }
     }

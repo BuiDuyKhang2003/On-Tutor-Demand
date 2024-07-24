@@ -12,7 +12,7 @@ namespace Repository.RepositoryInterface
         IQueryable<Schedule> GetScheduleServicesByQuery();
         IEnumerable<Schedule> GetAllSchedules();
         Task<Schedule> GetScheduleById(int? scheduleId);
-        void AddSchedule(Schedule schedule);
+        Task<Schedule> AddScheduleAsync(Schedule schedule);
         void UpdateSchedule(Schedule schedule);
         void DeleteSchedule(int? scheduleId);
     }

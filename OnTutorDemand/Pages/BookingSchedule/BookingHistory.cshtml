@@ -1,0 +1,108 @@
+﻿@page
+@model OnTutorDemand.Pages.BookingSchedule.BookingHistory
+@inject IHttpContextAccessor HttpContextAccessor
+
+@{
+    ViewData["Title"] = "BookingHistory";
+    ViewData["HideNavbar"] = false;
+    var userEmail = HttpContextAccessor?.HttpContext?.Session.GetString("UserEmail");
+    var userRole = HttpContextAccessor?.HttpContext?.Session.GetString("UserRole");
+    var isAuthenticated = !string.IsNullOrEmpty(userEmail);
+    var isModerator = userRole == "Moderator";
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lịch sử đặt gia sư</title>
+    <link href="~/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
+    <link href="~/css/sb-admin-2.min.css" rel="stylesheet">
+    <style>
+        .order-table .progress-bar {
+            background-color: #4e73df;
+        }
+        .order-table .paid {
+            color: #1cc88a;
+        }
+        .order-table .refunded {
+            color: #36b9cc;
+        }
+        .order-table .cancelled {
+            color: #e74a3b;
+        }
+        .order-table img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+        }
+        .order-table .customer-name {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body class="bg-light">
+    <div class="container mt-5">
+        <h1 class="h3 mb-4 text-gray-800">Chi tiết đặt</h1>
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h6 class="m-0 font-weight-bold text-primary">Chi tiết các dịch vụ thuê gia sư</h6>
+                    <div>
+                        <button class="btn btn-sm btn-primary">Xem tất cả</button>
+                        <button class="btn btn-sm btn-outline-success">Đã hoành thành</button>
+                        <button class="btn btn-sm btn-outline-info">Đã tạo</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table order-table">
+                        <thead>
+                            <tr>
+                                <th>Mã Đặt</th>
+                                <th>Trạng Thái</th>
+                                <th>Tên Dịch Vụ</th>
+                                <th>Giá</th>
+                                <th>Lịch Đặt</th>
+                                <th>Ngày Đặt</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>INV-3066</td>
+                                <td class="paid"><i class="fas fa-check-circle"></i> Paid</td>
+                                <td>
+                                    <span class="text-muted">Lớp bồi dưỡng về Hóa 11</span>
+                                </td>
+                                <td>
+                                    <span class="text-muted">400000VND</span>
+                                </td>
+                                <td>
+                                    <span class="text-muted">02-02-2000</span>
+                                </td>
+                                <td>
+                                    <span class="text-muted">02-02-2000</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/4.1.1/js/sb-admin-2.min.js"></script>
+<script src="/vendor/jquery/jquery.min.js"></script>
+<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="~/microsoft/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/chat.js"></script>
+<script src="/js/sb-admin-2.min.js"></script>
+</html>

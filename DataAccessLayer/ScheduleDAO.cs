@@ -26,10 +26,12 @@ namespace DataAccessLayer
             return await db.Schedules.FindAsync(scheduleId);
         }
 
-        public async static void AddSchedule(Schedule schedule)
+        public async static Task<Schedule> AddScheduleAsync(Schedule schedule)
         {
+            db = new();
             await db.Schedules.AddAsync(schedule);
             await db.SaveChangesAsync();
+            return schedule;
         }
 
         public async static void UpdateSchedule(Schedule schedule)

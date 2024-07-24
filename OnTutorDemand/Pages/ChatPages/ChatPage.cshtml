@@ -107,13 +107,13 @@ ViewData["Title"] = "Chat";
     <div class="chat-container">
         <div class="conversation-list">
             <h5>Conversations</h5>
-                @if (Model.PreviousConversations == null || !Model.PreviousConversations.Any())
-                {
-                    <p>There are no previous conversations.</p>
-                }
-                else
-                {
-                    <ul class="list-unstyled">
+                <ul class="list-unstyled">
+                    @if (Model.PreviousConversations == null || !Model.PreviousConversations.Any())
+                    {
+                        <div id="noConversation">There are no previous conversations.</div>
+                    }
+                    else
+                    {                   
                         @foreach (var conversation in Model.PreviousConversations)
                         {
                             <li class="conversation-item">
@@ -133,13 +133,15 @@ ViewData["Title"] = "Chat";
                                     </div>
                                 </a>
                             </li>
-                        }
-                    </ul>
-                }
+                        }                  
+                    }
+                </ul>
         </div>
         <div class="chat-content">
                 @if (Model.Conversation == null)
                 {
+                    <input type="hidden" id="conversationId" value="0" />
+                    <input type="hidden" id="userId" value="@Model.UserId" />
                     <div class="chat-header">
                         <p>No conversation selected.</p>
                     </div>
