@@ -49,8 +49,12 @@ namespace OnTutorDemand.Pages.RentalServicePage
 
             }
 
+            var userRole = HttpContext.Session.GetString("UserRole");
+            if (userRole.Equals("Tutor"))
+            {
+                _serviceRepository.AddRentalService(RentalService);
+            }
 
-            _serviceRepository.AddRentalService(RentalService);
 
 
             return RedirectToPage("/RentalServicePage/RentalServiceIndexForTurtor");

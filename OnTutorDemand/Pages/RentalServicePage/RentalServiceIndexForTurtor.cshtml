@@ -1,5 +1,5 @@
 ﻿@page
-@model OnTutorDemand.Pages.RentalServicePage.RentalServiceIndexModel
+@model OnTutorDemand.Pages.RentalServicePage.RentalServiceIndexForTutorModel
 
 @{
     ViewData["Title"] = "Index";
@@ -102,12 +102,8 @@
             <a asp-page="/ShedulePages/RentalServiceDetail">Create Schedule</a>
         </p>
         <div class="form-actions">
-            <form asp-page="./RentalServiceHomePage" method="get" class="form-inline">
-                <input type="text" name="searchString" value="@Model.CurrentFilter" placeholder="Tìm kiếm" class="form-control" />
-                <input type="submit" value="Tìm kiếm" class="btn btn-primary ml-2" />
-                <a asp-page="./RentalServiceIndexForTurtor" class="btn btn-secondary ml-2">Trở lại</a>
-            </form>
-            <a asp-page="Create" class="btn btn-success">Tạo mới</a>
+            
+            <a asp-page="./Create" class="btn btn-success">Tạo mới</a>
         </div>
         <div class="table-responsive">
             <table class="table table-bordered">
@@ -120,7 +116,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model.RentalServices)
+                    @foreach (var item in Model.RentalService)
                     {
                         <tr>
                             <td>@Html.DisplayFor(modelItem => item.Description)</td>
@@ -139,16 +135,16 @@
         <div class="pagination-buttons">
             <a asp-page="./RentalServiceHomePage"
                asp-route-sortOrder="@Model.CurrentSort"
-               asp-route-pageIndex="@(Model.RentalServices.PageIndex - 1)"
-               asp-route-currentFilter="@Model.CurrentFilter"
-               class="btn btn-primary @(!Model.RentalServices.HasPreviousPage ? "disabled" : "")">
+               asp-route-pageIndex="@(Model.RentalService.PageIndex - 1)"
+              
+               class="btn btn-primary @(!Model.RentalService.HasPreviousPage ? "disabled" : "")">
                 Trước
             </a>
             <a asp-page="./RentalServiceHomePage"
                asp-route-sortOrder="@Model.CurrentSort"
-               asp-route-pageIndex="@(Model.RentalServices.PageIndex + 1)"
-               asp-route-currentFilter="@Model.CurrentFilter"
-               class="btn btn-primary @(!Model.RentalServices.HasNextPage ? "disabled" : "")">
+               asp-route-pageIndex="@(Model.RentalService.PageIndex + 1)"
+             
+               class="btn btn-primary @(!Model.RentalService.HasNextPage ? "disabled" : "")">
                 Kế tiếp
             </a>
         </div>
