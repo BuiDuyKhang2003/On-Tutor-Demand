@@ -18,6 +18,9 @@ namespace DataAccessLayer
             db = new();
             return await db.BookingSchedules
                 .Include(bs => bs.Schedule)
+                .ThenInclude(s => s.RentalService)
+                .ThenInclude(rs => rs.Tutor)
+                .ThenInclude(t => t.Account) // Include Account for Tutor
                 .Where(bs => bs.AccountId == accountId)
                 .ToListAsync();
         }

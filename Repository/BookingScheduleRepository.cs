@@ -11,10 +11,11 @@ namespace Repository
 {
     public class BookingScheduleRepository : IBookingScheduleRepository
     {
-        public async Task<bool> BookScheduleAsync(int scheduleId, int accountId) => await BookingScheduleDAO.BookScheduleAsync(scheduleId, accountId);
-
         public async Task<IEnumerable<BookingSchedule>> GetBookingHistoryAsync(int accountId) => await BookingScheduleDAO.GetBookingHistoryAsync(accountId);
 
         public async Task<bool> CancelBookingAsync(int scheduleId) => await BookingScheduleDAO.CancelBookingAsync(scheduleId);
+
+        public async Task<bool> BookScheduleAsync(int scheduleId, int accountId) => await BookingScheduleDAO.BookScheduleAsync(scheduleId, accountId);
+
     }
 }
