@@ -101,7 +101,7 @@
             <div class="profile-body">
                 <h2>@Model.TutorInfo.FullName</h2>
                 <p style="text-align: center;"><i class="fas fa-graduation-cap"></i> @Model.TutorInfo.Education</p>
-                <a asp-page-handler="startchat" asp-route-tutorId="@Model.TutorInfo.Id" asp-route-tutorName="@Model.TutorInfo.FullName">Start Chat</a>
+                <a asp-page-handler="startchat" asp-route-tutorId="@Model.TutorInfo.Account.Id" asp-route-tutorName="@Model.TutorInfo.FullName">Start Chat</a>
                 <div class="divider"></div>
                 <p><strong>Giới Tính:</strong> @Model.TutorInfo.Account.Gender</p>
                 <p><strong>Năm Sinh:</strong> @Model.TutorInfo.Account.DateOfBirth.ToString("d")</p>

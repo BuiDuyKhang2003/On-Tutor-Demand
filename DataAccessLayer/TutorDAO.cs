@@ -35,8 +35,11 @@ namespace DataAccessLayer
             return await db.Tutors
                 .Include(t => t.Account)
                 .Include(t => t.TutorGrades)
+                .ThenInclude(g => g.Grade)
                 .Include(t => t.TutorAreas)
+                .ThenInclude(a => a.District)
                 .Include(t => t.TutorSubjects)
+                .ThenInclude(s => s.Subject)
                 .FirstOrDefaultAsync(t => t.Id == tutorId);
         }
 

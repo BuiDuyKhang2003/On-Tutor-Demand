@@ -67,9 +67,14 @@ namespace OnTutorDemand.Pages.ChatPages
             PreviousConversations = (await conversationRepository.GetConversationsByUserId(UserId)).ToList();
 
             Conversation = await conversationRepository.GetConversationById(conversationId);
+
             if (Conversation == null)
             {
-                return Page();
+                return RedirectToPage("/ChatPages/ChatPage");
+            }
+            if (!(Conversation.InitiatorId == UserId || Conversation.ReceiverId == UserId))
+            {
+                return RedirectToPage("/ChatPages/ChatPage");
             }
 
             ChatMessages = (await chatMessageRepository.GetChatMessagesByConversationId(conversationId)).ToList();
