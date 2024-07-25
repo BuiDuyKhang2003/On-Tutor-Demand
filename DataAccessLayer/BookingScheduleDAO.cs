@@ -15,6 +15,7 @@ namespace DataAccessLayer
 
         public async static Task<List<BookingSchedule>> GetBookingHistoryAsync(int accountId)
         {
+            db = new();
             return await db.BookingSchedules
                 .Include(bs => bs.Schedule)
                 .Where(bs => bs.AccountId == accountId)
@@ -23,6 +24,7 @@ namespace DataAccessLayer
 
         public async static Task<bool> BookScheduleAsync(int scheduleId, int accountId)
         {
+            db = new();
             var schedule = await db.Schedules.FindAsync(scheduleId);
             if (schedule == null || db.BookingSchedules.Any(bs => bs.ScheduleId == scheduleId))
                 return false;
@@ -38,10 +40,23 @@ namespace DataAccessLayer
                 ScheduleId = scheduleId,
                 AccountId = accountId,
                 BookingDate = vietNamTime,
-                Status = "unpaid"
+                Status = "Unpaid"
             };
 
             db.BookingSchedules.Add(bookingSchedule);
+            await db.SaveChangesAsync();
+
+            return true;
+        }
+
+        public async static Task<bool> CancelBookingAsync(int bookingId)
+        {
+            var booking = await db.BookingSchedules.FindAsync(bookingId);
+            if (booking == null)
+                return false;
+
+            booking.Status = "Cancelled";
+            db.BookingSchedules.Update(booking);
             await db.SaveChangesAsync();
 
             return true;

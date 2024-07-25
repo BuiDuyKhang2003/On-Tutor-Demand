@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BusinessObject;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Repository.RepositoryInterface;
 
@@ -16,5 +17,19 @@ public class BookingHistory : PageModel
     public IActionResult OnGet()
     {
         return Page();
+    }
+    public async Task<IActionResult> OnPostCancelBookingAsync(int bookingId)
+    {
+        var userRole = HttpContext.Session.GetString("UserRole");
+        if (userRole == null)
+        {
+            RedirectToPage("/Authenticate/Login");
+        }
+
+        var success = await bookingScheduleRepository.CancelBookingAsync(bookingId);
+        if (!success)
+            return BadRequest();
+
+        return RedirectToPage();
     }
 }

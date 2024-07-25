@@ -11,5 +11,6 @@ namespace Repository.RepositoryInterface
     {
         Task<IEnumerable<BookingSchedule>> GetBookingHistoryAsync(int accountId);
         Task<bool> BookScheduleAsync(int scheduleId, int accountId);
+        Task<bool> CancelBookingAsync(int bookingId);
     }
 }
