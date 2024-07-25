@@ -40,7 +40,7 @@ namespace OnTutorDemand.Pages.ShedulePages
                 RentalService = rentalservice;
             }
             ViewData["DaysOfWeek"] = new SelectList(new List<string> { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" });
-            
+
             var userRole = HttpContext.Session.GetString("UserRole");
             if (userRole == null || !userRole.Equals("User"))
             {

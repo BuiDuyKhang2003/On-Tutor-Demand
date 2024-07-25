@@ -1,11 +1,11 @@
 ﻿@page
 @model OnTutorDemand.Pages.ShedulePages.SchedulePageForStudentModel
 @{
-    ViewData["Title"] = "Course Schedule for student";
+    ViewData["Title"] = "Thời khóa biểu của khóa học";
 }
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -137,21 +137,20 @@
 </head>
 <body>
     <div class="container mt-4">
+       
+        <h1>Lớp: @Html.DisplayFor(model => model.RentalService.Tutor.Grades)</h1>
+        <h5>Giáo viên: @Html.DisplayFor(model => model.RentalService.Tutor.FullName)</h5>
 
-        <h1>Grade: @Html.DisplayFor(model => model.RentalService.Tutor)</h1>
-        <h5>By: @Html.DisplayFor(model => model.RentalService.Tutor.FullName)</h5>
         <div class="description-container">
-            Tên: @Html.DisplayFor(model => model.RentalService.ServiceName)
+            Tên khóa học: @Html.DisplayFor(model => model.RentalService.ServiceName)
         </div>
         <div class="description-container">
             Gồm có: @Html.DisplayFor(model => model.RentalService.Description)
         </div>
         <div class="description-container">
-            Price: @Html.DisplayFor(model => model.RentalService.PricePerSession)
+            Giá: @Html.DisplayFor(model => model.RentalService.PricePerSession)
         </div>
-        <h2 class="mt-5 text-center">Weekly Schedule</h2>
-
-
+        <h2 class="mt-5 text-center">Thời khóa biểu</h2>
 
         <form method="post" action="/YourActionUrl">
             <div class="table-responsive">
@@ -159,16 +158,15 @@
                     <thead>
                         <tr>
                             <th>
-                                @Html.DisplayNameFor(model => model.Schedules[0].DayOfWeek)
+                                Ngày trong tuần
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.Schedules[0].StartTime)
+                                Thời gian bắt đầu
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.Schedules[0].EndTime)
+                                Thời gian kết thúc
                             </th>
-                           
-                            <th>Book</th> <!-- Add header for booking column -->
+                            <th>Đặt lịch</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -184,9 +182,8 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.EndTime)
                                 </td>
-                                
                                 <td>
-                                    <input type="checkbox" name="bookingCheckbox" value="@item.Id" /> <!-- Add checkbox for booking -->
+                                    <input type="checkbox" name="bookingCheckbox" value="@item.Id" />
                                 </td>
                             </tr>
                         }
@@ -195,7 +192,7 @@
             </div>
 
             <div class="text-center mt-4">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Gửi</button>
             </div>
         </form>
 
@@ -205,14 +202,14 @@
                asp-route-pageIndex="@(Model.Schedules.PageIndex - 1)"
                asp-route-currentFilter="@Model.CurrentFilter"
                class="btn btn-primary @(!Model.Schedules.HasPreviousPage ? "disabled" : "")">
-                Previous
+                Trước
             </a>
             <a asp-page="./RentalServiceDetail"
                asp-route-sortOrder="@Model.CurrentSort"
                asp-route-pageIndex="@(Model.Schedules.PageIndex + 1)"
                asp-route-currentFilter="@Model.CurrentFilter"
                class="btn btn-primary @(!Model.Schedules.HasNextPage ? "disabled" : "")">
-                Next
+                Sau
             </a>
         </div>
     </div>
