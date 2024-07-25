@@ -34,7 +34,7 @@ namespace DataAccessLayer
             return schedule;
         }
 
-        public async static void UpdateSchedule(Schedule schedule)
+        public async static Task<Schedule> UpdateSchedule(Schedule schedule)
         {
             db = new();
             var existingSchedule = await db.Schedules
@@ -48,6 +48,7 @@ namespace DataAccessLayer
 
                 db.Entry(existingSchedule).State = EntityState.Modified;
                 await db.SaveChangesAsync();
+                return schedule;
             }
             else
             {
@@ -55,7 +56,7 @@ namespace DataAccessLayer
             }
         }
 
-        public async static void DeleteSchedule(int? scheduleId)
+        public async static Task<Schedule> DeleteSchedule(int? scheduleId)
         {
             var schedule = await db.Schedules.FindAsync(scheduleId);
             if (schedule != null)
@@ -63,6 +64,7 @@ namespace DataAccessLayer
                 db.Schedules.Remove(schedule);
                 await db.SaveChangesAsync();
             }
+            return schedule;
         }
     }
 }
