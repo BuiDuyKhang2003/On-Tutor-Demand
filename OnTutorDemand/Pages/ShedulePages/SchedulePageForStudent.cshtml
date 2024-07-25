@@ -1,11 +1,11 @@
 ﻿@page
 @model OnTutorDemand.Pages.ShedulePages.SchedulePageForStudentModel
 @{
-    ViewData["Title"] = "Course Schedule for student";
+    ViewData["Title"] = "Thời khóa biểu của khóa học";
 }
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -137,39 +137,40 @@
 </head>
 <body>
     <div class="container mt-4">
-        <h1>Học Toán Lớp 2</h1>
-        <h5>By: TinDinh</h5>
+        <h1>Lớp: @Html.DisplayFor(model => model.RentalService.Tutor.Grades)</h1>
+        <h5>Giáo viên: @Html.DisplayFor(model => model.RentalService.Tutor.FullName)</h5>
         <div class="description-container">
-            
-            
-            Gồm có: @Html.DisplayFor(model => model.RentalService.Description)
-               
-            
+            Tên khóa học: @Html.DisplayFor(model => model.RentalService.ServiceName)
         </div>
+        <div class="description-container">
+            Gồm có: @Html.DisplayFor(model => model.RentalService.Description)
+        </div>
+        <div class="description-container">
+            Giá: @Html.DisplayFor(model => model.RentalService.PricePerSession)
+        </div>
+        <h2 class="mt-5 text-center">Thời khóa biểu</h2>
 
-        <h2 class="mt-5 text-center">Weekly Schedule</h2>
-        
-        <div class="table-responsive">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Schedules[0].DayOfWeek)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Schedules[0].StartTime)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Schedules[0].EndTime)
-                        </th>
-                        
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    @foreach (var item in Model.Schedules)
-                    {
+        <form method="post" action="/YourActionUrl">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
                         <tr>
+                            <th>
+                                Ngày trong tuần
+                            </th>
+                            <th>
+                                Thời gian bắt đầu
+                            </th>
+                            <th>
+                                Thời gian kết thúc
+                            </th>
+                            <th>Đặt lịch</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Schedules)
+                        {
+                            <tr>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.DayOfWeek)
                                 </td>
@@ -179,16 +180,19 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.EndTime)
                                 </td>
-                                
                                 <td>
-                                    
+                                    <input type="checkbox" name="bookingCheckbox" value="@item.Id" />
                                 </td>
-                        </tr>
-                    }
-                    
-                </tbody>
-            </table>
-        </div>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-primary">Gửi</button>
+            </div>
+        </form>
 
         <div class="pagination-buttons">
             <a asp-page="./RentalServiceDetail"
@@ -196,14 +200,14 @@
                asp-route-pageIndex="@(Model.Schedules.PageIndex - 1)"
                asp-route-currentFilter="@Model.CurrentFilter"
                class="btn btn-primary @(!Model.Schedules.HasPreviousPage ? "disabled" : "")">
-                Previous
+                Trước
             </a>
             <a asp-page="./RentalServiceDetail"
                asp-route-sortOrder="@Model.CurrentSort"
                asp-route-pageIndex="@(Model.Schedules.PageIndex + 1)"
                asp-route-currentFilter="@Model.CurrentFilter"
                class="btn btn-primary @(!Model.Schedules.HasNextPage ? "disabled" : "")">
-                Next
+                Sau
             </a>
         </div>
     </div>

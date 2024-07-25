@@ -138,13 +138,9 @@
 <body>
     <div class="container mt-4">
         <h1>Học Toán Lớp 2</h1>
-        <h5>By: TinDinh</h5>
+        <h5>By: @Html.DisplayFor(model => model.RentalService.Tutor.FullName)</h5>
         <div class="description-container">
-            
-            
             Gồm có: @Html.DisplayFor(model => model.RentalService.Description)
-               
-            
         </div>
 
         <h2 class="mt-5 text-center">Weekly Schedule</h2>
@@ -221,7 +217,7 @@
                         <th>
                             @Html.DisplayNameFor(model => model.Schedules[0].EndTime)
                         </th>
-                        
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -231,9 +227,6 @@
                         {
                             <tr>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.RentalService.Description)
-                                </td>
-                                <td>
                                     @Html.DisplayFor(modelItem => item.DayOfWeek)
                                 </td>
                                 <td>
@@ -242,11 +235,11 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.EndTime)
                                 </td>
-
                                 <td>
-                                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-
-                                    <a asp-page="./DeleteSchedule" asp-route-id="@item.Id">Delete</a>
+                                    <div class="btn-group" role="group">
+                                        <a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
+                                        <a asp-page="./DeleteSchedule" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                                    </div>
                                 </td>
                             </tr>
                         }
