@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240724110630_InitialCreate")]
+    [Migration("20240725010632_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -94,6 +94,10 @@ namespace DataAccessLayer.Migrations
 
                     b.Property<int>("ScheduleId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -555,7 +559,7 @@ namespace DataAccessLayer.Migrations
                     b.HasOne("BusinessObject.Conversation", "Conversation")
                         .WithMany("ChatMessages")
                         .HasForeignKey("ConversationId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("BusinessObject.Account", "Sender")
@@ -747,8 +751,7 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("BusinessObject.Schedule", b =>
                 {
-                    b.Navigation("Booking")
-                        .IsRequired();
+                    b.Navigation("Booking");
                 });
 
             modelBuilder.Entity("BusinessObject.Subject", b =>

@@ -24,7 +24,7 @@ public partial class AppDbContext : DbContext
     public DbSet<Video> Videos { get; set; }
     public DbSet<Schedule> Schedules { get; set; }
     public DbSet<TutorRegistration> TutorRegistrations { get; set; }
-    public DbSet<BookingSchedule> Bookings { get; set; }
+    public DbSet<BookingSchedule> BookingSchedules { get; set; }
 
 
     public AppDbContext() { }

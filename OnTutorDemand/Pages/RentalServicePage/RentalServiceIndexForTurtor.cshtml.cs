@@ -30,15 +30,14 @@ namespace OnTutorDemand.Pages.RentalServicePage
         
         public PaginatedList<RentalService> RentalService { get; set; }
 
-        public async Task OnGetAsync(string sortOrder, int? pageIndex)
+        public async Task<IActionResult> OnGetAsync(string sortOrder, int? pageIndex)
         {
-            
-            ViewData["TutorId"] = new SelectList(_tutorRepository.GetAllTutors(), "Id", "FullName");
             var userRole = HttpContext.Session.GetString("UserRole");
-            if (userRole == null || (!userRole.Equals("Tutor")))
+            if (userRole == null || !userRole.Equals("Tutor"))
             {
-                RedirectToPage("/Authenticate/Login");
+                return RedirectToPage("/Authenticate/Login");
             }
+            ViewData["TutorId"] = new SelectList(_tutorRepository.GetAllTutors(), "Id", "FullName");
 
             CurrentSort = sortOrder;
             desSort = String.IsNullOrEmpty(sortOrder) ? "Description_desc" : "";
@@ -59,6 +58,7 @@ namespace OnTutorDemand.Pages.RentalServicePage
                 var pageSize = _configuration.GetValue("PageSize", 8);
                 RentalService = await PaginatedList<RentalService>.CreateAsync(
                     serviceIQ.AsNoTracking(), pageIndex ?? 1, pageSize);
-            }
+            return Page();
+        }
     }
 }

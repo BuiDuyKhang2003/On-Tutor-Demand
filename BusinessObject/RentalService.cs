@@ -28,7 +28,7 @@ namespace BusinessObject
 
         public long PricePerSession { get; set; }
 
-        public DateTime CreatedDate { get; private set; } = DateTime.Now;
+        public DateTime CreatedDate { get; set; }
 
         public virtual Tutor Tutor { get; set; }
         public virtual ICollection<Feedback> Feedbacks { get; set; } = new List<Feedback>();

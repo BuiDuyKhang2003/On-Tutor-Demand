@@ -98,9 +98,6 @@
 <body>
     <div class="container mt-4">
         <h1>Danh sách dịch vụ cho thuê</h1>
-        <p>
-            <a asp-page="/ShedulePages/RentalServiceDetail">Create Schedule</a>
-        </p>
         <div class="form-actions">
             <form asp-page="./RentalServiceHomePage" method="get" class="form-inline">
                 <input type="text" name="searchString" value="@Model.CurrentFilter" placeholder="Tìm kiếm" class="form-control" />

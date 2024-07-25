@@ -11,6 +11,7 @@ using Repository.RepositoryInterface;
 using Repository;
 using System.Drawing.Printing;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json;
 
 namespace OnTutorDemand.Pages.RentalServicePage
 {
@@ -18,15 +19,16 @@ namespace OnTutorDemand.Pages.RentalServicePage
     {
         private IRentalServiceRepository _serviceRepository;
         private ITutorRepository _tutorRepository;
-        public CreateModel()
+        private IAccountRepository accountRepository;
+        public CreateModel(IAccountRepository accountRepository)
         {
             _tutorRepository = new TutorRepository();
             _serviceRepository = new RentalServiceRepository();
+            this.accountRepository = accountRepository;
         }
 
-        public async Task<IActionResult> OnGetAsync()
+        public IActionResult OnGet()
         {
-            ViewData["TutorId"] = new SelectList(_tutorRepository.GetAllTutors(), "Id", "FullName");
             var userRole = HttpContext.Session.GetString("UserRole");
             if (userRole == null || !userRole.Equals("Tutor"))
             {
@@ -39,19 +41,30 @@ namespace OnTutorDemand.Pages.RentalServicePage
         [BindProperty]
         public RentalService RentalService { get; set; } = default!;
 
-
-        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
+            var userEmail = HttpContext.Session.GetString("UserEmail");
+            var currentAccount = await accountRepository.GetAccountByEmail(userEmail);
+
+            ModelState.Remove("RentalService.TutorId");
+            ModelState.Remove("RentalService.Tutor");
+            ModelState.Remove("RentalService.CreatedDate");
             if (!ModelState.IsValid)
             {
                 return Page();
 
             }
 
+            HttpClient client = new HttpClient();
+            var response = await client.GetStringAsync("http://worldtimeapi.org/api/timezone/Etc/UTC");
+            var jsonDocument = JsonDocument.Parse(response);
+            var datetimeString = jsonDocument.RootElement.GetProperty("datetime").GetString();
+            var vietNamTime = DateTime.SpecifyKind(DateTime.Parse(datetimeString), DateTimeKind.Utc);
 
-            _serviceRepository.AddRentalService(RentalService);
+            RentalService.CreatedDate = vietNamTime;
+            RentalService.TutorId = currentAccount.Tutor.Id;
 
+            await _serviceRepository.AddRentalService(RentalService);
 
             return RedirectToPage("/RentalServicePage/RentalServiceIndexForTurtor");
         }

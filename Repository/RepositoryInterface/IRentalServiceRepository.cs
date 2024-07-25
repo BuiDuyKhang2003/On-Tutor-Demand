@@ -12,7 +12,7 @@ namespace Repository.RepositoryInterface
         IQueryable<RentalService> GetRentalServicesByQuery();
         IEnumerable<RentalService> GetAllRentalServices();
         RentalService GetRentalServiceById(int? rentalServiceId);
-        void AddRentalService(RentalService rentalService);
+        Task AddRentalService(RentalService rentalService);
         void UpdateRentalService(RentalService rentalService);
         void DeleteRentalService(int? rentalServiceId);
     }
