@@ -138,38 +138,36 @@
 <body>
     <div class="container mt-4">
         <h1>Học Toán Lớp 2</h1>
-        <h5>By: TinDinh</h5>
+        <h5>By: @Html.DisplayFor(model => model.RentalService.Tutor.FullName)</h5>
         <div class="description-container">
-            
-            
             Gồm có: @Html.DisplayFor(model => model.RentalService.Description)
-               
-            
         </div>
 
         <h2 class="mt-5 text-center">Weekly Schedule</h2>
-        
-        <div class="table-responsive">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Schedules[0].DayOfWeek)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Schedules[0].StartTime)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Schedules[0].EndTime)
-                        </th>
-                        
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    @foreach (var item in Model.Schedules)
-                    {
+
+
+
+        <form method="post" action="/YourActionUrl">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
                         <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Schedules[0].DayOfWeek)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Schedules[0].StartTime)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Schedules[0].EndTime)
+                            </th>
+                            <th>Book</th> <!-- Add header for booking column -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Schedules)
+                        {
+                            <tr>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.DayOfWeek)
                                 </td>
@@ -179,16 +177,19 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.EndTime)
                                 </td>
-                                
                                 <td>
-                                    
+                                    <input type="checkbox" name="bookingCheckbox" value="@item.Id" /> <!-- Add checkbox for booking -->
                                 </td>
-                        </tr>
-                    }
-                    
-                </tbody>
-            </table>
-        </div>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
 
         <div class="pagination-buttons">
             <a asp-page="./RentalServiceDetail"
