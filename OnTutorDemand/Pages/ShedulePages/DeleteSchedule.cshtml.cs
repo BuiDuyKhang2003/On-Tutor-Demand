@@ -60,7 +60,7 @@ namespace OnTutorDemand.Pages.ShedulePages
             if (schedule != null)
             {
                 Schedule = schedule;
-                scheduleRepository.DeleteSchedule(id);
+               await scheduleRepository.DeleteSchedule(id);
             }
 
             return RedirectToPage("./RentalServiceDetail");

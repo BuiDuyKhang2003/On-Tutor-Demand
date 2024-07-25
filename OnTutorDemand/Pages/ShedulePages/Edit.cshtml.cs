@@ -65,7 +65,7 @@ namespace OnTutorDemand.Pages.ShedulePages
 
             try
             {
-                _scheduleRepository.UpdateSchedule(Schedule);
+               await _scheduleRepository.UpdateSchedule(Schedule);
             }
             catch (DbUpdateConcurrencyException)
             {
