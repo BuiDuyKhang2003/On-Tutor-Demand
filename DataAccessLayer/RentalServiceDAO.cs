@@ -29,10 +29,10 @@ namespace DataAccessLayer
             return db.RentalServices.Include(r => r.Tutor).ThenInclude(x => x.Account).FirstOrDefault(s => s.Id == rentalServiceId) ?? new RentalService();
         }
 
-        public static void AddRentalService(RentalService rentalService)
+        public async static Task AddRentalService(RentalService rentalService)
         {
-            db.RentalServices.Add(rentalService);
-            db.SaveChanges();
+            await db.RentalServices.AddAsync(rentalService);
+            await db.SaveChangesAsync();
         }
 
         public static void UpdateRentalService(RentalService rentalService)

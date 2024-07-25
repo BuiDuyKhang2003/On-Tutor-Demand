@@ -29,10 +29,15 @@ namespace DataAccessLayer
                             .ThenInclude(ts=>ts.Subject)
                    select s;
         }
-        public static Tutor GetTutorById(int? tutorId)
+        public async static Task<Tutor> GetTutorById(int? tutorId)
         {
             db = new();
-            return db.Tutors.Find(tutorId) ?? new Tutor();
+            return await db.Tutors
+                .Include(t => t.Account)
+                .Include(t => t.TutorGrades)
+                .Include(t => t.TutorAreas)
+                .Include(t => t.TutorSubjects)
+                .FirstOrDefaultAsync(t => t.Id == tutorId);
         }
 
         public async static Task<List<Grade>> GetAllGrades()

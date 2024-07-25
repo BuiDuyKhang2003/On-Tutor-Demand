@@ -1,40 +1,74 @@
+using BusinessObject;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Repository;
+using Repository.RepositoryInterface;
+using System.Text.Json;
 
 namespace OnTutorDemand.Pages.TutorPages
 {
     public class TutorPageModel : PageModel
     {
-        public TutorInfo Tutor { get; set; }
+        private readonly ITutorRepository tutorRepository;
+        private readonly IConversationRepository conversationRepository;
+        private readonly IAccountRepository accountRepository;
 
-        public void OnGet()
+        public TutorPageModel(ITutorRepository tutorRepository, IAccountRepository accountRepository, IConversationRepository conversationRepository)
         {
-            // Dummy data for demonstration purposes
-            Tutor = new TutorInfo
-            {
-                FullName = "Nguyễn Văn A",
-                Gender = "Nam",
-                BirthYear = 1985,
-                Education = "Thạc Sĩ",
-                Experience = "10 năm",
-                Subjects = "Toán, Lý, Hóa",
-                Districts = "Quận 1, Quận 3, Quận 5",
-                Grades = "Lớp 10, Lớp 11, Lớp 12",
-                Description = "Có nhiều kinh nghiệm giảng dạy các lớp cấp 3, phương pháp giảng dạy dễ hiểu, chuyên sâu các môn Toán, Lý, Hóa."
-
-            };
+            this.tutorRepository = tutorRepository;
+            this.conversationRepository = conversationRepository;
+            this.accountRepository = accountRepository;
         }
 
-        public class TutorInfo
+        [BindProperty]
+        public Tutor TutorInfo { get; set; }
+
+        public async Task<IActionResult> OnGetAsync(int id)
         {
-            public string FullName { get; set; }
-            public string Gender { get; set; }
-            public int BirthYear { get; set; }
-            public string Education { get; set; }
-            public string Experience { get; set; }
-            public string Subjects { get; set; }
-            public string Districts { get; set; }
-            public string Grades { get; set; }
-            public string Description { get; set; }
+            Tutor existedTutor = await tutorRepository.GetTutorById(id);
+            if (existedTutor == null)
+            {
+                return RedirectToPage("/TutorPages/TutorIndex");
+            }
+            TutorInfo = existedTutor;
+            return Page();
+        }
+
+        public async Task<IActionResult> OnGetStartChatAsync(int tutorId, string tutorName)
+        {
+            var userEmail = HttpContext.Session.GetString("UserEmail");
+            var currentAccount = await accountRepository.GetAccountByEmail(userEmail);
+            if (String.IsNullOrEmpty(currentAccount.Email))
+            {
+                return RedirectToPage("/Authenticate/Login"); ;
+            }
+
+            Conversation existConversation = await conversationRepository.GetConversationByInitiatorIdAndReceiverIdAsync(currentAccount.Id, tutorId);
+            if (existConversation != null)
+            {
+                return RedirectToPage("/ChatPages/ChatPage", new { handler = "Conversation", conversationid = existConversation.Id });
+            }
+            else
+            {
+                HttpClient client = new HttpClient();
+                var response = await client.GetStringAsync("http://worldtimeapi.org/api/timezone/Etc/UTC");
+                var jsonDocument = JsonDocument.Parse(response);
+                var datetimeString = jsonDocument.RootElement.GetProperty("datetime").GetString();
+                var vietNamTime = DateTime.SpecifyKind(DateTime.Parse(datetimeString), DateTimeKind.Utc);
+
+                var newConversation = new Conversation
+                {
+                    InitiatorId = currentAccount.Id,
+                    ReceiverId = tutorId,
+                    Subject = tutorName,
+                    CreatedDate = vietNamTime,
+                    LastMessageDate = vietNamTime
+                };
+
+                Conversation addedConversation = await conversationRepository.AddConversation(newConversation);
+
+                return RedirectToPage("/ChatPages/ChatPage", new { handler = "Conversation", conversationId = addedConversation.Id, isNew = true });
+            }
         }
     }
 }

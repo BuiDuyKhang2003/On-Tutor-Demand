@@ -99,17 +99,18 @@
                 <img src="https://via.placeholder.com/150" alt="Tutor Photo">
             </div>
             <div class="profile-body">
-                <h2>@Model.Tutor.FullName</h2>
-                <p style="text-align: center;"><i class="fas fa-graduation-cap"></i> @Model.Tutor.Education</p>
+                <h2>@Model.TutorInfo.FullName</h2>
+                <p style="text-align: center;"><i class="fas fa-graduation-cap"></i> @Model.TutorInfo.Education</p>
+                <a asp-page-handler="startchat" asp-route-tutorId="@Model.TutorInfo.Id" asp-route-tutorName="@Model.TutorInfo.FullName">Start Chat</a>
                 <div class="divider"></div>
-                <p><strong>Giới Tính:</strong> @Model.Tutor.Gender</p>
-                <p><strong>Năm Sinh:</strong> @Model.Tutor.BirthYear</p>
-                <p><strong>Kinh Nghiệm:</strong> @Model.Tutor.Experience</p>
-                <p><strong>Môn Dạy:</strong> @Model.Tutor.Subjects</p>
-                <p><strong>Khu Vực Dạy:</strong> @Model.Tutor.Districts</p>
-                <p><strong>Lớp Dạy:</strong> @Model.Tutor.Grades</p>
+                <p><strong>Giới Tính:</strong> @Model.TutorInfo.Account.Gender</p>
+                <p><strong>Năm Sinh:</strong> @Model.TutorInfo.Account.DateOfBirth.ToString("d")</p>
+                <p><strong>Kinh Nghiệm:</strong> @Model.TutorInfo.Experience</p>
+                <p><strong>Môn Dạy:</strong> @Model.TutorInfo.Subjects</p>
+                <p><strong>Khu Vực Dạy:</strong> @Model.TutorInfo.Districts</p>
+                <p><strong>Lớp Dạy:</strong> @Model.TutorInfo.Grades</p>
                 <h3 class="section-title"><strong>Mô tả</strong></h3>
-                <p>@Model.Tutor.Description</p>
+                <p>@Model.TutorInfo.Description</p>
             </div>
         </div>
     </div>

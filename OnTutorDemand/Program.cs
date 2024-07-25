@@ -19,6 +19,7 @@ builder.Services.AddScoped<ITutorRepository, TutorRepository>();
 builder.Services.AddScoped<IVideoRepository, VideoRepository>();
 builder.Services.AddScoped<ITutorRegistrationRepository, TutorRegistrationRepository>();
 builder.Services.AddScoped<IScheduleRepository, ScheduleRepository>();
+builder.Services.AddScoped<IBookingScheduleRepository, BookingScheduleRepository>();
 
 builder.Services.AddSession(options =>
 {

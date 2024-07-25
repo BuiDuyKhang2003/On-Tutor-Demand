@@ -11,7 +11,7 @@ namespace Repository
 {
     public class RentalServiceRepository : IRentalServiceRepository
     {
-        public void AddRentalService(RentalService rentalService) => RentalServiceDAO.AddRentalService(rentalService);
+        public async Task AddRentalService(RentalService rentalService) => await RentalServiceDAO.AddRentalService(rentalService);
 
         public void DeleteRentalService(int? rentalServiceId) => RentalServiceDAO.DeleteRentalService(rentalServiceId);
 

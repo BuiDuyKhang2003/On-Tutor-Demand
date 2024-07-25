@@ -15,7 +15,7 @@ namespace Repository
 
         public void DeleteTutor(int? tutorId) => TutorDAO.DeleteTutor(tutorId);
 
-        public Tutor GetTutorById(int? tutorId) => TutorDAO.GetTutorById(tutorId);
+        public async Task<Tutor> GetTutorById(int? tutorId) => await TutorDAO.GetTutorById(tutorId);
 
         public IEnumerable<Tutor> GetAllTutors() => TutorDAO.GetAllTutors();
 

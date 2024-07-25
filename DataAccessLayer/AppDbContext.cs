@@ -24,7 +24,7 @@ public partial class AppDbContext : DbContext
     public DbSet<Video> Videos { get; set; }
     public DbSet<Schedule> Schedules { get; set; }
     public DbSet<TutorRegistration> TutorRegistrations { get; set; }
-    public DbSet<BookingSchedule> Bookings { get; set; }
+    public DbSet<BookingSchedule> BookingSchedules { get; set; }
 
 
     public AppDbContext() { }
@@ -234,12 +234,6 @@ public partial class AppDbContext : DbContext
             .HasOne(c => c.Receiver)
             .WithMany(a => a.ReceivedConversations)
             .HasForeignKey(c => c.ReceiverId)
-            .OnDelete(DeleteBehavior.Restrict);
-
-        modelBuilder.Entity<Conversation>()
-            .HasMany(c => c.ChatMessages)
-            .WithOne(cm => cm.Conversation)
-            .HasForeignKey(cm => cm.ConversationId)
             .OnDelete(DeleteBehavior.Restrict);
     }
 

@@ -5,6 +5,10 @@
         .build();
 
     connection.on("ReceiveMessage", function (user, message) {
+        const noMessageElement = document.getElementById("noMessage");
+        if (noMessageElement) {
+            noMessageElement.remove();
+        }
         const msgItem = document.createElement("div");
         msgItem.classList.add("message-item");
 
@@ -45,8 +49,9 @@
     connection.start().then(function () {
         const conversationId = document.getElementById("conversationId").value;
         const userId = document.getElementById("userId").value;
+        const isNew = document.getElementById("isNew").value === "true";
         if (conversationId && userId) {
-            connection.invoke("JoinConversation", parseInt(conversationId), parseInt(userId))
+            connection.invoke("JoinConversation", parseInt(conversationId), parseInt(userId), isNew)
                 .catch(err => console.error(`Failed to invoke 'JoinConversation': ${err}`));
         } else {
             console.error("Conversation ID or User ID not found");

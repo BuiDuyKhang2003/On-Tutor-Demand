@@ -27,7 +27,7 @@ namespace DataAccessLayer
         public async static Task<Account> GetAccountByEmailAsync(string email)
         {
             db = new();
-            return await db.Accounts.FirstOrDefaultAsync(a => a.Email.Equals(email)) ?? new Account();
+            return await db.Accounts.Include(a => a.Tutor).FirstOrDefaultAsync(a => a.Email.Equals(email)) ?? new Account();
         }
 
         public async static Task<Account> AddAccountAsync(Account account)

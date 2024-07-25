@@ -65,15 +65,15 @@ namespace OnTutorDemand.Pages.ChatHub
         }
 
 
-        public async Task JoinConversation(int conversationId, int userId)
+        public async Task JoinConversation(int conversationId, int userId, bool isNew)
         {
-            if (conversationId != 0)
+            if (conversationId != 0 && isNew)
             {
                 await Groups.AddToGroupAsync(Context.ConnectionId, conversationId.ToString());
                 await Groups.AddToGroupAsync(Context.ConnectionId, $"User_{userId}");
 
                 var conversation = await conversationRepository.GetConversationById(conversationId);
-                if (conversation != null && (conversation.InitiatorId == userId || conversation.ReceiverId == userId))
+                if (conversation != null)
                 {
                     var otherUserId = conversation.ReceiverId;
                     var currentUser = await accountRepository.GetAccountById(userId);
@@ -81,6 +81,11 @@ namespace OnTutorDemand.Pages.ChatHub
                     await Clients.Group($"User_{otherUserId}").SendAsync("NewConversation", conversationId, currentUser.FullName, conversation.LastMessageDate);
                 }
             }
+            else if (conversationId != 0)
+            {
+                await Groups.AddToGroupAsync(Context.ConnectionId, conversationId.ToString());
+                await Groups.AddToGroupAsync(Context.ConnectionId, $"User_{userId}");
+            } 
             else
             {
                 await Groups.AddToGroupAsync(Context.ConnectionId, $"User_{userId}");
