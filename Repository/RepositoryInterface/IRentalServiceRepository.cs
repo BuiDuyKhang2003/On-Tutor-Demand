@@ -11,9 +11,9 @@ namespace Repository.RepositoryInterface
     {
         IQueryable<RentalService> GetRentalServicesByQuery();
         IEnumerable<RentalService> GetAllRentalServices();
-        RentalService GetRentalServiceById(int? rentalServiceId);
+        Task<RentalService> GetRentalServiceById(int? rentalServiceId);
         Task AddRentalService(RentalService rentalService);
-        void UpdateRentalService(RentalService rentalService);
-        void DeleteRentalService(int? rentalServiceId);
+        Task<RentalService> UpdateRentalService(RentalService rentalService);
+        Task DeleteRentalService(int? rentalServiceId);
     }
 }

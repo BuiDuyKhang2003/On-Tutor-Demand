@@ -40,7 +40,7 @@ namespace OnTutorDemand.Pages.RentalServicePage
                 return NotFound();
             }
 
-            var rentalservice = _serviceRepository.GetRentalServiceById(id);
+            var rentalservice =await _serviceRepository.GetRentalServiceById(id);
 
             if (rentalservice == null)
             {
@@ -59,12 +59,12 @@ namespace OnTutorDemand.Pages.RentalServicePage
             {
                 return NotFound();
             }
-            var rentalservice = _serviceRepository.GetRentalServiceById(RentalService.Id);
+            var rentalservice = await _serviceRepository.GetRentalServiceById(RentalService.Id);
 
             if (rentalservice != null)
             {
                 RentalService = rentalservice;
-                _serviceRepository.DeleteRentalService(id);
+               await _serviceRepository.DeleteRentalService(id);
 
             }
 

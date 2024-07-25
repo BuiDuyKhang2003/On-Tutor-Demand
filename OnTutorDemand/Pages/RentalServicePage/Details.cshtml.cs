@@ -39,7 +39,7 @@ namespace OnTutorDemand.Pages.RentalServicePage
                 return NotFound();
             }
 
-            var rentalservice = _serviceRepository.GetRentalServiceById(id);
+            var rentalservice = await _serviceRepository.GetRentalServiceById(id);
             if (rentalservice == null)
             {
                 return NotFound();

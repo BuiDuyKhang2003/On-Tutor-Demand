@@ -30,7 +30,7 @@ namespace OnTutorDemand.Pages.ShedulePages
 
         public async Task<IActionResult> OnGetAsync(int? id, string sortOrder, string currentFilter, string searchString, int? pageIndex)
         {
-            var rentalservice = _serviceRepository.GetRentalServiceById(id);
+            var rentalservice = await _serviceRepository.GetRentalServiceById(id);
             if (rentalservice == null)
             {
                 return NotFound();
@@ -40,8 +40,7 @@ namespace OnTutorDemand.Pages.ShedulePages
                 RentalService = rentalservice;
             }
             ViewData["DaysOfWeek"] = new SelectList(new List<string> { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" });
-            //ViewData["RentalServiceId"] = new SelectList(_serviceRepository.GetAllRentalServices(), "Id", "Description");
-            //ViewData["RentalServiceId"] = new SelectList(_serviceRepository.GetAllRentalServices(), "Id", "PricePerSession");
+            
             var userRole = HttpContext.Session.GetString("UserRole");
             if (userRole == null || !userRole.Equals("User"))
             {
