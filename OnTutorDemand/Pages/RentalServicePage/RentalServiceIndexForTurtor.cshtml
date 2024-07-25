@@ -106,6 +106,7 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
+                        <th>Tên dịch vụ</th>
                         <th>Mô tả</th>
                         <th>Giá mỗi buổi</th>
                         <th>Họ tên giảng viên</th>
@@ -116,6 +117,7 @@
                     @foreach (var item in Model.RentalService)
                     {
                         <tr>
+                            <td>@Html.DisplayFor(modelItem => item.ServiceName)</td>
                             <td>@Html.DisplayFor(modelItem => item.Description)</td>
                             <td>@Html.DisplayFor(modelItem => item.PricePerSession)</td>
                             <td>@Html.DisplayFor(modelItem => item.Tutor.FullName)</td>

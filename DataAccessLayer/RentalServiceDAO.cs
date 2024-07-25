@@ -24,7 +24,7 @@ namespace DataAccessLayer
             return db.RentalServices.Include(r=>r.Tutor).ThenInclude(x=>x.Account).ToList();
         }
 
-        public static RentalService GetRentalServiceById(int? rentalServiceId)
+        public async static Task<RentalService> GetRentalServiceById(int? rentalServiceId)
         {
             return db.RentalServices.Include(r => r.Tutor).ThenInclude(x => x.Account).FirstOrDefault(s => s.Id == rentalServiceId) ?? new RentalService();
         }
@@ -35,21 +35,37 @@ namespace DataAccessLayer
             await db.SaveChangesAsync();
         }
 
-        public static void UpdateRentalService(RentalService rentalService)
+        public static async Task<RentalService> UpdateRentalService(RentalService rentalService)
         {
             db = new();
-            db.Entry(rentalService).State = EntityState.Modified;
-            db.SaveChanges();
-        }
+            var existingService = await db.RentalServices
+                                           .FirstOrDefaultAsync(s => s.Id == rentalService.Id && s.TutorId == rentalService.TutorId);
 
-        public static void DeleteRentalService(int? rentalServiceId)
+            if (existingService != null)
+            {
+                existingService.TutorId = rentalService.TutorId;
+                existingService.ServiceName = rentalService.ServiceName;
+                existingService.Description = rentalService.Description;
+                existingService.PricePerSession = rentalService.PricePerSession;
+                db.Entry(existingService).State = EntityState.Modified;
+                await db.SaveChangesAsync();
+                return rentalService;
+            }
+            else
+            {
+                throw new Exception("Service not found.");
+            }
+        }
+        public static async Task DeleteRentalService(int? rentalServiceId)
         {
+            db = new();
             var rentalService = db.RentalServices.Include(r => r.Tutor).ThenInclude(x => x.Account).FirstOrDefault(s=> s.Id == rentalServiceId);
             if (rentalService != null)
             {
                 db.RentalServices.Remove(rentalService);
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
+            
         }
     }
 }

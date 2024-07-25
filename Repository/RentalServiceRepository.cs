@@ -13,13 +13,13 @@ namespace Repository
     {
         public async Task AddRentalService(RentalService rentalService) => await RentalServiceDAO.AddRentalService(rentalService);
 
-        public void DeleteRentalService(int? rentalServiceId) => RentalServiceDAO.DeleteRentalService(rentalServiceId);
+        public async Task DeleteRentalService(int? rentalServiceId) => await RentalServiceDAO.DeleteRentalService(rentalServiceId);
 
-        public RentalService GetRentalServiceById(int? rentalServiceId) => RentalServiceDAO.GetRentalServiceById(rentalServiceId);
+        public async Task<RentalService> GetRentalServiceById(int? rentalServiceId) => await RentalServiceDAO.GetRentalServiceById(rentalServiceId);
 
         public IEnumerable<RentalService> GetAllRentalServices() => RentalServiceDAO.GetAllRentalServices();
 
-        public void UpdateRentalService(RentalService rentalService) => RentalServiceDAO.UpdateRentalService(rentalService);
+        public async Task<RentalService> UpdateRentalService(RentalService rentalService) => await RentalServiceDAO.UpdateRentalService(rentalService);
 
         public IQueryable<RentalService> GetRentalServicesByQuery() => RentalServiceDAO.GetRentalServicesByQuery();
 
