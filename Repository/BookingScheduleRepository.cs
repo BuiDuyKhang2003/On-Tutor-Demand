@@ -11,8 +11,15 @@ namespace Repository
 {
     public class BookingScheduleRepository : IBookingScheduleRepository
     {
-        public async Task<bool> BookScheduleAsync(int scheduleId, int accountId) => await BookingScheduleDAO.BookScheduleAsync(scheduleId, accountId);
+        private readonly BookingScheduleDAO _bookingScheduleDAO;
 
-        public async Task<IEnumerable<BookingSchedule>> GetBookingHistoryAsync(int accountId) => await BookingScheduleDAO.GetBookingHistoryAsync(accountId);
+        public BookingScheduleRepository(AppDbContext dbContext)
+        {
+            _bookingScheduleDAO = new BookingScheduleDAO(dbContext);
+        }
+
+        public async Task<bool> BookScheduleAsync(int scheduleId, int accountId) => await _bookingScheduleDAO.BookScheduleAsync(scheduleId, accountId);
+
+        public async Task<IEnumerable<BookingSchedule>> GetBookingHistoryAsync(int accountId) => await _bookingScheduleDAO.GetBookingHistoryAsync(accountId);
     }
 }
