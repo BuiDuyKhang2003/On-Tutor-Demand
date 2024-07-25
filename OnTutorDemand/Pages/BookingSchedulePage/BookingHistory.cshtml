@@ -62,10 +62,11 @@
                         <th>Mã Đặt</th>
                         <th>Trạng Thái</th>
                         <th>Tên Dịch Vụ</th>
-                        <th>Gia sư</th>
+                        <th>Gia Sư</th>
                         <th>Giá</th>
                         <th>Lịch Đặt</th>
                         <th>Ngày Đặt</th>
+                        <th>Thao Tác</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -107,11 +108,11 @@
                                 <td>
                                     @if (booking.Schedule != null)
                                     {
-                                    <span class="text-muted">@booking.Schedule.RentalService?.Tutor.Account.FullName</span>
+                                        <span class="text-muted">@booking.Schedule.RentalService?.Tutor.Account.FullName</span>
                                     }
                                     else
                                     {
-                                    <span class="text-muted">No Tutor</span>
+                                        <span class="text-muted">No Tutor</span>
                                     }
                                 </td>
                                 <td>
@@ -137,6 +138,11 @@
                                 <td>
                                     <span class="text-muted">@booking.BookingDate.ToString("dd-MM-yyyy")</span>
                                 </td>
+                                <td>
+                                    <a class="btn btn-danger" asp-page="/Index" data-toggle="modal" data-target="#cancelBooking">
+                                        Hủy buổi học
+                                    </a>
+                                </td>
                             </tr>
                         }
                     }
@@ -148,6 +154,24 @@
                     }
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="cancelBooking" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Hủy buổi học</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Vui lòng xác nhận hủy bổi học. Vui lòng liên hệ CSKH nếu cần hỗ trợ</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy</button>
+                <a class="btn btn-danger" asp-page="/Authenticate/Logout">Hủy bổi học</a>
             </div>
         </div>
     </div>
