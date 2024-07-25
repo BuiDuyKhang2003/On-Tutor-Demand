@@ -157,13 +157,14 @@
                             <div class="card card-custom" data-link="@Url.Page("/ShedulePages/SchedulePageForStudent", new { id = item.Id })">
                                 <div class="card-body">
                                     <h2 class="card-title"><i class="fas fa-graduation-cap fa-fw"></i> @Html.DisplayFor(modelItem => item.Tutor.FullName)</h2>
+                                    <p class="card-text"><i class="fas fa-book card-icon"></i> Tên dịch vụ: @Html.DisplayFor(modelItem => item.ServiceName)</p>
                                     <p class="card-text"><i class="fas fa-book card-icon"></i> Trình độ: @Html.DisplayFor(modelItem => item.Tutor.Education)</p>
                                     <p class="card-text"><i class="fas fa-briefcase card-icon"></i> Kinh nghiệm: @Html.DisplayFor(modelItem => item.Tutor.Experience)</p>
                                     <p class="card-text"><i class="fas fa-chalkboard-teacher card-icon"></i> Lớp: @Html.DisplayFor(modelItem => item.Tutor.Grades)</p>
                                     <p class="card-text"><i class="fas fa-map-marker-alt card-icon"></i> Khu vực: @Html.DisplayFor(modelItem => item.Tutor.Districts)</p>
                                     <p class="card-text"><i class="fas fa-book-open card-icon"></i> Môn học: @Html.DisplayFor(modelItem => item.Tutor.Subjects)</p>
                                     <h3 class="card-title">
-                                        <i class="bi bi-currency-dollar card-icon">$</i> Giá: 
+                                        <i class="bi bi-currency-dollar card-icon"></i> Giá: @Html.DisplayFor(modelItem => item.PricePerSession)
                                     </h3>
                                 </div>
                             </div>
